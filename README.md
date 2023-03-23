@@ -1,6 +1,6 @@
 # FitnessWebsiteProject
 
-This Fitness web site has been created as a project work for OAMK first year Information Technology studies. The task was to implement a web app/site based on the chosen topic and to include certain functionalities such as register, login, editing data, and commenting. Implementation should be done using TypeScript, NodeJS, Express and PostgreSQL.
+This Fitness web site has been created as a project work for OAMK first year Information Technology studies. The task was to implement a web app/site based on the chosen topic and to include certain functionalities such as register, login, editing data, and commenting. Implementation was to be done using TypeScript, NodeJS, Express and PostgreSQL.
 
 The web site includes fitness-related blog texts that users can read and comment, a web shop to buy courses related to fitness and wellness, body mass index and calorie calculators, and short stories about successful user experiences.
 
@@ -34,4 +34,20 @@ Hashing and encrypting user passwords is done by **bcryptjs**, and web tokens ar
 
 ## Images
 Images used on the web pages have been retrieved from the following free image sources:
-<add image sources here>
+
+[unsplash.com](https://unsplash.com/)
+
+[pixabay.com](https://pixabay.com/)
+
+
+---
+
+## Blog stories
+
+Blog texts were written by **ChatGTP** based on given framework and some keywords.
+
+---
+
+## Link for Figma designs
+
+UI Figma designs can be found [here.](https://www.figma.com/file/Ue6heavQiI2VgJlcUJp0hR/UI-design---Fitness-website?node-id=0%3A1&t=K3lXatu8Y4xE1sjB-1)
