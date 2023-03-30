@@ -1,44 +1,42 @@
 
 /* ALL CLASSES VIEW*/
-/* Style the list */
-ul.breadcrumb {
-    /* padding: 10px 16px; */
-    margin-bottom: auto;
-    list-style: none;
-    /* background-color: #eee; */
+.breadcrumb {
+  padding: 20px 15px;
+}
+  .breadcrumb ul {
+  padding: 0;
+  margin: 0;
+  }
+  .breadcrumb ul li {
+  list-style: none;
+  display: inline;
+  font-size: 1rem;
+  }
+  .breadcrumb ul li::after {
+  content: "\f105";
+  padding: 0 8px;
+  color: black;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  }
+  .breadcrumb ul li:last-child:after {
+  content: "";
+  }
+  .breadcrumb ul li a {
+  color: black;
+  text-decoration: none;
+  -webkit-transition: color 0.7s ease-in;
+  transition: color 0.7s ease-in;
+  }
+  .breadcrumb ul li a:hover {
+  color: #1459cc;
   }
   
-  /* Display list items side by side */
-  ul.breadcrumb li {
-    display: inline;
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  /* Add a slash symbol (/) before/behind each list item */
-  ul.breadcrumb li+li:before {
-    padding: 8px;
-    color: black;
-    content: "/\00a0";
-  }
-  
-  /* Add a color to all links inside the list */
-  ul.breadcrumb li a {
-    color: #03DAC6;
-    text-decoration: none;
-  }
-  
-  /* Add a color on mouse-over */
-  ul.breadcrumb li a:hover {
-    color: #01447e;
-    text-decoration: underline;
-  }
-  
-  #content {
+#content {
     min-height: 400px;
     display: inline-block;
-  }
-  .product-card {
+}
+.product-card {
       background-color: #000;
       color: #fff;
       width: 300px;
@@ -52,9 +50,9 @@ ul.breadcrumb {
       margin-bottom: 25px;
       margin-right: 20px;
       margin-left: 40px;
-    }
+}
   
-    .ribbon {
+  .ribbon {
       width: 150px;
       height: 150px;
       overflow: hidden;
@@ -81,7 +79,6 @@ ul.breadcrumb {
       text-transform: uppercase;
       text-align: center;
     }
-    
     /* top right*/
     .ribbon-top-right {
       top: -10px;
@@ -105,22 +102,18 @@ ul.breadcrumb {
       top: 30px;
       transform: rotate(45deg);
     }
-    
-    
-    img {
+  img {
       width: 100%;
       max-height: 200px;
       object-fit: cover;
       border-radius: 10px;
       margin-bottom: 5px;
-    }
-    
-    h3 {
+  }
+  h3 {
       font-size: 20px;
       margin-bottom: 10px;
       margin-top: 10px;
-    }
-    
+  }
     p {
       font-size: 14px;
       margin-bottom: 10px;
@@ -139,9 +132,7 @@ ul.breadcrumb {
       border-radius: 20px;
       text-decoration: underline;
       text-align: left;
-    
     }
-    
     .buy-btn {
       position: absolute;
       bottom: 15px;
@@ -154,11 +145,10 @@ ul.breadcrumb {
       cursor: pointer;
       border-radius: 15px;
     }
-    
-    .buy-btn:hover {
+      .buy-btn:hover {
       background-color: #0062cc;
-    }
-    
+      }
+      /*Style for the star rating*/
     .checked {
       color: orange;
       }
@@ -168,4 +158,3 @@ ul.breadcrumb {
         right: 0;
         transform: translate(-50%, 50%);
       }
-      
