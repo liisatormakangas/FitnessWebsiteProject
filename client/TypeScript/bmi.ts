@@ -1,11 +1,13 @@
 class bmi{
-    // gender: string;
-    // age: string;
+    gender: number;
+    age: number;
     height: number;
     weight: number;
     bmi: number;
 
-    constructor(height: number, weight: number) {
+    constructor(gender:number, age: number,height: number, weight: number) {
+        this.gender = gender;
+        this.age = age;
         this.height = height;
         this.weight = weight;
     }
