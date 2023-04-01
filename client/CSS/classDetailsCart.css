@@ -1,0 +1,516 @@
+
+/* Style for the class details*/
+#container{
+    width: 100%;
+  }
+  
+  #content{
+    width: 100%;
+  }
+  
+  /* BREADCRUMB */
+  .breadcrumb {
+    padding: 20px 15px;
+  }
+  .breadcrumb ul {
+    padding: 0;
+    margin: 0;
+  }
+  .breadcrumb ul li {
+    list-style: none;
+    display: inline;
+    font-size: 1rem;
+  }
+  .breadcrumb ul li::after {
+    content: "\f105";
+    padding: 0 8px;
+    color: black;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+  }
+  .breadcrumb ul li:last-child:after {
+    content: "";
+  }
+  .breadcrumb ul li a {
+    color: black;
+    text-decoration: none;
+    -webkit-transition: color 0.7s ease-in;
+    transition: color 0.7s ease-in;
+  }
+  .breadcrumb ul li a:hover {
+    color: #1459cc;
+  }
+  
+  #content {
+      min-height: 400px;
+      display: inline-block;
+    }
+  /* CLASS DETAILS */
+  .class-name {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    background-color: #03DAC6;
+  }  
+  .name-rating {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      margin-left: 16%;
+    }
+    
+  .class-name {
+      display: inline-block;
+      /* width: 60%; */
+      margin-right: 10px;
+      padding: 7px;
+    }
+    
+  .star-container-big {
+      display: inline-block;
+      /* width: 40%; */
+      font-size: 24px;
+    }
+  
+    /*STYLE THE VIDEO*/
+    .video {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 0;
+    }
+    
+    .video video {
+      width: 66.67%; 
+      height: auto; 
+      margin: 0 auto;
+      display: block;
+    }
+    /*Style for trainer-reactive features-enroll button*/
+    .trainer-row-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+      margin-top: 40px;
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+    .trainer-container{
+      display: flex;
+      align-items: center;
+    }
+    .trainer-name {
+      justify-content: space-between;
+      align-items: center;
+      margin-left: 10px;
+    }
+    .name {
+      font-size: 20px;
+      font-weight: bold;
+      margin-right: 50px;
+    }
+    .trainer-image img {
+      border-radius: 50%; /* Apply border radius to create a circle */
+      object-fit: cover; /* Maintain aspect ratio and crop image as needed */
+      height: 150px; /* Set height to match the height attribute of the image */
+      width: 150px; /* Set width to match the height attribute of the image */
+      border: 2px solid red; /* Add red border */
+    }
+    /*Style for the react-container*/
+    .react-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+      margin-top: 40px;
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+    /*Style for SAVE fearture*/
+    .save-button {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    
+    .save-button button {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #03DAC6;
+      color: black;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      margin-right: 20px;
+   } 
+    .save-button button i {
+      margin-right: 10px;
+      margin-left: 10px;
+    }
+  
+    /*Style for rate button*/
+    .rate-button button {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #03DAC6;
+      color: black;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      margin-right: 20px;
+      margin-left: 10px;
+      margin-top: 20px;
+   }
+    
+    .rate-button i {
+      color: black;
+      font-size: 20px;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+    /*Style for share button*/
+    .share-button button {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #03DAC6;
+      color: black;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      margin-right: 10px;
+      margin-left: 10px;
+      margin-top: 20px;
+    }
+    
+    .share-button i {
+      color: black;
+      font-size: 20px;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+    /*Style for enroll button*/
+    .enroll-button button {
+      background-color: #FF0266;
+      border: none;
+      color: white;
+      padding: 10px;
+      font-size: 20px;
+      cursor: pointer;
+      border-radius: 20px;
+      font-weight: bold;
+      justify-content: right;
+      margin-top: 20px;
+      margin-left: 0;
+      margin-right: auto;
+    }
+    .enroll-button i {
+      color: black;
+      font-size: 20px;
+      margin-left: 5px;
+    }
+  
+    /*Style for the class-container*/
+    .class-container {
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: 40px;
+      margin-right: 40px;
+    }
+    .column {
+      flex: 1;
+      margin: 40px;
+      background-color: white;
+      padding: 20px;
+      border-radius: 5px;
+    }
+    .column h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .column p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    .column ul {
+      list-style: none;
+      padding: 0;
+    }
+    .column li {
+      font-size: 16px;
+      line-height: 1.5;
+      margin-bottom: 5px;
+    }
+    /*Style for the additional images*/
+    .morePic {
+      margin-left: 40px;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+    .image-container {
+      display: flex;
+      justify-content: space-between;
+      margin-left: 40px;
+      margin-right: 40px;
+      margin-bottom: 20px;
+      height: 400px;
+    }
+    .image {
+      padding: 0 50px;
+    }
+    .image img {
+      width: 100%;
+      object-fit: cover;
+    }
+
+/*Style for the shopping cart*/
+  
+.cart-container {
+    background-color: #03DAC6;
+    padding: 30px;
+  }
+  .middle-content {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 80px;
+  }
+  
+  .cart{
+    min-width: 700px;
+  }
+  @media screen and (max-width: 700px) {
+    .cart {
+      min-width: 100%;
+    }
+  }
+  
+  .cart-header {
+    margin-bottom: 20px;
+  }
+  .name-price{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  @media screen and (max-width: 500px) {
+    .cart-item {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+  
+  .cart-item-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .cart-item-image {
+    margin-right: 20px;
+    width: 100px;
+  }
+  
+  .cart-item-image>img {
+    width: 100%;
+  }
+  .cart-item-details h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    min-width: 200px;
+  }
+  
+  .cart-item-details p {
+    margin: 0;
+  }
+  
+  @media screen and (max-width: 500px) {
+    .cart-item-details {
+      text-align: center;
+    }
+  }
+  
+  .cart-item-price {
+    text-align: right;
+  }
+  /* .cart-item-remove {
+  } */
+  .fa-trash-alt {
+    margin-right: 5px;
+  }
+  .total-price {
+    border-top: 1px solid black;
+    padding-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #FF0266;
+    text-align: right;
+  }
+  .proceed-pay {
+    text-align: center;
+  }
+  .btn-proceed {
+    background-color: white;
+    color: #FF0266;
+    padding: 10px 20px;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  .btn-proceed:hover {
+    background-color: #0062cc;
+    }
+  /*Style for the Other/extra classes*/
+  .others {
+    text-align: center;
+  }
+  .others-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+  .product-card {
+    background-color: #000;
+    color: #fff;
+    width: 300px;
+    height: 450px;
+    padding: 5px;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    justify-content: space-between;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-right: 20px;
+    margin-left: 40px;
+  }
+  
+  .ribbon {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    position: absolute;
+  }
+  .ribbon::before,
+  .ribbon::after {
+    position: absolute;
+    z-index: -1;
+    content: '';
+    display: block;
+    border: 5px solid #2980b9;
+  }
+  .ribbon span {
+    position: absolute;
+    display: block;
+    width: 225px;
+    padding: 15px 0;
+    background-color: #03DAC6;
+    box-shadow: 0 5px 10px rgba(0,0,0,.1);
+    color: #fff;
+    font: 700 18px/1 'Lato', sans-serif;
+    text-shadow: 0 1px 1px rgba(0,0,0,.2);
+    text-transform: uppercase;
+    text-align: center;
+  }
+  /* top right*/
+  .ribbon-top-right {
+    top: -10px;
+    right: -10px;
+  }
+  .ribbon-top-right::before,
+  .ribbon-top-right::after {
+    border-top-color: transparent;
+    border-right-color: transparent;
+  }
+  .ribbon-top-right::before {
+    top: 0;
+    left: 0;
+  }
+  .ribbon-top-right::after {
+    bottom: 0;
+    right: 0;
+  }
+  .ribbon-top-right span {
+    left: -25px;
+    top: 30px;
+    transform: rotate(45deg);
+  }
+  img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 5px;
+  }
+  h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+  p {
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: justify;
+  }
+  
+  .view-more {
+    /* position: absolute; */
+    bottom: 10px;
+    left: 10px;
+    color: white;
+    border: none;
+    padding: 10px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 20px;
+    text-decoration: underline;
+    text-align: left;
+  }
+  .buy-btn {
+    position: absolute;
+    bottom: 15px;
+    left: 40px;
+    background-color: #03DAC6;
+    color: black;
+    border: none;
+    padding: 7px 7px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 15px;
+  }
+    .buy-btn:hover {
+    background-color: #0062cc;
+    }
+    /*Style for the star rating*/
+  .checked {
+    color: orange;
+    }
+  .star-container {
+      position: absolute;
+      bottom: 30px;
+      right: 0;
+      transform: translate(-50%, 50%);
+    }
+    
+    
+  
