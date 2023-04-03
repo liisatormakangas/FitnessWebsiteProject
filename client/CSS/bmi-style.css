@@ -5,13 +5,19 @@
     border-radius: 16px;
     max-width: 815px;
 }
+.activity{
+    background-color: #000000;
+    color: #ffffff;
+    border-radius: 16px;
+    max-width: 815px;
+}
 .cal-button{
     background-color: #FF0266;
     border-radius: 20px;
     border: none;
     color: #ffffff;
     font-weight: bold;
-    width: 150px;
+    width: auto;
 }
 .form-label{
     font-weight: bold;

@@ -23,14 +23,43 @@
     <div class="container"><!-- body container starts -->
         <div class="row">
             <div class="col-12 text-center">
-                <h1>CHECK YOUR BMI</h1>
-                <p>Body Mass Index (BMI) is a measurement is a good way to gauge whether your weight is in healthy proportion to your height.</p>
+                <h1>BODY CALCULATOR</h1>
+                <p>Body Mass Index (BMI) is a measurement is a good way to gauge whether your weight is in healthy proportion to your height.
+                    The Basal Metabolic Rate (BMR) estimates your basal metabolic rate—the amount of energy expended while at rest in a neutrally temperate environment, and in a post-absorptive state 
+                    (meaning that the digestive system is inactive, which requires about 12 hours of fasting).
+                    The Required Calorie amount estimate the number of calories a person needs to consume each day to gain or lose or maintain the weight based on the activity level. But this is just an estimate. Not a precise number.
+                </p>
             </div>
         </div>
-        <div class="container p-md-5 p-sm-2 calculator"> <!-- calculator starts -->
+        <div class="container p-md-4 p-sm-2 calculator"> <!-- calculator starts -->
         <div class="row"><!-- main row starts -->
-        <div class="col-sm-6 inputs pt-3"><!-- inputs starts -->
-            <form class="needs-validation" novalidate>
+        <div class="col-md-6 inputs pt-3"><!-- inputs starts -->
+            <form class="needs-validation" id="bmi-form" novalidate>
+              
+            <div class="row mb-3"><!-- Height starts -->
+                <div class="col-sm-3">
+                <label for="height" class="form-label">Height</label>
+                </div>
+                <div class="col-sm-8">
+                  <input type="height" class="form-control" id="height" required>
+                </div>
+                <div class="col-sm-1">
+                    <span>cm</span>
+                </div>
+                <!-- <div class="invalid-feedback">Invalid input!</div> -->
+            </div><!-- Height ends -->
+            <div class="row mb-3"><!-- Weight starts -->
+                <div class="col-sm-3">
+                <label for="text" class="form-label">Weight</label>
+                </div>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="weight" required>
+                </div>
+                <div class="col-sm-1">
+                    <span>kg</span>
+                </div>
+                <!-- <div class="invalid-feedback">Invalid input!</div> -->
+            </div><!-- Weight ends -->
             <fieldset class="row mb-3"><!-- gender starts -->
                 <div class="col-4">
                 <div class="form-label">Gender</div>
@@ -53,93 +82,71 @@
                 </div><!--female ends -->
             </fieldset><!-- gender ends -->
                 <div class="row mb-3"><!-- Age starts -->
-                    <div class="col-sm-3">
+                    <div class="col-3">
                     <label for="age" class="form-label">Age</label>
                     </div>
-                    <div class="col-sm-8">
-                        <select class="form-select" id="age-select" required>
-                            <option value="">Choose...</option>
-                            <option value="teen">2-19 Years</option>
-                            <option value="adult">20 Years or older</option>
-                          </select>
-                          <div class="invalid-feedback">Invalid input!</div>
+                    <div class="col-8">
+                        <input type="number" class="form-control" id="age" required>
+                      </div>
+                      <div class="col-1 ps-0">
+                        <span>years</span>
                     </div>
                 </div><!-- Age ends -->
-                <div class="row mb-3"><!-- Height starts -->
+                <div class="row mb-3"><!-- activity starts -->
+                    <div class="col-3">
+                    <label for="activity" class="form-label">Activity Level</label>
+                    </div>
+                    <div class="col-9">
+                        <select id="activity" name="activity">
+                            <option id="1" value="1">Sedentary</option>
+                            <option id="2"  value="2">Lightly active</option>
+                            <option id="3"  value="3">Moderately active</option>
+                            <option id="4"  value="4">Very active</option>
+                            <option id="5"  value="5">Extra active</option>
+                        </select>
+                    </div>
+                </div><!-- activity ends -->
+                <div class="row mb-3"><!-- TargetWeight starts -->
                     <div class="col-sm-3">
-                    <label for="height" class="form-label">Height</label>
+                    <label for="text" class="form-label">Target Weight</label>
                     </div>
                     <div class="col-sm-8">
-                      <input type="height" class="form-control" id="height" required>
-                    </div>
-                    <div class="col-sm-1">
-                        <span>cm</span>
-                    </div>
-                    <!-- <div class="invalid-feedback">Invalid input!</div> -->
-                </div><!-- Height ends -->
-                <div class="row mb-3"><!-- Weight starts -->
-                    <div class="col-sm-3">
-                    <label for="text" class="form-label">Weight</label>
-                    </div>
-                    <div class="col-sm-8">
-                      <input type="text" class="form-control" id="weight" required>
+                      <input type="text" class="form-control" id="tar-weight" required>
                     </div>
                     <div class="col-sm-1">
                         <span>kg</span>
                     </div>
-                    <!-- <div class="invalid-feedback">Invalid input!</div> -->
-                </div><!-- Weight ends -->
+                </div><!-- TargetWeight ends -->
                 <div class="col-12 text-center">
-                    <button type="submit" class="btn btn-primary cal-button ms-3 mt-3">Calculate</button>
-                  </div>
+                    <button type="submit" class="btn btn-primary cal-button ms-3 mt-3">Show Results</button>
+                </div>
         </form>
         </div><!-- input ends -->
-        <div class="col-6 output text-center pt-3 text-center"><!-- output starts -->
-            <div class="row">
-                <div class="col-12 result">
-                    <p>YOUR BMI VALUE: <span id="bmi-value"></span></p>
+        <div class="col-md-6 output text-center pt-3 text-center"><!-- output starts -->
+                <div class="col-12 result mt-3">
+                    <p>YOUR BMI VALUE : 
                 </div>
-            </div>
-            <div class="row"><!-- thead starts -->
-                <div class="col-6">
-                    <p>BMI</p>
-            </div>
-            <div class="col-6">
-                <p>Weight Status</p>
-            </div>
-            </div><!-- thead ends -->
-            <div class="row trow1"><!-- trow1 starts -->
-                <div class="col-6">
-                    <p>Below 18.5</p>
-            </div>
-            <div class="col-6">
-                <p>Underweight</p>
-            </div>
-            </div><!-- trow1 ends -->
-            <div class="row trow2"><!-- trow2 starts -->
-                <div class="col-6">
-                    <p>18.5 -24.9</p>
-            </div>
-            <div class="col-6">
-                <p>Healthy</p>
-            </div>
-            </div><!-- trow2 ends -->
-            <div class="row trow3"><!-- trow3 starts -->
-                <div class="col-6">
-                    <p>25.0 - 29.9</p>
-            </div>
-            <div class="col-6">
-                <p>Overweight</p>
-            </div>
-            </div><!-- trow3 ends -->
-            <div class="row trow4"><!-- trow4 starts -->
-                <div class="col-6">
-                    <p>30.0 and above</p>
-            </div>
-            <div class="col-6">
-                <p>Obese</p>
-            </div>
-            </div><!-- trow4 ends -->
+                <div class="col-12 mt-2">
+                    <span id="bmi-value"></span>
+                </div>
+                <div class="col-12 result mt-3">
+                    <p>YOUR WEIGHT CATEGORY : 
+                </div>
+                <div class="col-12 mt-2">
+                    <span id="bmi-status"></span>
+                </div>
+                <div class="col-12 result mt-3">
+                    <p>YOUR BMR VALUE : 
+                </div>
+                <div class="col-12 mt-2">
+                    <span id="bmr-value"></span>
+                </div>
+                <div class="col-12 result mt-3">
+                    <p>CALORIES REQUIRED TO - <span id="control"></span>- WEIGHT : 
+                </div>
+                <div class="col-12 mt-2">
+                    <span id="calories"></span>
+                </div>
         </div><!-- output ends -->
     </div><!-- main row ends -->
         </div> <!-- calculator ends -->
