@@ -13,4 +13,15 @@ app.get('/', (req: Request, res: Response) => {
     res.status(200).send('Hello everyone!');
 })
 
+const openDb = (): Pool => {
+    const pool: Pool = new Pool({
+        user: 'postgres',
+        host: 'localhost',
+        database: 'FitnessWebSite',
+        password: "rasilar",
+        port: 5432,
+    })
+    return pool;
+}
+
 app.listen(PORT)
