@@ -5,5 +5,7 @@
         "rootDir": "TypeScript",
         "outDir": "JavaScript",
     },
-    "exclude": ["server/*.ts"]
+    "exclude": [
+        "server/*.ts"
+    ]
 }

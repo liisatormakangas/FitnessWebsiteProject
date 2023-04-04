@@ -1,0 +1,75 @@
+ <!-- register modal -->
+ <div class="modal" tabindex="-1" id="registerModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modHeader">
+                <img src="./images/logo.svg">
+                <button type="button" class="closeBtn" data-bs-dismiss="modal" aria-label="Close">X</button>
+            </div>
+            <div class="navigation">
+                <ul class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li>Register</li>
+                </ul>
+            </div>
+            <div class="modal-body modBody">
+                <form id="registerForm">
+                    <div class="formBody">
+                        <div class="row g-3">
+                            <div class="col-12 col-sm-6 mt-0">
+                                <input class="registerInput" type="text" placeholder="*First name" id="firstName"
+                                    name="firstName">
+                            </div>
+                            <div class="col-12 col-sm-6 mt-0">
+                                <input class="registerInput" type="text" placeholder="*Last name" id="lastName"
+                                    name="lastName">
+                            </div>
+                            <div class="col-12 mt-0">
+                                <input class="registerInput" type="text" placeholder="*Email" id="email"
+                                    name="email">
+                            </div>
+                            <div class="col-12 mt-0">
+                                <input class="registerInput" type="text" placeholder="*phone" id="phone"
+                                    name="phone">
+                            </div>
+                            <div class="col-12 mt-0">
+                                <input class="registerInput" type="text" placeholder="*Street address" id="address"
+                                    name="address">
+                            </div>
+                            <div class="col-12 col-sm-6 mt-0">
+                                <input class="registerInput" type="text" placeholder="*Postal Code" id="postCode"
+                                    name="postCode">
+                            </div>
+                            <div class="col-12 col-sm-6 mt-0">
+                                <input class="registerInput" type="text" placeholder="*City" id="city" name="city">
+                            </div>
+                        </div>
+                        <div class="col-12 mt-0">
+                            <label style="font-size:x-small; margin-top: 20px;" for="user">Set username and
+                                password:</label>
+                            <input class="registerInput" type="text" placeholder="*Username" id="user" name="user">
+                        </div>
+                        <div class="col-12 mt-0">
+                            <input class="registerInput" type="text" placeholder="*Password" id="passwd"
+                                name="passwd">
+                        </div>
+                        <div class="col-12 mt-0">
+                            <label style="font-size:x-small; margin-top: 10px;" for="passwd2">Repeat
+                                password:</label>
+                            <input class="registerInput" type="text" placeholder="*Re-enter password" id="passwd2"
+                                name="passwd2">
+                        </div>
+                        <div style="font-size:x-small; text-align: center; margin-top: 20px;">By registering, you
+                            agree to our Terms and Conditions of use and Privacy Policy</div>
+                    </div>
+                    <button type="submit" class="submitBtn" data-bs-dismiss="modal"
+                        aria-label="Close">Register</button>
+                </form>
+                <div style="margin-top: 20px; margin-bottom: 30px; font-size: small;">
+                    <div>Allready a user?<a id="toLogin" class="link"> Login here</a></div>
+                </div>
+            </div>
+            <div class="modal-footer" style="background-color: black; height: 20px"></div>
+        </div>
+    </div>
+</div>
