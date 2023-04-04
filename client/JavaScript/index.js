@@ -1,3 +1,19 @@
+// form validation
+(() => {
+    'use strict';
+    // Fetch the forms we want to apply custom Bootstrap validation 
+    var forms = document.querySelectorAll('.needs-validation');
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms).forEach((form) => {
+        form.addEventListener('submit', (event) => {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+        }, false);
+    });
+})();
 const modals = () => {
     //these variables determine the button elements in the html to handle the modals
     const loginButton = document.getElementById('loginButton');
@@ -11,7 +27,9 @@ const modals = () => {
     loginButton.addEventListener('click', () => {
         loginModal.show();
     });
-    registerButton.addEventListener('click', () => {
+    registerButton.addEventListener('click', (event) => {
+        console.log('register button clicked');
+        event.preventDefault();
         registerModal.show();
     });
     linkToLogin.addEventListener('click', () => {

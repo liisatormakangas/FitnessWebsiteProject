@@ -6,35 +6,43 @@
     align-items: center;
     height: 4em;
     font-family: 'Montserrat', sans-serif;
+    border-style: ridge;
+    border-color: white;
 }
 .navigation {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between; 
-    margin-left: 10px;
-    margin-right: 20px
+  
 }
-ul.breadcrumb {
+ul.breadcrumb1 {
     list-style: none;
 }
-ul.breadcrumb li {
+ul.breadcrumb1 li {
     display: inline;
     font-size: 14px;
+    color: black;
 }
-ul.breadcrumb li+li:before {
+ul.breadcrumb1 li+li:before {
     padding: 5px;
     color: black;
     content: "\003E";
 }
-ul.breadcrumb li a {
+ul.breadcrumb1 li a {
     color: #FF0266;
     text-decoration: none;
 }
 .modBody {
     text-align: center;
     font-size: 1em;
-    font-family: 'Montserrat', sans-serif;                                            
+    font-family: 'Montserrat', sans-serif;  
+    color: black;                                      
+}
+.loginInput {
+    width:100%;
+    margin-top: 5px;
+    height: 25px;
 }
 .closeBtn {
     width: 25px;
@@ -72,6 +80,13 @@ ul.breadcrumb li a {
     margin-top: 5px;
     height: 25px;
 }
+.modalFooter {
+    border-style: ridge;
+    border-color: white;
+    background-color: black;
+    height: 20px
+}
+
 @media (max-width: 450px) {
     .logo {
         width: 49px;

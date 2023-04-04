@@ -4,13 +4,6 @@
         "module": "ES6",
         "rootDir": "TypeScript",
         "outDir": "JavaScript",
-        "moduleResolution": "node",
-        "baseUrl": ".",
-        "paths": {
-            "@popperjs/core": [
-                "./node_modules/@popperjs/core/dist/esm/index.js"
-            ]
-        }
     },
     "exclude": [
         "server/*.ts"
