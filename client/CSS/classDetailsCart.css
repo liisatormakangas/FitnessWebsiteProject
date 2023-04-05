@@ -434,6 +434,7 @@
 .cart-container {
     background-color: #03DAC6;
     padding: 30px;
+    border:black 1px solid;
   }
   .middle-content {
     display: flex;
@@ -524,8 +525,8 @@
     text-align: center;
   }
   .btn-proceed {
-    background-color: white;
-    color: #FF0266;
+    background-color: #FF0266;
+    color: white;
     padding: 10px 20px;
     font-size: 24px;
     font-weight: bold;
@@ -635,10 +636,10 @@
     left: 10px;
     color: #03DAC6;
     border: none;
-    padding: 10px 10px;
+    /* padding: 10px 10px; */
     font-size: 14px;
     cursor: pointer;
-    border-radius: 20px;
+    /* border-radius: 20px; */
     text-decoration: underline;
     text-align: left;
     font-weight: bold;
@@ -669,7 +670,7 @@
   .star-container {
       position: absolute;
       bottom: 30px;
-      right: 0;
+      right: -30px;
       transform: translate(-50%, 50%);
     }
     
