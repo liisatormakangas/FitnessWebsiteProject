@@ -1,0 +1,120 @@
+.container{
+    width: 1000px;
+
+    /*background-color: red;*/
+    margin:5px auto;
+    
+}
+ .content-img{
+    width: 1000px;
+    height: 600px;
+     
+}
+.comment-section {
+    background-color: gainsboro;
+    width: 1000px;
+    /*border: 1px solid black;*/
+    border-radius: 2px;
+    padding: 2px;
+     margin: 5px auto;
+}
+.like {
+    background-color:#03DAC6;
+    width: 100px;
+    border: 2px solid black;
+    border-radius: 40px;
+    padding: 5px;
+    margin-left: 40px ;
+
+}
+.comment{
+    background-color: #03DAC6;
+    width: 100px;
+    border: 2px solid black;
+    border-radius: 40px;
+    padding: 5px;
+    margin-left: 40px ;
+
+}
+.share{
+    background-color: #03DAC6;
+    width: 100px;
+    border: 2px solid black;
+    border-radius: 40px;
+    padding: 5px;
+    margin-left: 40px;
+}
+/* breadcrumbs style */
+ul.breadcrumb {
+    padding: 10px 16px;
+    list-style: none;
+  }
+  ul.breadcrumb li {
+    display: inline;
+    font-size: 18px;
+  }
+  ul.breadcrumb li+li:before {
+    padding: 8px;
+    color: black;
+    content: "\f105";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+  }
+  ul.breadcrumb li a {
+    color: #FF0266;
+    text-decoration: none;
+  }
+  ul.breadcrumb li a:hover {
+    color: #03DAC6;
+    text-decoration: none;
+}
+/* footer */
+footer {
+    /* width: 1560px; */
+    background: black;
+    font-size: 18px;
+    padding: 60px 15px 20px 60px;
+    text-align:left; 
+    color: #fff;
+  }
+  footer .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  footer .col-md-4 {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+  
+  footer a {
+    display: flex;
+    color: #fff;
+    align-items: center;
+    font-size: 18px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  footer a:hover {
+    color:hsl(18, 92%, 52%);
+  }
+  
+  .footerlogo img {
+    display: flex;
+    width: auto;
+    height: 70px;
+    
+  }
+  footer .contacticon {
+    margin-right: 20px;
+  }
+  
+  /* Contact Us column - icon and text */
+  .contact {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  footer .icon-network {
+    font-size: 2em;
+    margin-right: 40px;
+  }
