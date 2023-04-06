@@ -1,0 +1,42 @@
+<!-- login modal -->
+<div class="modal" tabindex="-1" id="loginModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modHeader">
+                <img class="logo" src="./images/blog_images/logo.svg">
+                <button type="button" class="closeBtn" data-bs-dismiss="modal" aria-label="Close">X</button>
+            </div>
+            <div class="navigation">
+                <ul class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li>Login</li>
+                </ul>
+            </div>
+            <div class="modal-body modBody">
+                <form id="loginForm">
+                    <div class="formBody">
+                        <div style="margin-bottom: 20px;">
+                            <label for="userName">username:</label>
+                            <input style="width:100%; margin-top: 5px; height: 25px;" type="text" id="userName"
+                                name="userName">
+                        </div>
+                        <div style="margin-bottom: 20px">
+                            <label for="password">password:</label>
+                            <input style="width:100%; margin-top: 5px; height: 25px;" type="text" id="password"
+                                name="password">
+                        </div>
+                    </div>
+                    <button type="submit" class="submitBtn" data-bs-dismiss="modal"
+                        aria-label="Close">Login</button>
+                    <div style="margin-top: 10px; font-size: small;"><a class="link" href="/link">Forgot
+                            your password?</a></div>
+                </form>
+                <div style="margin-top: 20px; margin-bottom: 30px; font-size: small;">
+                    <div>Not registered yet?</div>
+                    <div><a id="toRegister" class="link">Register here</a> as a new user.</div>
+                </div>
+            </div>
+            <div class="modal-footer" style="background-color: black; height: 20px"></div>
+        </div>
+    </div>
+</div>
