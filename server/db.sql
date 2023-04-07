@@ -18,19 +18,23 @@ create table users (
 create table courses (
     id_course serial primary key,
     course_name varchar(50),
-    course_type varchar(50),
     trainer_name varchar(50),
-    price float,
-    duration varchar(25),
+    course_description varchar(5000),
     weekdays varchar(50),
+    weekends varchar(50),
+    weekday_duration varchar(25),
+    weekend_duration varchar(25),
     place varchar(50),
+    available_seats varchar(50),
+    price_month float,    
+    price_year float
 );
 
 create table user_courses (
     id_usercourse serial primary key,
     id_user int,
     id_course int,
-    foreign key (id_user) references user(id_user)
+    foreign key (id_user) references users(id_user)
         on delete restrict on update cascade,
     foreign key (id_course) references courses(id_course)
         on delete restrict on update cascade
@@ -64,10 +68,10 @@ create table user_reaction (
     foreign key (id_story) references stories(id_story)
         on delete restrict on update cascade,
     foreign key (id_user) references users(id_user)
-        on delete restrict on update cascade,
+        on delete restrict on update cascade
 );
 
-insert into user (
+insert into users (
 	firstname,
 	lastname,
 	email,
@@ -107,23 +111,217 @@ update stories set story=' ' where id_story = 1;
 
 insert into courses (
     course_name,
-    course_type,
     trainer_name,
-    price,
-    duration,
+    course_description,
     weekdays,
-    place
+    weekends,
+    weekday_duration,
+    weekend_duration,
+    place,
+    available_seats,
+    price_month,    
+    price_year
     )
     values (
         'Body Balance',
-        'Group',
-        'John Brown',
-        60.00,
-        '17.00-18.00',
+        'John Doe',
+        'This body balance yoga course is designed to improve stability and coordination through a series of postures and movements. The classes focus on building strength in the core, legs, and feet, while also incorporating mindfulness techniques to enhance body awareness and control. Students of all levels can benefit from this course, which offers a supportive and energizing environment for developing greater balance and harmony within the body.',
         'Monday-Friday',
-        'Stadio Fitness Club'
+        'Saturday-Sunday',
+        '17.00-19.00',
+        '9.00-11.00',
+        'Studio Fitness Club, Pentti katu 1, 90570 Oulu',
+        '10',
+        60.00,
+        500.00
+        );
+
+insert into courses (
+    course_name,
+    trainer_name,
+    course_description,
+    weekdays,
+    weekends,
+    weekday_duration,
+    weekend_duration,
+    place,
+    available_seats,
+    price_month,    
+    price_year
+    )
+    values (
+        'Body Step',
+        'Emily Parker',
+        'Body step exercise is a cardio-based workout that uses basic stepping movements to improve fitness and stamina. It involves a series of choreographed routines set to music, which makes the workout fun and engaging.',
+        'Monday-Friday',
+        'Saturday-Sunday',
+        '17.00-19.00',
+        '9.00-11.00',
+        'Studio Fitness Club, Pentti katu 1, 90570 Oulu',
+        '10',
+        70.00,
+        500.00
+        );
+
+insert into courses (
+    course_name,
+    trainer_name,
+    course_description,
+    weekdays,
+    weekends,
+    weekday_duration,
+    weekend_duration,
+    place,
+    available_seats,
+    price_month,    
+    price_year
+    )
+    values (
+        'Body Attack',
+        'Sophia Lee',
+        'Body attack is a high-energy, sports-inspired group fitness class that combines aerobic and plyometric movements with strength and stabilization exercises. Designed to improve cardiovascular fitness, agility, and overall physical endurance, Body attack provides a challenging workout suitable for individuals of all fitness levels.',
+        'Monday-Friday',
+        'Saturday-Sunday',
+        '17.00-19.00',
+        '9.00-11.00',
+        'Studio Fitness Club, Pentti katu 1, 90570 Oulu',
+        '10',
+        70.00,
+        500.00
         );
 
 
+insert into courses (
+    course_name,
+    trainer_name,
+    course_description,
+    weekdays,
+    weekends,
+    weekday_duration,
+    weekend_duration,
+    place,
+    available_seats,
+    price_month,    
+    price_year
+    )
+    values (
+        'Aerobic',
+        'Samuel Kim',
+        'Aerobic exercise classes involve continuous and rhythmic movements that increase the heart rate and improve cardiovascular endurance. These classes can be high-impact or low-impact, and may include a variety of exercises such as dance, step aerobics, kickboxing, and cycling, making them a fun and effective way to burn calories and improve overall fitness.',
+        'Monday-Friday',
+        'Saturday-Sunday',
+        '17.00-19.00',
+        '9.00-11.00',
+        'Studio Fitness Club, Pentti katu 1, 90570 Oulu',
+        '10',
+        60.00,
+        500.00
+        );
 
+insert into courses (
+   course_name,
+    trainer_name,
+    course_description,
+    weekdays,
+    weekends,
+    weekday_duration,
+    weekend_duration,
+    place,
+    available_seats,
+    price_month,    
+    price_year
+    )
+    values (
+        'Core',
+        'Chloe Davis',
+        'Core exercise classes focus on strengthening and toning the muscles in the abdomen, back, and pelvis. These classes often include exercises such as planks, crunches, and bridges, and can be tailored to challenge individuals of all fitness levels, helping to improve posture, stability, and overall core strength.',
+        'Monday-Friday',
+        'Saturday-Sunday',
+        '17.00-19.00',
+        '9.00-11.00',
+        'Studio Fitness Club, Pentti katu 1, 90570 Oulu',
+        '10',
+        70.00,
+        500.00
+        );
 
+insert into courses (
+    course_name,
+    trainer_name,
+    course_description,
+    weekdays,
+    weekends,
+    weekday_duration,
+    weekend_duration,
+    place,
+    available_seats,
+    price_month,    
+    price_year
+    )
+    values (
+        'Body Building',
+        'Olivia Ramirez',
+        'Bodybuilding exercise classes are designed to help individuals build muscle and increase strength through weightlifting and resistance training. These classes often focus on specific muscle groups and may include exercises such as squats, deadlifts, and bench presses, making them an effective way to sculpt and tone the body while improving overall fitness.',
+        'Monday-Friday',
+        'Saturday-Sunday',
+        '17.00-19.00',
+        '9.00-11.00',
+        'Studio Fitness Club, Pentti katu 1, 90570 Oulu',
+        '10',
+        60.00,
+        500.00
+        );
+
+insert into courses (
+    course_name,
+    trainer_name,
+    course_description,
+    weekdays,
+    weekends,
+    weekday_duration,
+    weekend_duration,
+    place,
+    available_seats,
+    price_month,    
+    price_year
+    )
+    values (
+        'Crossfit',
+        'OBenjamin Ortiz',
+        'CrossFit exercise classes combine high-intensity interval training, weightlifting, and gymnastics to create a challenging and diverse workout that targets all aspects of fitness. These classes often involve a combination of functional movements performed at a high intensity, making them a great way to improve strength, endurance, and overall fitness.',
+        'Monday-Friday',
+        'Saturday-Sunday',
+        '17.00-19.00',
+        '9.00-11.00',
+        'Studio Fitness Club, Pentti katu 1, 90570 Oulu',
+        '10',
+        70.00,
+        500.00
+        );
+
+insert into courses (
+    course_name,
+    trainer_name,
+    course_description,
+    weekdays,
+    weekends,
+    weekday_duration,
+    weekend_duration,
+    place,
+    available_seats,
+    price_month,    
+    price_year
+    )
+    values (
+        'Barre',
+        'Brandon Collins',
+        'Barre exercise classes are inspired by ballet and incorporate elements of dance, Pilates, and yoga to create a low-impact, full-body workout. These classes focus on small, isometric movements that target the muscles in the legs, core, and arms, while also improving flexibility, balance, and posture, making them a great choice for individuals of all fitness levels.',
+        'Monday-Friday',
+        'Saturday-Sunday',
+        '17.00-19.00',
+        '9.00-11.00',
+        'Studio Fitness Club, Pentti katu 1, 90570 Oulu',
+        '10',
+        60.00,
+        500.00
+        );

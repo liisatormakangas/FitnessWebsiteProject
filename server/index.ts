@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 
 import storyRouter from './controllers/story_controller.js';
+import courseRouter from './controllers/course_controller.js';
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ const PORT = 3001;
 
 
 app.use('/story', storyRouter);
+app.use('/course', courseRouter);
 
 
 app.listen(PORT)
