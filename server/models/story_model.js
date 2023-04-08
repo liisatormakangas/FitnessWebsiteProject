@@ -22,5 +22,9 @@ const story = {
         const result = yield db_js_1.default.query('SELECT * FROM stories WHERE id_story = $1', [id]);
         return result;
     }),
+    addNewStory: (body) => __awaiter(void 0, void 0, void 0, function* () {
+        const result = yield db_js_1.default.query('insert into stories (author, title, story, blog_date) VALUES ($1, $2, $3, $4) RETURNING *', [body.author, body.title, body.story, body.blog_date]);
+        return result;
+    })
 };
 exports.default = story;

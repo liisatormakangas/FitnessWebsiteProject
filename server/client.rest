@@ -1,12 +1,15 @@
 ###Get
-GET http://localhost:3001/story/5 HTTP/1.1
+GET http://localhost:3001/story/ HTTP/1.1
 
 ###Post
-POST http://localhost:3001/new HTTP/1.1
+POST http://localhost:3001/story/new/ HTTP/1.1
 Content-Type: application/json
 
 {
-    "description": "Second test from rest client"
+    "author": "test",
+    "title": "test",
+    "story": "test",
+    "blog_date": "2019-01-01"
 }
 
 ###Delete
