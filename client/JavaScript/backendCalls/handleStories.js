@@ -18,11 +18,10 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
     return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
-var _Stories_instances, _Stories_backendUrl, _Stories_readJson, _Stories_addToStoryArray;
+var _Stories_backendUrl, _Stories_readJson;
 import { Story } from './story.js';
 class Stories {
     constructor(backendUrl) {
-        _Stories_instances.add(this);
         _Stories_backendUrl.set(this, "");
         this.getStories = () => __awaiter(this, void 0, void 0, function* () {
             return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
@@ -30,7 +29,7 @@ class Stories {
                     .then(response => response.json())
                     .then(response => {
                     __classPrivateFieldGet(this, _Stories_readJson, "f").call(this, response);
-                    resolve(this.stories); //returns an array of stories
+                    resolve(this.stories); //returns an array of Story objects
                 })
                     .catch(error => {
                     reject(error);
@@ -42,7 +41,7 @@ class Stories {
                 fetch(__classPrivateFieldGet(this, _Stories_backendUrl, "f") + "/" + id)
                     .then(response => response.json())
                     .then(response => {
-                    resolve(response); //returns a single story
+                    resolve(response); //returns a single Story object
                 })
                     .catch(error => {
                     reject(error);
@@ -51,16 +50,12 @@ class Stories {
         });
         _Stories_readJson.set(this, (allStories) => {
             allStories.forEach((story) => {
-                this.stories.push(new Story(story.author, story.title, story.story, story.blog_date, story.blog_image));
+                this.stories.push(new Story(story.id_story, story.author, story.title, story.story, story.blog_date, story.image_name));
             });
         });
         this.stories = [];
         __classPrivateFieldSet(this, _Stories_backendUrl, backendUrl, "f");
     }
 }
-_Stories_backendUrl = new WeakMap(), _Stories_readJson = new WeakMap(), _Stories_instances = new WeakSet(), _Stories_addToStoryArray = function _Stories_addToStoryArray(author, title, stoory, blog_date, blog_image) {
-    const story = new Story(author, title, stoory, blog_date, blog_image);
-    this.stories.push(story);
-    return story;
-};
+_Stories_backendUrl = new WeakMap(), _Stories_readJson = new WeakMap();
 export { Stories };

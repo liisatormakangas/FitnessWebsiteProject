@@ -1,10 +1,11 @@
 class Story {
-    constructor(author, title, story, blog_date, blog_image) {
+    constructor(id, author, title, story, blog_date, image_name) {
+        this.id_story = id;
         this.author = author;
         this.title = title;
         this.story = story;
         this.blog_date = blog_date;
-        this.blog_image = blog_image;
+        this.image_name = image_name;
     }
 }
 export { Story };

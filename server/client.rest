@@ -9,7 +9,8 @@ Content-Type: application/json
     "author": "test",
     "title": "test",
     "story": "test",
-    "blog_date": "2019-01-01"
+    "blog_date": "2019-01-01",
+    "image_name": "test"
 }
 
 ###Delete

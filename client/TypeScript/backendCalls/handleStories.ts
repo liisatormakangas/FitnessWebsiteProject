@@ -15,7 +15,7 @@ class Stories {
                 .then(response => response.json())
                 .then(response => {
                     this.#readJson(response);
-                    resolve(this.stories);//returns an array of stories
+                    resolve(this.stories);//returns an array of Story objects
                 })
                 .catch(error => {
                     reject(error);  
@@ -28,7 +28,7 @@ class Stories {
             fetch(this.#backendUrl + "/" + id)
                 .then(response => response.json())
                 .then(response => {
-                    resolve(response);//returns a single story
+                    resolve(response);//returns a single Story object
                 })
                 .catch(error => {
                     reject(error);  
@@ -38,14 +38,17 @@ class Stories {
 
     #readJson = (allStories: any) => {
         allStories.forEach((story: any) => {
-            this.stories.push(new Story(story.author, story.title, story.story, story.blog_date, story.blog_image));
+            this.stories.push(new Story(story.id_story, story.author, story.title, story.story, story.blog_date, story.image_name));
         });
     };
-    #addToStoryArray(author: string, title: string, stoory: string, blog_date: Date, blog_image: string) {
-        const story = new Story(author, title, stoory, blog_date, blog_image);
-        this.stories.push(story);
-        return story;
-    }
+
+    // This can be used, if we decide to add the ability to add stories to the website:
+
+    // #addToStoryArray(author: string, title: string, stoory: string, blog_date: Date, image_name: string) {
+    //     const story = new Story(author, title, stoory, blog_date, image_name);
+    //     this.stories.push(story);
+    //     return story;
+    // }
 
 }
 
