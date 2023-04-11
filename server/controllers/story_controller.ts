@@ -4,8 +4,8 @@ import story from '../models/story_model.js';
 const controller = express.Router();
 
 controller.get('/', (req, res) => {
-    story.getAllStories().then((data: any) => {
-        res.send(data.rows);
+    story.getAllStories().then((data: any) => {      
+        res.send(data.rows);        
     }).catch((error: any) => {
         res.status(500).send({
             message: 'Some error occurred while retrieving stories.'
@@ -19,6 +19,18 @@ controller.get('/:id', (req, res) => {
     }).catch((error: any) => {
         res.status(500).send({
             message: 'Some error occurred while retrieving stories.'
+        });
+    });
+});
+
+controller.post('/new', (req, res) => {
+    story.addNewStory(req.body).then((data: any) => {        
+        res.send(data.rows);
+        console.log(data.rows);
+        
+    }).catch((error: any) => {
+        res.status(500).send({
+            message: 'Some error occurred while posting story.'
         });
     });
 });
