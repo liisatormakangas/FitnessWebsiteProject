@@ -16,10 +16,8 @@ app.use(express.urlencoded({ extended: false }));
 
 const PORT = 3001;
 
-
 app.use('/story', storyRouter);
 app.use('/course', courseRouter);
 app.use('/cart', cartRouter);
-
 
 app.listen(PORT)

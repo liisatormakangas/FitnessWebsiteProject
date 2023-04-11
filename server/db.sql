@@ -46,7 +46,8 @@ create table stories (
     author varchar(50),
     title varchar(255),
     story varchar(3000),
-    blog_date date
+    blog_date date,
+    image_name varchar(50)
 );
 
 create table comments (
@@ -54,7 +55,7 @@ create table comments (
     id_story int,  
     id_user int,   
     content varchar(200),
-    whenadded date,
+    date_added date,
     foreign key (id_story) references stories(id_story)
         on delete restrict on update cascade,
     foreign key (id_user) references users(id_user)
