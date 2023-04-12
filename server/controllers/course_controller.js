@@ -4,10 +4,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const story_model_js_1 = __importDefault(require("../models/story_model.js"));
+const course_model_js_1 = __importDefault(require("../models/course_model.js"));
 const controller = express_1.default.Router();
 controller.get('/', (req, res) => {
-    story_model_js_1.default.getAllStories().then((data) => {
+    course_model_js_1.default.getAllCourses().then((data) => {
         res.send(data.rows);
     }).catch((error) => {
         res.status(500).send({
@@ -16,21 +16,11 @@ controller.get('/', (req, res) => {
     });
 });
 controller.get('/:id', (req, res) => {
-    story_model_js_1.default.getStoryById(parseInt(req.params.id)).then((data) => {
+    course_model_js_1.default.getCourseById(parseInt(req.params.id)).then((data) => {
         res.send(data.rows[0]);
     }).catch((error) => {
         res.status(500).send({
             message: 'Some error occurred while retrieving stories.'
-        });
-    });
-});
-controller.post('/new', (req, res) => {
-    story_model_js_1.default.addNewStory(req.body).then((data) => {
-        res.send(data.rows);
-        console.log(data.rows);
-    }).catch((error) => {
-        res.status(500).send({
-            message: 'Some error occurred while posting story.'
         });
     });
 });
