@@ -34,8 +34,7 @@ const modals = () => {
         loginModal.show();
     });
 
-    registerButton.addEventListener('click', (event) => {
-        event.preventDefault();
+    registerButton.addEventListener('click', () => {
         registerModal.show();
     });
 

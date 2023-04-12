@@ -222,7 +222,7 @@ In addition to consuming the right foods, it is important to stay hydrated. Wate
 
 When it comes to timing your meals, aim to eat a balanced meal 2-3 hours before exercising to allow time for digestion. If you need a snack closer to your workout, choose something small and easily digestible, such as a banana or a handful of nuts. 
 
-Finally, recovery is just as important as the workout itself. Make sure to give your body time to rest and recover between workouts. This means taking rest days and just enjoy doing something you really like!'
+Finally, recovery is just as important as the workout itself. Make sure to give your body time to rest and recover between workouts. This means taking rest days and just enjoy doing something you really like!',
         '2023-03-12',
         'blog_diet.jpg'
     );

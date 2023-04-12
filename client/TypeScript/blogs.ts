@@ -55,27 +55,27 @@ const renderStories = (story: Story) => {
     authorDateRow.className = "author-date";
 
     const authorRow = document.createElement("div");
-    authorRow.className = "author";
+    authorRow.className = "author col-4";
 
-    const authorIcon = document.createElement("span");
-    authorIcon.innerHTML = "&#128100;";
-    authorIcon.className = "icon";
+    const authorIcon = document.createElement("img");
+    authorIcon.src = "./images/svg_icons/user.svg";
+    authorIcon.className = "icon1";
     authorRow.appendChild(authorIcon);
 
-    const author = document.createElement("p");
+    const author = document.createElement("div");
     author.className = "blog-author";
     author.innerText = story.author;
     authorRow.appendChild(author);
 
     const dateRow = document.createElement("div");
-    dateRow.className = "date";
+    dateRow.className = "date col-8";
 
-    const dateIcon = document.createElement("span");
-    dateIcon.innerHTML = "&#128338;";
-    dateIcon.className = "icon";
+    const dateIcon = document.createElement("img");
+    dateIcon.src = "./images/svg_icons/clock.svg";
+    dateIcon.className = "icon2";
     dateRow.appendChild(dateIcon);
 
-    const dateElement = document.createElement("p");
+    const dateElement = document.createElement("div");
     dateElement.className = "blog-date";
     dateElement.innerText = date;
     dateRow.appendChild(dateElement);
