@@ -10,9 +10,7 @@ const blogContainer = document.getElementById("container") as HTMLDivElement;
 //get all stories from the database
 stories.getStories().then((stories: Story[]) => {
     stories.forEach((story: Story) => {
-
         renderStories(story);
-        
     });
 })
     .catch((error: any) => {
@@ -21,8 +19,6 @@ stories.getStories().then((stories: Story[]) => {
 
 const renderStories = (story: Story) => {
     const paragraph = story.story.split("\n\n")[0];
-    
-    
     const date = new Date(story.blog_date).toDateString();
 
     //creating a row element to make the card responsive
