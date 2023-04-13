@@ -5,7 +5,8 @@ const pool = new pg_1.Pool({
     user: 'postgres',
     host: 'localhost',
     database: 'FitnessWebSite',
-    password: 'rasilar',
+    password: '1234',
+    // rasilar
     port: 5432,
 });
 exports.default = pool;
