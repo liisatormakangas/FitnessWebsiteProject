@@ -27,8 +27,7 @@ const modals = () => {
     loginButton.addEventListener('click', () => {
         loginModal.show();
     });
-    registerButton.addEventListener('click', (event) => {
-        event.preventDefault();
+    registerButton.addEventListener('click', () => {
         registerModal.show();
     });
     linkToLogin.addEventListener('click', () => {

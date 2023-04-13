@@ -1,0 +1,72 @@
+/* blog card css */
+.container {
+    max-width: max-content;
+    margin: auto;
+    color: aliceblue;
+}
+
+.card {
+    margin: auto;
+    background-color: black;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.cardImage {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    max-width: 100%;
+    height: auto;
+}
+
+.author-date {
+    display: flex;
+    justify-content: space-between;
+}
+
+.author {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.date {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+#icon1 {
+    padding-right: 6%;
+    margin: 0px;
+    size: 6%;
+}
+
+#icon2 {
+    padding: 3%
+}
+
+.card-text {
+    margin-bottom: 7%;
+}
+
+.btn {
+    border: none;
+    color: aliceblue;
+    position: absolute;
+    right: 3%;
+    bottom: 3%;
+}
+
+@media(max-width: 768px) {
+    .card {
+        flex-direction: column;
+        padding: 10px;
+    }
+    .card-text {
+        margin-bottom: 15%;
+    }
+}
