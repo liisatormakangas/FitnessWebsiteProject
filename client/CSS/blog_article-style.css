@@ -119,21 +119,21 @@
     margin-right: 50px;
   }
 
-.container{
-    width: 1000px;
+  .container{
+    width: 80%;
 
     /*background-color: red;*/
     margin:5px auto;
     
 }
  .content-img{
-    width: 1000px;
-    height: 600px;
+    width: 100%;
+    height: 60%;
      
 }
 .comment-section {
     background-color: gainsboro;
-    width: 1000px;
+    width: 100%;
     /*border: 1px solid black;*/
     border-radius: 2px;
     padding: 2px;
@@ -141,16 +141,16 @@
 }
 .like {
     background-color:#03DAC6;
-    width: 100px;
+    width: 10%;
     border: 2px solid black;
     border-radius: 40px;
     padding: 5px;
     margin-left: 40px ;
 
 }
-.comment{
+.dislike{
     background-color: #03DAC6;
-    width: 100px;
+    width: 10%;
     border: 2px solid black;
     border-radius: 40px;
     padding: 5px;
@@ -159,11 +159,11 @@
 }
 .share{
     background-color: #03DAC6;
-    width: 100px;
+    width: 10%;
     border: 2px solid black;
     border-radius: 40px;
     padding: 5px;
-    margin-left: 40px;
+    margin-left: 40px ;
 }
 /* breadcrumbs style */
 ul.breadcrumb {

@@ -145,7 +145,7 @@ insert into stories (
 
 4. Skull crushers are a popular exercise for targeting the triceps. To perform this exercise, lie on a flat bench and hold a barbell with your hands shoulder-width apart. Lower the barbell toward your forehead, keeping your elbows close to your head. Press the barbell back up until your arms are straight. Aim for three sets of 8-12 reps. 
 
-5. The overhead triceps extension targets the long head of the triceps, which is located on the back of the arm. Stand with your feet shoulder-width apart and hold a dumbbell with both hands. Raise the dumbbell overhead, keeping your elbows close to your head and your palms facing upward. Slowly lower the dumbbell behind your head by bending your elbows. Keep your upper arms stationary throughout the movement. Once your forearms are parallel to the floor, pause for a second and then raise the dumbbell back to the starting position by extending your elbows. Repeat for the desired number of reps.'
+5. The overhead triceps extension targets the long head of the triceps, which is located on the back of the arm. Stand with your feet shoulder-width apart and hold a dumbbell with both hands. Raise the dumbbell overhead, keeping your elbows close to your head and your palms facing upward. Slowly lower the dumbbell behind your head by bending your elbows. Keep your upper arms stationary throughout the movement. Once your forearms are parallel to the floor, pause for a second and then raise the dumbbell back to the starting position by extending your elbows. Repeat for the desired number of reps.',
         '2023-01-04',
         'blog_triceps.jpg'
     );
