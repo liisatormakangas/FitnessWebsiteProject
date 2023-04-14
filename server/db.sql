@@ -568,3 +568,17 @@ insert into courses (
         1,
         5
     );
+
+insert into comments (
+    id_story,
+    id_user,
+    content,
+    date_added
+    )
+    values (
+        1,
+        1,
+        'I really like this course, it is very fun and the trainer is very nice!',
+        '2020-12-01'
+        );
+        

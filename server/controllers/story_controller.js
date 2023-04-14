@@ -34,4 +34,15 @@ controller.post('/new', (req, res) => {
         });
     });
 });
+//Post a comment to a story
+controller.post('/newcomment', (req, res) => {
+    story_model_js_1.default.addStoryComment(req.body).then((data) => {
+        res.send(data.rows);
+        console.log(data.rows);
+    }).catch((error) => {
+        res.status(500).send({
+            message: 'Some error occurred while posting story comment.'
+        });
+    });
+});
 exports.default = controller;
