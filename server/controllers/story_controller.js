@@ -45,4 +45,14 @@ controller.post('/newcomment', (req, res) => {
         });
     });
 });
+// Delete a comment from a story
+controller.delete('/deletecomment/:id', (req, res) => {
+    story_model_js_1.default.deleteStoryComment(parseInt(req.params.id)).then((data) => {
+        res.send(data.rows);
+    }).catch((error) => {
+        res.status(500).send({
+            message: 'Some error occurred while deleting story comment.'
+        });
+    });
+});
 exports.default = controller;

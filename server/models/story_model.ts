@@ -13,7 +13,6 @@ const story = {
             const commentResult = await pool.query('SELECT * FROM comments WHERE id_story = $1', [id]);
             result.rows[0].comments = commentResult.rows;
         }
-        
         return result;
     },
     addNewStory: async (body: any) => {      
@@ -23,6 +22,11 @@ const story = {
     // post a comment to a story
     addStoryComment: async (body: any) => {
         const result = await pool.query('insert into comments (id_story, id_user, content, date_added) VALUES ($1, $2, $3, $4) RETURNING *', [body.id_story, body.id_user, body.content, body.date_added]);       
+        return result;
+    },
+    // delete a comment from a story
+    deleteStoryComment: async (id: number) => {
+        const result = await pool.query('DELETE FROM comments WHERE id_response = $1', [id]);
         return result;
     }
 }

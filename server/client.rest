@@ -26,3 +26,6 @@ Content-Type: application/json
     "content": "Another test comment",
     "date_added": "2019-01-01"
 }
+
+###Delete a comment
+DELETE http://localhost:3001/story/deletecomment/1 HTTP/1.1

@@ -35,6 +35,11 @@ const story = {
     addStoryComment: (body) => __awaiter(void 0, void 0, void 0, function* () {
         const result = yield db_js_1.default.query('insert into comments (id_story, id_user, content, date_added) VALUES ($1, $2, $3, $4) RETURNING *', [body.id_story, body.id_user, body.content, body.date_added]);
         return result;
+    }),
+    // delete a comment from a story
+    deleteStoryComment: (id) => __awaiter(void 0, void 0, void 0, function* () {
+        const result = yield db_js_1.default.query('DELETE FROM comments WHERE id_response = $1', [id]);
+        return result;
     })
 };
 exports.default = story;
