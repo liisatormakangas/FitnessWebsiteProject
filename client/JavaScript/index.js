@@ -1,7 +1,13 @@
-const backendUrl = "http://localhost:3001/register";
+import { Register } from "./backendCalls/sendRegisterData.js";
+import { Login } from "./backendCalls/sendLoginData.js";
+const backendUrlRegister = "http://localhost:3001/register";
+const backendUrlLogin = "http://localhost:3001/login";
+const register = new Register(backendUrlRegister);
+const login = new Login(backendUrlLogin);
 const registerForm = document.getElementById("registerForm");
 const passwordInput = document.getElementById('passwd');
 const confirmPasswordInput = document.getElementById('passwd2');
+const loginForm = document.getElementById("loginForm");
 confirmPasswordInput.addEventListener('input', () => {
     const password = passwordInput.value;
     const confirmPassword = confirmPasswordInput.value;
@@ -18,15 +24,12 @@ registerForm.addEventListener("submit", (event) => {
     const formData = new FormData(registerForm);
     const formObject = {};
     formData.forEach((value, key) => { formObject[key] = value; });
-    fetch(backendUrl, {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formObject)
-    })
-        .then(response => response.json())
-        .then(data => {
-        console.log(data);
-    });
+    register.addRegisteredUser(formObject);
+});
+loginForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const formData = new FormData(loginForm);
+    const formObject = {};
+    formData.forEach((value, key) => { formObject[key] = value; });
+    login.sendLoginData(formObject);
 });
