@@ -28,4 +28,8 @@ Content-Type: application/json
 }
 
 ###Delete a comment
-DELETE http://localhost:3001/story/deletecomment/1 HTTP/1.1
+DELETE http://localhost:3001/story/deletecomment/8 HTTP/1.1
+
+###Get all courses
+GET http://localhost:3001/course/ HTTP/1.1
+

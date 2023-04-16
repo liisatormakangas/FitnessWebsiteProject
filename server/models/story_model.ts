@@ -28,7 +28,12 @@ const story = {
     deleteStoryComment: async (id: number) => {
         const result = await pool.query('DELETE FROM comments WHERE id_response = $1', [id]);
         return result;
-    }
+    },
+    // update a comment from a story
+    /* updateStoryComment: async (body: any) => {
+        const result = await pool.query('UPDATE comments SET content = $1 WHERE id_response = $2', [body.content, body.id_response]);
+        return result;
+    } */
 }
 
 export default story;

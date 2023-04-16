@@ -40,6 +40,11 @@ const story = {
     deleteStoryComment: (id) => __awaiter(void 0, void 0, void 0, function* () {
         const result = yield db_js_1.default.query('DELETE FROM comments WHERE id_response = $1', [id]);
         return result;
-    })
+    }),
+    // update a comment from a story
+    /* updateStoryComment: async (body: any) => {
+        const result = await pool.query('UPDATE comments SET content = $1 WHERE id_response = $2', [body.content, body.id_response]);
+        return result;
+    } */
 };
 exports.default = story;

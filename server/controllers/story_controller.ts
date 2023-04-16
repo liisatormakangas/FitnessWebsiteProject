@@ -58,5 +58,16 @@ controller.delete('/deletecomment/:id', (req, res) => {
         });
     });
 });
+    // Update a comment from a story
+/* controller.put('/updatecomment', (req, res) => {
+    story.updateStoryComment(req.body).then((data: any) => {
+        res.send(data.rows);
+    }).catch((error: any) => {
+        res.status(500).send({
+            message: 'Some error occurred while updating story comment.'
+        });
+    });
+}); */
+
 
 export default controller;

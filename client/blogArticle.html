@@ -67,7 +67,7 @@
               <a class="nav-link" href="blogs.html">Blog</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="coursees.html">Courses</a>
+              <a class="nav-link" href="courses.html">Courses</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="about.html">About</a>
@@ -105,26 +105,34 @@
         <div>
           <img id="storyImage" class="content-img" alt="Exercise picture">
         </div>
-        <br>
+        
         <div id="storyFullText" class="content-text"></div>
-        <br>
-        <br>
-        <button class="like" type="button">Like</button> &nbsp; 7  <button class="dislike" type="button">Dislike</button> &nbsp; 0 <button class="share" type="button">Share &nbsp;&nbsp; &nbsp;</button>
-                   <form>
-                        <label for="text"></label>
-                         <br>
-                        <textarea name="text" id="text" cols="127" placeholder="Comment here..."></textarea>
-                    </form>
-                    <div class="comment-section">
-                         <p> 1 comment </p>
-                         <p>&#128100;  Hilkka Karkainen <br>
-                         &nbsp; &nbsp; &nbsp; It is a very useful artical for everyone specially in summer season. Thank you for sharing</p>
-                        
-                    </div>
-      </div>
+        <!-- <br>
+        <br> -->
+        <div class="react-container">
+          <div class="like-button">
+            <button>
+              Like <i class="fa-solid fa-thumbs-up"></i>
+            </button>
+          </div>
+          <div class="dislike-button">
+            <button>
+              Dislike <i class="fa-solid fa-thumbs-down"></i>
+            </button>
+          </div>
+          <div class="share-button">
+            <button>
+              Share <i class="fas fa-share-alt"></i>
+            </button>
+          </div>
+        </div>
+        <h3>Comments</h3>
+        <form>
+          <input id="newcomment" class="form-control" placeholder="Enter a new comment...">
+        </form>
+        <ul id="commentlist" class="list-group"></ul>
+      </div>              
     </div>
-
-
     </div>
   </section>
   <footer class="bg-dark py-4 mt-5"><!-- footer starts -->

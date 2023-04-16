@@ -290,6 +290,7 @@
   .save-button button i {
     margin-right: 10px;
     margin-left: 10px;
+    font-size: 16px;
   }
   .save-button button:hover {
     background-color: #FF0266;
@@ -311,7 +312,7 @@
   
   .rate-button i {
     color: black;
-    font-size: 20px;
+    font-size: 16px;
     margin-left: 10px;
     margin-right: 10px;
   }
@@ -334,7 +335,7 @@
   
   .share-button i {
     color: black;
-    font-size: 20px;
+    font-size: 16px;
     margin-left: 10px;
     margin-right: 10px;
   }
