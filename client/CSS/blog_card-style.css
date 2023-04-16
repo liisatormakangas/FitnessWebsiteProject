@@ -153,7 +153,8 @@
 .paragraph {
     margin-bottom: 10%;
 }
-.btn {
+/* add parent card-body to btn */
+.card-body .btn {
     border: none;
     color: aliceblue;
     position: absolute;
