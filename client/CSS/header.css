@@ -15,7 +15,7 @@
     color: #fff;
 }
 .upper-menu a:hover{
-  color: rgb(245, 89, 22);
+  color: #FF0266;
 } 
 
 .search-box {
@@ -160,7 +160,7 @@ footer a {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 footer a:hover {
-  color:hsl(18, 92%, 52%);
+  color: #FF0266;
 }
 
 .footerlogo img {
