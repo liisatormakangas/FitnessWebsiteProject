@@ -56,8 +56,19 @@ create table comments (
         on delete restrict on update cascade
 );
 
-create table user_reaction (
-    id_reaction serial primary key,
+create table blogArticle_like (
+    id_blogArticle_like serial primary key,
+    id_story int,
+    id_user int,
+    likes boolean,
+    foreign key (id_story) references stories(id_story)
+        on delete restrict on update cascade,
+    foreign key (id_user) references users(id_user)
+        on delete restrict on update cascade
+);
+
+create table blogArticle_disLike (
+    id_blogArticle_disLike serial primary key,
     id_story int,
     id_user int,
     likes boolean,
