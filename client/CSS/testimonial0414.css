@@ -10,7 +10,7 @@
     /* align-items: center; */
 }
 .upper-menu a{
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     text-decoration: none;
     color: #fff;
 }
@@ -114,6 +114,7 @@
  .navbar-nav .nav-link{
     color: #fff !important;
   }
+
   /* ul */
   .navbar-nav{
     padding-right: 30px;
@@ -121,6 +122,7 @@
   /* li */
   .nav-item{
     margin-right: 50px;
+    font-size: 1.5rem;
   }
 
 /*add navbar logo img*/
@@ -130,12 +132,78 @@
     height: 60px;
   }
 
-  /*  footer css is here */
+
+  /* color code
+black: #000000
+blue: #03DAC6
+pink:#FF0266
+white:#FFFFFF
+link color: #FF026 (pink)
+Hover color: #03DAC6 (blue) */
+
+.testi-container {
+  /* width: 1200px; */
+  background-color: rgb(235, 231, 231);
+  color: #000;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-gap: 20px;
+  box-sizing: border-box;
+  padding: 20px;
+ 
+}
+
+.testi-container .testi-box {
+    position: relative;
+    padding: 40px;
+    transition: 0.5s;
+    text-align: center;
+    background: #fff;
+  }
+ /*  .testi-container .testi-box:hover {
+    background: #FF0266;
+  }
+  .testi-container .testi-box:hover h4{
+    margin:20px 0 0;
+    padding: 0;
+    transition: 0.5s;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 20px;
+    text-transform: uppercase;
+  }
+  .testi-container .testi-box:hover span{
+    font-weight: 480;
+    font-size: 14px;
+    transition: 0.5s;
+  } */
+ /*  .testi-container:hover,
+  .testi-box:hover:hover h4 span
+  .testi-box:hover:hover span{
+    color: #fff;
+  } */
+
+  .testi-container .testi-box:before{
+    content: "";
+    position: absolute;
+    color: #000;
+    top: 20px;
+    left: 0;
+    width: 80px;
+    height: 80px;
+    background-image: url(../images/quote.png);
+    background-size: cover;
+    opacity: 0.05;
+    pointer-events: none;
+    transition: 0.5s;
+  }
+
+ /*  footer css is here */
  
 footer {
   /* width: 1560px; */
   background: black;
-  padding-left: 80px;
   font-size: 18px;
   padding: 60px 15px 20px 60px;
   text-align:left; 
@@ -144,7 +212,6 @@ footer {
 footer .row {
   display: flex;
   flex-wrap: wrap;
-  padding-left: 45px;
 }
 
 footer .col-md-4 {
