@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const db_js_1 = __importDefault(require("../db.js"));
-const bcrypt_1 = __importDefault(require("bcrypt"));
+const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const user = {
     registerUser: (user_data) => __awaiter(void 0, void 0, void 0, function* () {
         const query = `INSERT INTO users (
@@ -51,7 +51,7 @@ const user = {
         }
         // Compare password with the hashed password stored in the database
         const user = result.rows[0];
-        const isMatch = yield bcrypt_1.default.compare(password, user.passwd);
+        const isMatch = yield bcryptjs_1.default.compare(password, user.passwd);
         if (!isMatch) {
             // If password does not match, return an error
             throw new Error('Invalid username or password');
