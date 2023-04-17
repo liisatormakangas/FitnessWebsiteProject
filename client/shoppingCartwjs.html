@@ -11,8 +11,9 @@
     <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="./CSS/courseDetailsCart.css">
+    <link rel="stylesheet" href="./CSS/classDetailsCart.css">
     <link rel="stylesheet" href="CSS/header.css">
+    <link rel="stylesheet" href="CSS/shoppingCartwjs.css">
    <!--  <link rel="stylesheet" href="css/respons.css"> -->
    <!--  <link rel="stylesheet" href="css/front.css"> -->
    <!--  <link rel="stylesheet" href="css/card.css"> -->
@@ -43,7 +44,7 @@
               <a href="login.html" class="mx-3"><i class="fa-regular fa-user pe-2"></i>Login</a>
               <button class="register-btn mx-3">Register</button>
               <div class="cart mx-3">
-                <a href="cart.html">
+                <a onclick="return false" class="cartBtn" href="cart.html">
                   <i class="fas fa-shopping-cart"></i>
                   <span id="total-Items">0</span></a>
               </div>
@@ -85,36 +86,69 @@
               </ul>
             </div>
           </div>
-<<<<<<< HEAD
         </nav><!-- bottom menu ends here -->
       </div><!-- header ends here -->
-=======
+    </div>
+    
+    <!-- shopping cart start from here -->
+   <!--  <section class="shopping-cart">
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2">Course name</th>
+                    <th>Price</th>
+                    <th colspan="2">Quantity</th>
+                    <th colspan="2">Amount</th>
+                </tr>
+            </thead>
+            <tbody class="tbody">
+                <tr class="totalRow">
+                    <td colspan="5">Total:  0.00</td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn checkout-btn">Pay Now</button>
 
-        <ul class="menu">
-            <li><a href="index.html">HOME</a></li>
-            <li><a href="#">BLOG</a></li>
-            <li><a href="courses.html">COURSES</a></li>
-            <li><a href="about.html">ABOUT</a></li>
-            <li><a href="#">CONTACT</a></li>
+    </section> -->
 
-        </ul>
-    </nav>
->>>>>>> calNabout1
-  <div id="container">
+  <div id="container cart-section">
     <div id="content">
         <div class="breadcrumb">
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="courses.html">Courses</a></li>
-                <li><a href="courseDetails.html">Body Balance</a></li>
+                <li><a href="classDetails.html">Body Balance</a></li>
                 <li>Cart</li>
             </ul>
         </div>
+     <!--    new shopping cart -->
+     <section class="shoppingCart">
+        <div class="cart-header">
+            <h2>Your courses</h2>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="3">Course name</th>
+                    <th>Price</th>
+                    <th colspan="2">Quantity</th>
+                    <th colspan="5">Amount</th>
+                </tr>
+            </thead>
+            <tbody class="tbody">
+                <tr class="totalRow">
+                    <td colspan="5">Total:  0.00</td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn checkout-btn">Processd to pay</button>
+
         <div class="middle-content">
             <div class="cart">
                 <div class="cart-header">
                     <h2>Your courses</h2>
                 </div>
+                
                 <div class="cart-container">
         
                     <div class="cart-body">
@@ -273,5 +307,6 @@
   <!-- Load your custom scripts -->
   <script src="./JavaScript/index.js" type="module"></script>
   <script src="./JavaScript/togglescript.js"></script>
+  <script src="./JavaScript/shoppingCart.js"></script>
 </body>
 </html>

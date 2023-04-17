@@ -1,18 +1,16 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const register_model_js_1 = __importDefault(require("../models/register_model.js"));
-const controller = express_1.default.Router();
-controller.post('/registerUser', (req, res) => {
-    register_model_js_1.default.registerUser(req.body).then((data) => {
-        res.send(data.rows);
-    }).catch((error) => {
+/*import express from 'express';
+import register from '../models/register_model.js';
+
+const controller = express.Router();
+
+controller.post('/', (req, res) => {
+    register.registerUser(req.body).then((data: any) => {
+        res.send(data);
+    }).catch((error: any) => {
         res.status(500).send({
-            message: 'Some error occurred while retrieving stories.'
+            message: 'Some error occurred while retrieving information.'
         });
     });
 });
-exports.default = controller;
+export default controller;*/ 
