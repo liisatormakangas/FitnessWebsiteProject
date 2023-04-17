@@ -5,12 +5,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
+const dotenv_1 = __importDefault(require("dotenv"));
+const story_controller_js_1 = __importDefault(require("./controllers/story_controller.js"));
+const course_controller_js_1 = __importDefault(require("./controllers/course_controller.js"));
+const cart_controller_js_1 = __importDefault(require("./controllers/cart_controller.js"));
+dotenv_1.default.config();
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: false }));
 const PORT = 3001;
-app.get('/', (req, res) => {
-    res.status(200).send('Hello everyone!');
-});
+app.use('/story', story_controller_js_1.default);
+app.use('/course', course_controller_js_1.default);
+app.use('/cart', cart_controller_js_1.default);
 app.listen(PORT);
