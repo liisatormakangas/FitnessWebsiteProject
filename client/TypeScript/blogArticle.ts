@@ -47,6 +47,7 @@ const renderComments = (comments: StoryComment[]) => {
 // add a new comment
 commentInput.addEventListener("keypress", (event: KeyboardEvent) => {
     if (event.key === "Enter") {
+        event.preventDefault();
         //TODO: fix user id
         const userId = 1;
         const comment = new StoryComment(0, id_story, userId, commentInput.value, new Date());
