@@ -1,9 +1,28 @@
 /* calculator body */
+.bodycalculator {
+    background-color: #ffffff;
+    max-width: 1560px;
+} 
+.text-center{
+    text-align: justify;
+    font-size: 1.3em;
+}
 .calculator{
     background-color: #000000;
     color: #ffffff;
     border-radius: 16px;
     max-width: 815px;
+    margin-bottom: 40px
+}
+.calculator-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.calculator-row h1{
+ font-size: 3.5em;
+ font-weight: 600;      
 }
 .activity{
     background-color: #000000;

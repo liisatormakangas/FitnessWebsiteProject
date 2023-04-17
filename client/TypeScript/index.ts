@@ -19,7 +19,11 @@ registerForm.addEventListener("submit", (event: Event) => {
     event.preventDefault();
     const formData = new FormData(registerForm);
     const formObject = {};
-    formData.forEach((value, key) => { formObject[key] = value });
+    formData.forEach((value, key) => { 
+        formObject[key] = value;
+        console.log("formObject[key]");
+    });
+    
 
     fetch(backendUrl, {
         method: "POST",
