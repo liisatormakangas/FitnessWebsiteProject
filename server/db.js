@@ -6,7 +6,6 @@ const pool = new pg_1.Pool({
     host: 'localhost',
     database: 'FitnessWebSite',
     password: '1234',
-    // rasilar
     port: 5432,
 });
 exports.default = pool;
