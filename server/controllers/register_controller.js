@@ -6,12 +6,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const register_model_js_1 = __importDefault(require("../models/register_model.js"));
 const controller = express_1.default.Router();
-controller.post('/registerUser', (req, res) => {
+controller.post('/', (req, res) => {
     register_model_js_1.default.registerUser(req.body).then((data) => {
-        res.send(data.rows);
+        res.send(data);
     }).catch((error) => {
         res.status(500).send({
-            message: 'Some error occurred while retrieving stories.'
+            message: 'Some error occurred while retrieving information.'
         });
     });
 });

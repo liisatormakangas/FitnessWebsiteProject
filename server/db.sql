@@ -69,6 +69,7 @@ create table cart (
     id_course int,
     foreign key (id_user) references users(id_user)
         on delete restrict on update cascade,
+        -- ON DELETE CASCADE
     foreign key (id_course) references courses(id_course)
         on delete restrict on update cascade
 );

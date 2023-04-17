@@ -3,12 +3,12 @@ import register from '../models/register_model.js';
 
 const controller = express.Router();
 
-controller.post('/registerUser', (req, res) => {
+controller.post('/', (req, res) => {
     register.registerUser(req.body).then((data: any) => {
-        res.send(data.rows);
+        res.send(data);
     }).catch((error: any) => {
         res.status(500).send({
-            message: 'Some error occurred while retrieving stories.'
+            message: 'Some error occurred while retrieving information.'
         });
     });
 });
