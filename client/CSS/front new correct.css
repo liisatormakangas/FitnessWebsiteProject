@@ -183,7 +183,7 @@ section .main, .join-container {
         left: 10px;
         color: white;
         /* add margin-left because the view more text too lose to btn; */
-        margin-left: 13px;
+        margin-left: 25px;
         border: none;
         padding: 10px 10px;
         font-size: 14px;
@@ -547,6 +547,9 @@ section .main, .join-container {
   background-color: #000;
 
 } 
+.blog-section img{
+  display: flex;
+} 
 
 .blog-container {
   margin: auto;
@@ -568,7 +571,13 @@ margin-bottom: 10px;
 display: flex;
 flex-direction: row;
 }
+
+.card-text {
+
+  display: grid;
+}
 .cardImage {
+  display:flex;
   margin: auto;
   padding-top: 20px;
   padding-bottom: 20px;

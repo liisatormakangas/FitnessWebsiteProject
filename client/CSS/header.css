@@ -144,6 +144,7 @@ footer {
 footer .row {
   display: flex;
   flex-wrap: wrap;
+  padding-left: 45px;
 }
 
 footer .col-md-4 {
