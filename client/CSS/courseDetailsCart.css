@@ -537,6 +537,7 @@
   .btn-proceed:hover {
     background-color: #0062cc;
     }
+  
   /*Style for the Other/extra classes*/
   .others {
     text-align: center;
@@ -674,7 +675,7 @@
       transform: translate(-50%, 50%);
     }
     
-    
+  
   /*Style Scalert*/
   a, a:hover {
     text-decoration: none;
@@ -817,6 +818,7 @@ nav a:hover {
     font-size: 30px;
     display: none;
 }
+
 
 footer {
     /* width: 1560px; */

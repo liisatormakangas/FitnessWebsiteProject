@@ -8,15 +8,30 @@ const registerForm = document.getElementById("registerForm");
 const passwordInput = document.getElementById('passwd');
 const confirmPasswordInput = document.getElementById('passwd2');
 const loginForm = document.getElementById("loginForm");
-confirmPasswordInput.addEventListener('input', () => {
-    const password = passwordInput.value;
-    const confirmPassword = confirmPasswordInput.value;
-    if (confirmPassword !== password) {
-        confirmPasswordInput.setCustomValidity('Passwords do not match');
-        return;
+registerForm.addEventListener('submit', (event) => {
+    if (!registerForm.checkValidity()) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+    registerForm.classList.add('was-validated');
+});
+registerForm.addEventListener('input', (event) => {
+    if (registerForm.checkValidity() && passwordInput.value === confirmPasswordInput.value) {
+        document.querySelector('#submitRegisterData').removeAttribute('disabled');
+        confirmPasswordInput.classList.remove('is-invalid');
     }
     else {
-        confirmPasswordInput.setCustomValidity('');
+        document.querySelector('#submitRegisterData').setAttribute('disabled', '');
+        confirmPasswordInput.classList.add('is-invalid');
+    }
+});
+confirmPasswordInput.addEventListener('input', (event) => {
+    if (form.checkValidity() && passwordInput.value === confirmPasswordInput.value) {
+        document.querySelector('#submitRegisterData').removeAttribute('disabled');
+    }
+    else {
+        confirmPasswordInput.classList.add('is-invalid');
+        document.querySelector('#submitRegisterData').setAttribute('disabled', '');
     }
 });
 registerForm.addEventListener("submit", (event) => {
