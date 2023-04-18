@@ -107,18 +107,12 @@ insert into users (
 		'+358 50 123456'
 	);
 
+/* DELETE FROM stories
+WHERE author = '@John'; */
 
-insert into stories (
-    author,
-    title,
-    story,
-    blog_date)
-	values (
-        '@John',
-        'Five Exercises for Stronger Triceps',
-        null,
-        '2023-03-27'
-        );
+/* INSERT INTO stories (id, author, title, story, blog_date, image_name)
+VALUES (1, '@Maria', 'A dream come true!', 'I did it! I ran my first full marathon and it was an experience of a lifetime. Crossing that finish line after months of training was one of the most fulfilling moments of my life. Now that it is over, I wanted to share my journey with all of you. First of all, I have to admit that I was never an avid runner. In fact, running used to be my least favourite activity. However, a few years ago, I decided to challenge myself and signed up for my first 5k. From there, I began to enjoy the rush of endorphins and the feeling of accomplishment that came with finishing a race. So, I continued to run and set higher goals for myself. When I decided to run a full marathon, I knew it was going to be a massive challenge. I started by researching training programs online and reading books about long-distance running. I also spoke to other runners and got advice from experienced marathoners. Finally, I put together a training plan that worked for me. My training plan consisted of running five days a week, with gradually increasing mileage each week. I also incorporated strength training and cross-training at gym to prevent injuries and build overall fitness. I followed a strict diet plan that consisted of a balance of protein, carbs, and healthy fats to fuel my body for the long runs. During my training, I faced several obstacles, such as injuries, mental burnout, and self-doubt. However, I kept reminding myself of my end goal and pushed through the challenges. I also found that having a running buddy and joining a running group helped me stay motivated and accountable. Finally, race day arrived, and I felt a mix of excitement and nerves. But I also felt I was ready for this and that was just an incredible day! It was not about the marathon, it was about achieving a goal I had set to myself. I can warmly recommend this feeling to all of you!', '2023-04-05', 'blog_marathon.jpg');
+ */
 
 insert into stories (
     author,
@@ -155,6 +149,7 @@ insert into stories (
 2. The triceps pushdown is a great exercise to isolate and target the triceps. To perform this exercise, stand in front of a cable machine with a rope attachment. Grip the rope with both hands and bring it down to your chest. Keep your elbows close to your body and press the rope down until your arms are straight. Aim for three sets of 12-15 reps. 
 3. Dips are a bodyweight exercise that targets the triceps, chest, and shoulders. To perform this exercise, find parallel bars or use a dip machine. With your arms straight, lower your body until your elbows are bent to a 90-degree angle, then press back up until your arms are straight. Aim for three sets of 10-12 reps. 
 4. Skull crushers are a popular exercise for targeting the triceps. To perform this exercise, lie on a flat bench and hold a barbell with your hands shoulder-width apart. Lower the barbell toward your forehead, keeping your elbows close to your head. Press the barbell back up until your arms are straight. Aim for three sets of 8-12 reps. 
+5. The overhead triceps extension targets the long head of the triceps, which is located on the back of the arm. Stand with your feet shoulder-width apart and hold a dumbbell with both hands. Raise the dumbbell overhead, keeping your elbows close to your head and your palms facing upward. Slowly lower the dumbbell behind your head by bending your elbows. Keep your upper arms stationary throughout the movement. Once your forearms are parallel to the floor, pause for a second and then raise the dumbbell back to the starting position by extending your elbows. Repeat for the desired number of reps.',
 
 5. The overhead triceps extension targets the long head of the triceps, which is located on the back of the arm. Stand with your feet shoulder-width apart and hold a dumbbell with both hands. Raise the dumbbell overhead, keeping your elbows close to your head and your palms facing upward. Slowly lower the dumbbell behind your head by bending your elbows. Keep your upper arms stationary throughout the movement. Once your forearms are parallel to the floor, pause for a second and then raise the dumbbell back to the starting position by extending your elbows. Repeat for the desired number of reps.',
         '2023-01-04',
@@ -243,8 +238,9 @@ Hope these advice will help you in your own path of training. Talk to you again 
         '2022-11-27',
         'blog_growMuscles.jpg'
     );
+/* 
 update stories set story=' ' where id_story = 1;
-
+ */
 insert into courses (
     course_image,
     course_name,

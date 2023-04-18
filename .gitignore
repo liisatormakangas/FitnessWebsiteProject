@@ -1,4 +1,5 @@
 *node_modules
 .env
 ./server/db.ts
+./server/db.js
 ./server/db.sql
