@@ -79,6 +79,7 @@ create table cart (
     id_course int,
     foreign key (id_user) references users(id_user)
         on delete restrict on update cascade,
+        -- ON DELETE CASCADE
     foreign key (id_course) references courses(id_course)
         on delete restrict on update cascade
 );
@@ -154,7 +155,8 @@ insert into stories (
 2. The triceps pushdown is a great exercise to isolate and target the triceps. To perform this exercise, stand in front of a cable machine with a rope attachment. Grip the rope with both hands and bring it down to your chest. Keep your elbows close to your body and press the rope down until your arms are straight. Aim for three sets of 12-15 reps. 
 3. Dips are a bodyweight exercise that targets the triceps, chest, and shoulders. To perform this exercise, find parallel bars or use a dip machine. With your arms straight, lower your body until your elbows are bent to a 90-degree angle, then press back up until your arms are straight. Aim for three sets of 10-12 reps. 
 4. Skull crushers are a popular exercise for targeting the triceps. To perform this exercise, lie on a flat bench and hold a barbell with your hands shoulder-width apart. Lower the barbell toward your forehead, keeping your elbows close to your head. Press the barbell back up until your arms are straight. Aim for three sets of 8-12 reps. 
-5. The overhead triceps extension targets the long head of the triceps, which is located on the back of the arm. Stand with your feet shoulder-width apart and hold a dumbbell with both hands. Raise the dumbbell overhead, keeping your elbows close to your head and your palms facing upward. Slowly lower the dumbbell behind your head by bending your elbows. Keep your upper arms stationary throughout the movement. Once your forearms are parallel to the floor, pause for a second and then raise the dumbbell back to the starting position by extending your elbows. Repeat for the desired number of reps.'
+
+5. The overhead triceps extension targets the long head of the triceps, which is located on the back of the arm. Stand with your feet shoulder-width apart and hold a dumbbell with both hands. Raise the dumbbell overhead, keeping your elbows close to your head and your palms facing upward. Slowly lower the dumbbell behind your head by bending your elbows. Keep your upper arms stationary throughout the movement. Once your forearms are parallel to the floor, pause for a second and then raise the dumbbell back to the starting position by extending your elbows. Repeat for the desired number of reps.',
         '2023-01-04',
         'blog_triceps.jpg'
     );
