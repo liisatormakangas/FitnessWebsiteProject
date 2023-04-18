@@ -1,5 +1,5 @@
 // Import dependencies
-/*import express from 'express';
+import express from 'express';
 import jwt from 'jsonwebtoken';
 import user from '../models/register_model.js';
 const SECRET_KEY = 'fitness123!';
@@ -22,4 +22,4 @@ controller.post('/', (req, res) => {
     });
 });
 
-export default controller;*/
+export default controller;

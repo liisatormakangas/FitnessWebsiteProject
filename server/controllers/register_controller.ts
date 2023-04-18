@@ -1,4 +1,4 @@
-/*import express from 'express';
+import express from 'express';
 import register from '../models/register_model.js';
 
 const controller = express.Router();
@@ -12,4 +12,4 @@ controller.post('/', (req, res) => {
         });
     });
 });
-export default controller;*/
+export default controller;

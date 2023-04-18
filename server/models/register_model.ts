@@ -1,4 +1,4 @@
-/*import { query } from 'express';
+import { query } from 'express';
 import pool from '../db.js'
 import bcrypt from 'bcryptjs';
 
@@ -31,7 +31,7 @@ const user = {
     },
     loginUser: async (username:any, password:any) => {
         // Query the database to check if the username exists
-        const query = `SELECT * FROM users WHERE username = $1`;
+        const query = `SELECT TOP 1 FROM users WHERE username = $1`;
         const result = await pool.query(query, [username]);
     
         if (result.rowCount === 0) {
@@ -53,4 +53,4 @@ const user = {
       },
     };
 
-export default user;*/
+export default user;
