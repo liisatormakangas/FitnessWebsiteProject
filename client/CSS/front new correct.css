@@ -186,14 +186,17 @@ section .main, .join-container {
         left: 10px;
         color: white;
         /* add margin-left because the view more text too lose to btn; */
-        margin-left: 25px;
+        /*margin-left: 25px;*/
         border: none;
-        padding: 10px 10px;
+        
         font-size: 14px;
         cursor: pointer;
-        border-radius: 20px;
+        
         text-decoration: underline;
         text-align: left;
+      }
+      .view-more:hover {
+        color: #FF0266;
       }
       .buy-btn {
         position: absolute;
@@ -611,4 +614,14 @@ flex-direction: row;
   position: absolute;
   right: 3%;
   bottom: 3%;
+} 
+@media(max-width: 768px) {
+  .card {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .card-text {
+    margin-bottom: 15%;
+  }
 }

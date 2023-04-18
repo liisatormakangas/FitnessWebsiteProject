@@ -1,7 +1,7 @@
 "use strict";
 /*import { query } from 'express';
 import pool from '../db.js'
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 const user = {
     registerUser: async (user_data: any) => {
