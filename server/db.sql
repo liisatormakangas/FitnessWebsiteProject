@@ -35,16 +35,6 @@ create table courses (
     price_year float
 );
 
-create table user_courses (
-    id_usercourse serial primary key,
-    id_user int,
-    id_course int,
-    foreign key (id_user) references users(id_user)
-        on delete restrict on update cascade,
-    foreign key (id_course) references courses(id_course)
-        on delete restrict on update cascade
-);
-
 create table stories (
     id_story serial primary key,
     author varchar(50),
@@ -66,35 +56,12 @@ create table comments (
         on delete restrict on update cascade
 );
 
-create table blogArticle_like (
-    id_blogArticle_like serial primary key,
-    id_story int,
-    id_user int,
-    likes boolean,
-    foreign key (id_story) references stories(id_story)
-        on delete restrict on update cascade,
-    foreign key (id_user) references users(id_user)
-        on delete restrict on update cascade
-);
-
-create table blogArticle_disLike (
-    id_blogArticle_disLike serial primary key,
-    id_story int,
-    id_user int,
-    likes boolean,
-    foreign key (id_story) references stories(id_story)
-        on delete restrict on update cascade,
-    foreign key (id_user) references users(id_user)
-        on delete restrict on update cascade
-);
-
 create table cart (
     id_cart serial primary key,
     id_user int,
     id_course int,
     foreign key (id_user) references users(id_user)
         on delete restrict on update cascade,
-        -- ON DELETE CASCADE
     foreign key (id_course) references courses(id_course)
         on delete restrict on update cascade
 );

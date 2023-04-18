@@ -12,69 +12,72 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./CSS/courseDetailsCart.css">
-    <link rel="stylesheet" href="CSS/header.css">
+    <link rel="stylesheet" href="./CSS/header.css">
     
     <!-- JavaScript Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Shopping cart</title>
 </head>
 <body>
-  <div class="w-100"><!-- header starts here -->
-    <div class="upper-menu p-sm-2 p-md-3"><!-- upper menu starts here -->
-      <div class="social-icons px-5"><!-- social-icons starts here -->
-        <a href="#"><i class="fab fa-facebook me-sm-2 me-md-4"></i></a>
-        <a href="#"><i class="fab fa-youtube me-sm-2 me-md-4"></i></a>
-        <a href="#"><i class="fab fa-instagram me-sm-2 me-md-4"></i></a>
-      </div><!-- social-icons ends here -->
-
-      <div class="login-cart-section"><!-- login,reg,cart starts here -->
-        <div class="login-cart-wrapper">
-          <a href="login.html" class="mx-3"><i class="fa-regular fa-user pe-2"></i>Login</a>
-          <button class="register-btn mx-3">Register</button>
-          <div class="cart mx-3">
-            <a href="cart.html">
-              <i class="fas fa-shopping-cart"></i>
-              <span id="total-Items">0</span></a>
+    <div class="w-100"><!-- header starts here -->
+        <div class="upper-menu p-sm-2 p-md-3"><!-- upper menu starts here -->
+          <div class="social-icons px-5"><!-- social-icons starts here -->
+            <a href="#"><i class="fab fa-facebook me-sm-2 me-md-4"></i></a>
+            <a href="#"><i class="fab fa-youtube me-sm-2 me-md-4"></i></a>
+            <a href="#"><i class="fab fa-instagram me-sm-2 me-md-4"></i></a>
+          </div><!-- social-icons ends here -->
+      
+          <!-- </div> search bar ends -->
+          <div class="login-cart-section"><!-- login,reg,cart starts here -->
+            <div class="login-cart-wrapper">
+              <a href="login.html" class="mx-3"><i class="fa-regular fa-user pe-2"></i>Login</a>
+              <button class="register-btn mx-3">Register</button>
+              <div class="cart mx-3">
+                <a href="cart.html">
+                  <i class="fas fa-shopping-cart"></i>
+                  <span id="total-Items">0</span></a>
+              </div>
+            </div>
+          </div><!-- login,reg,cart ends here -->
+        </div><!-- upper menu ends here -->
+        <nav class="navbar navbar-expand-lg bg-black"><!-- bottom menu starts here -->
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img src="./images/white-male-g2f8d9956c_640.jpg" alt="logo"></a>
+            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mx-auto  mt-auto">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="blogs.html">Blog</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="courses.html">Courses</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="about.html#contact">Contact</a>
+                </li>
+                <form class="search-box ms-md-5">
+                  <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
+                  <input type="text" class="search-input" placeholder="Search..">
+                  <button class="search-button">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </form>
+              </ul>
+            </div>
           </div>
-        </div>
-      </div><!-- login,reg,cart ends here -->
-    </div><!-- upper menu ends here -->
-    <nav class="navbar navbar-expand-lg bg-black"><!-- bottom menu starts here -->
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="./images/white-male-g2f8d9956c_640.jpg" alt="logo"></a>
-        <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-          aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mx-auto  mt-auto">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="blogs.html">Blog</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="courses.html">Courses</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about.html">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about.html#contact">Contact</a>
-            </li>
-            <form class="search-box ms-md-5">
-              <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
-              <input type="text" class="search-input" placeholder="Search..">
-              <button class="search-button">
-                <i class="fas fa-search"></i>
-              </button>
-            </form>
-          </ul>
-        </div>
-
-    </nav>
+        </nav><!-- bottom menu ends here -->
+      </div><!-- header ends here -->
+    
   <div id="container">
     <div id="content">
         <div class="breadcrumb">
