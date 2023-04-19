@@ -8,7 +8,7 @@ controller.get('/', (req, res) => {
         res.send(data.rows);
     }).catch((error: any) => {
         res.status(500).send({
-            message: 'Some error occurred while retrieving stories.'
+            message: 'Some error occurred while retrieving courses.'
         });
     });
 });
@@ -18,7 +18,7 @@ controller.get('/:id', (req, res) => {
         res.send(data.rows[0]);
     }).catch((error: any) => {
         res.status(500).send({
-            message: 'Some error occurred while retrieving stories.'
+            message: 'Some error occurred while retrieving courses.'
         });
     });
 });

@@ -131,40 +131,92 @@
     height: 60%;
      
 }
-.comment-section {
-    background-color: gainsboro;
-    width: 100%;
-    /*border: 1px solid black;*/
-    border-radius: 2px;
-    padding: 2px;
-     margin: 5px auto;
+.content-text{
+    text-align: justify;
 }
-.like {
-    background-color:#03DAC6;
-    width: 10%;
-    border: 2px solid black;
-    border-radius: 40px;
-    padding: 5px;
-    margin-left: 40px ;
+.react-container {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+    gap: 20px;
+  margin-bottom: 40px;
+  margin-top: 40px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+/*Style for SAVE fearture*/
+.like-button {
+  display: flex;
+  justify-content: center;
+}
 
+.like-button button {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #03DAC6;
+  color: black;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+} 
+.like-button button i {
+  margin-right: 10px;
+  margin-left: 10px;
+  font-size: 16px;
 }
-.dislike{
-    background-color: #03DAC6;
-    width: 10%;
-    border: 2px solid black;
-    border-radius: 40px;
-    padding: 5px;
-    margin-left: 40px ;
+.like-button button:hover {
+  background-color: #FF0266;
+  }
 
+/*Style for rate button*/
+.dislike-button button {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #03DAC6;
+  color: black;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
 }
-.share{
-    background-color: #03DAC6;
-    width: 10%;
-    border: 2px solid black;
-    border-radius: 40px;
-    padding: 5px;
-    margin-left: 40px ;
+
+.dislike-button i {
+  color: black;
+  font-size: 16px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
+.dislike-button button:hover {
+  background-color: #FF0266;
+  }
+/*Style for share button*/
+.share-button button {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #03DAC6;
+  color: black;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.share-button i {
+  color: black;
+  font-size: 16px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.share-button button:hover {
+  background-color: #FF0266;
+  }
 /* breadcrumbs style */
 ul.breadcrumb {
     padding: 10px 16px;
