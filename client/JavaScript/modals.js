@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import { Login, Cookies } from './backendCalls/sendLoginData.js';
 // form validation for login
 const loginForm = document.getElementById("loginForm");
+const loginButton = document.getElementById('loginButton');
 //these variables create the login and register modals
 const registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
 const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
