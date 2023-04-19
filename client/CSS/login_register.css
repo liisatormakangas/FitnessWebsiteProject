@@ -46,6 +46,9 @@ ul.breadcrumb1 li a {
     margin-top: 5px;
     height: 25px;
 }
+#loginButton {
+    cursor: pointer;
+}
 .closeBtn {
     width: 25px;
     height: 25px;

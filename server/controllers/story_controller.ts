@@ -35,4 +35,39 @@ controller.post('/new', (req, res) => {
     });
 });
 
+    //Post a comment to a story
+controller.post('/newcomment', (req, res) => {
+    story.addStoryComment(req.body).then((data: any) => {        
+        res.send(data.rows);
+        console.log(data.rows);
+        
+    }).catch((error: any) => {
+        res.status(500).send({
+            message: 'Some error occurred while posting story comment.'
+        });
+    });
+});
+
+    // Delete a comment from a story
+controller.delete('/deletecomment/:id', (req, res) => {
+    story.deleteStoryComment(parseInt(req.params.id)).then((data: any) => {
+        res.send(data.rows);
+    }).catch((error: any) => {
+        res.status(500).send({
+            message: 'Some error occurred while deleting story comment.'
+        });
+    });
+});
+    // Update a comment from a story
+/* controller.put('/updatecomment', (req, res) => {
+    story.updateStoryComment(req.body).then((data: any) => {
+        res.send(data.rows);
+    }).catch((error: any) => {
+        res.status(500).send({
+            message: 'Some error occurred while updating story comment.'
+        });
+    });
+}); */
+
+
 export default controller;

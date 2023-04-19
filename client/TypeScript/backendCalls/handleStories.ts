@@ -36,9 +36,28 @@ class Stories {
         });
     };
 
+    addComment = async (comment: any) => {
+        return new Promise(async (resolve, reject) => {
+            fetch(this.#backendUrl + "/newcomment", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(comment)
+            })
+                .then(response => {
+                    resolve(response);
+                })
+                .catch(error => {
+                    reject(error);
+                });
+        });
+    };
+
+
     #readJson = (allStories: any) => {
         allStories.forEach((story: any) => {
-            this.stories.push(new Story(story.id_story, story.author, story.title, story.story, story.blog_date, story.image_name));
+            this.stories.push(new Story(story.id_story, story.author, story.title, story.story, story.blog_date, story.image_name, story.comments));
         });
     };
 

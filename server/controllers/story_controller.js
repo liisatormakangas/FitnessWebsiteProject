@@ -34,4 +34,35 @@ controller.post('/new', (req, res) => {
         });
     });
 });
+//Post a comment to a story
+controller.post('/newcomment', (req, res) => {
+    story_model_js_1.default.addStoryComment(req.body).then((data) => {
+        res.send(data.rows);
+        console.log(data.rows);
+    }).catch((error) => {
+        res.status(500).send({
+            message: 'Some error occurred while posting story comment.'
+        });
+    });
+});
+// Delete a comment from a story
+controller.delete('/deletecomment/:id', (req, res) => {
+    story_model_js_1.default.deleteStoryComment(parseInt(req.params.id)).then((data) => {
+        res.send(data.rows);
+    }).catch((error) => {
+        res.status(500).send({
+            message: 'Some error occurred while deleting story comment.'
+        });
+    });
+});
+// Update a comment from a story
+/* controller.put('/updatecomment', (req, res) => {
+    story.updateStoryComment(req.body).then((data: any) => {
+        res.send(data.rows);
+    }).catch((error: any) => {
+        res.status(500).send({
+            message: 'Some error occurred while updating story comment.'
+        });
+    });
+}); */
 exports.default = controller;
