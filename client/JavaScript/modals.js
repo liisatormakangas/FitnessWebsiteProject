@@ -3,6 +3,7 @@ const loginForm = document.getElementById("loginForm");
 //these variables create the login and register modals
 const registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
 const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+// export const notificationModal = new bootstrap. Modal(document.getElementById('notificationModal'));
 loginForm.addEventListener('submit', (event) => {
     if (!loginForm.checkValidity()) {
         event.preventDefault();

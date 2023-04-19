@@ -44,6 +44,12 @@ registerForm.addEventListener("submit", (event) => {
     });
     register.addRegisteredUser(formObject);
 });
+// loginForm.addEventListener("submit", (event: Event) => {
+//     event.preventDefault();
+//     const formData = new FormData(loginForm);
+//     const formObject = {};
+//     formData.forEach((value, key) => { formObject[key] = value });
+//     login.sendLoginData(formObject);
 loginForm.addEventListener("submit", (event) => {
     event.preventDefault();
     const formData = new FormData(loginForm);

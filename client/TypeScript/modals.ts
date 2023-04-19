@@ -1,8 +1,11 @@
+
 // form validation for login
 const loginForm = document.getElementById("loginForm") as HTMLFormElement;
+
 //these variables create the login and register modals
 const registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
 const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+// export const notificationModal = new bootstrap. Modal(document.getElementById('notificationModal'));
 
 loginForm.addEventListener('submit', (event: Event) => {
     if (!loginForm.checkValidity()) {

@@ -4,6 +4,8 @@ import bcrypt from 'bcryptjs';
 
 const user = {
     registerUser: async (user_data: any) => {
+        // Hash the password before storing it in the database
+        const hashedPassword = await bcrypt.hash(user_data.passwd, 10);
         const query = `INSERT INTO users (
             firstname,
             lastname,
@@ -20,7 +22,7 @@ const user = {
             user_data.lastname,
             user_data.email,
             user_data.username,
-            user_data.passwd,
+            hashedPassword,
             user_data.street_address,
             user_data.postal_code,
             user_data.city,
