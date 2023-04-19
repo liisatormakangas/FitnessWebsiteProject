@@ -6,21 +6,27 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // Import dependencies
 const express_1 = __importDefault(require("express"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const register_model_js_1 = __importDefault(require("../models/register_model.js"));
-const SECRET_KEY = 'fitness123!';
+const login_model_1 = __importDefault(require("../models/login_model"));
+require('dotenv').config();
+const secretKey = process.env.SECRET_KEY;
 const controller = express_1.default.Router();
 controller.post('/', (req, res) => {
     const { username, password } = req.body;
     // Call loginUser function from the model
-    register_model_js_1.default.loginUser(username, password)
+    (0, login_model_1.default)(username, password)
         .then((user) => {
         // If login successful, you can generate a JWT and send it back to the client
-        const token = jsonwebtoken_1.default.sign({ username: user.username }, SECRET_KEY, { expiresIn: '1h' });
-        res.status(200).json({ token });
+        const token = jsonwebtoken_1.default.sign({ username: user.username }, secretKey, { expiresIn: '1h' });
+        res.status(200).json({ message: 'Login successful', token, username: user.username });
     })
         .catch((error) => {
         // If login fails, return an error response
-        res.status(401).json({ error: error.message });
+        res.status(401).json({ message: 'invalid username or password' });
     });
+});
+controller.post('/logout', (req, res) => {
+    // You can clear the user's JWT token from the client-side by removing the token from the browser's local storage
+    res.clearCookie('token');
+    res.status(200).json({ message: 'Logout successful' });
 });
 exports.default = controller;
