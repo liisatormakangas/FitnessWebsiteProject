@@ -34,11 +34,7 @@ const user = {
             user_data.lastname,
             user_data.email,
             user_data.username,
-<<<<<<< HEAD
             hashedPassword,
-=======
-            password,
->>>>>>> 1f942cf (login features added)
             user_data.street_address,
             user_data.postal_code,
             user_data.city,
