@@ -16,6 +16,8 @@ const db_js_1 = __importDefault(require("../db.js"));
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const user = {
     registerUser: (user_data) => __awaiter(void 0, void 0, void 0, function* () {
+        // Hash the password before storing it in the database
+        const hashedPassword = yield bcryptjs_1.default.hash(user_data.passwd, 10);
         const query = `INSERT INTO users (
             firstname,
             lastname,
@@ -32,7 +34,7 @@ const user = {
             user_data.lastname,
             user_data.email,
             user_data.username,
-            user_data.passwd,
+            hashedPassword,
             user_data.street_address,
             user_data.postal_code,
             user_data.city,

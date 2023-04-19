@@ -7,6 +7,7 @@ const backendUrlLogin = "http://localhost:3001/login";
 const register = new Register(backendUrlRegister);
 const login = new Login(backendUrlLogin);
 
+
 const registerForm = document.getElementById("registerForm") as HTMLFormElement;
 const passwordInput = document.getElementById('passwd') as HTMLInputElement;
 const confirmPasswordInput = document.getElementById('passwd2') as HTMLInputElement;
@@ -54,6 +55,15 @@ registerForm.addEventListener("submit", (event: Event) => {
     register.addRegisteredUser(formObject);
 });
 
+// loginForm.addEventListener("submit", (event: Event) => {
+//     event.preventDefault();
+
+//     const formData = new FormData(loginForm);
+//     const formObject = {};
+//     formData.forEach((value, key) => { formObject[key] = value });
+
+//     login.sendLoginData(formObject);
+
 loginForm.addEventListener("submit", (event: Event) => {
     event.preventDefault();
 
@@ -62,6 +72,7 @@ loginForm.addEventListener("submit", (event: Event) => {
     formData.forEach((value, key) => { formObject[key] = value });
 
     login.sendLoginData(formObject);
+
 });
 
 
