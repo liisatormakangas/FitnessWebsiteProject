@@ -1,17 +1,48 @@
 ###Get
-GET http://localhost:3001/story/ HTTP/1.1
+GET http://localhost:3001/cart/ HTTP/1.1
 
 ###Post
-POST http://localhost:3001/story/new/ HTTP/1.1
+POST http://localhost:3001/localhost:3001/login HTTP/1.1
 Content-Type: application/json
 
+Content-Type: application/json
 {
-    "author": "test",
-    "title": "test",
-    "story": "test",
-    "blog_date": "2019-01-01",
-    "image_name": "test"
+    "firstname": "test",
+    "lastname": "test",
+    "email": "test",
+    "username": "test",
+    "passwd": "test",
+    "street_address": "test",
+    "postal_code": "test",
+    "phone_number": "test",
 }
+
+
+# "author": "test",
+# "title": "test",
+# "story": "test",
+# "blog_date": "2019-01-01",
+# "image_name": "test",
+
+
 
 ###Delete
 DELETE http://localhost:3001/delete/1 HTTP/1.1
+
+###Post comment
+POST http://localhost:3001/story/newcomment/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "id_story": 1,
+    "id_user": 1,
+    "content": "Another test comment",
+    "date_added": "2019-01-01"
+}
+
+###Delete a comment
+DELETE http://localhost:3001/story/deletecomment/15 HTTP/1.1
+
+###Get all courses
+GET http://localhost:3001/course/ HTTP/1.1
+

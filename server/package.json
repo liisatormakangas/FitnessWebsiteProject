@@ -27,6 +27,10 @@
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
     "nodemon": "^2.0.22",
-    "pg": "^8.10.0"
+    "pg": "^8.10.0",
+    "typescript": "^5.0.4"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^8.2.0"
   }
 }
