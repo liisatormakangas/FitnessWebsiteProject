@@ -296,6 +296,7 @@ insert into courses (
     price_year
     )
     values (
+        
         './images/Body Step.jpg',
         'Body Step',
         'Emily Parker',
