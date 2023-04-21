@@ -8,7 +8,7 @@ const loginUser = async (username:any, password:any) => {
     const result = await pool.query(query, [username]);
 
     if (result.rowCount === 0) {
-      // If username does not exist, return an error
+      // If username does not exist, return an error 
       throw new Error('Invalid username or password');
     }
 

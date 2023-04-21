@@ -1,10 +1,12 @@
 import { Pool } from 'pg';
+require('dotenv').config();
 
 const pool: Pool = new Pool({
     user: 'postgres',
     host: 'localhost',
     database: 'FitnessWebSite',
-    password: 'a640111',
+    //change to get password from .env file
+    password: process.env.DB_PASSWORD,
     port: 5432,
 })
 
