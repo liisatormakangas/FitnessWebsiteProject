@@ -23,6 +23,7 @@ controller.get('/:id', (req, res) => {
     });
 });
 
+
 controller.post('/new', (req, res) => {
     story.addNewStory(req.body).then((data: any) => {        
         res.send(data.rows);
@@ -58,16 +59,29 @@ controller.delete('/deletecomment/:id', (req, res) => {
         });
     });
 });
-    // Update a comment from a story
-/* controller.put('/updatecomment', (req, res) => {
-    story.updateStoryComment(req.body).then((data: any) => {
+
+controller.post('/newreaction', (req, res) => {
+    story.addStoryReaction(req.body).then((data: any) => {        
+        res.send(data.rows);
+        console.log(data.rows);
+        
+    }).catch((error: any) => {
+        res.status(500).send({
+            message: 'Some error occurred while posting story comment.'
+        });
+    });
+});
+
+controller.delete('/deletereaction/:id', (req, res) => {
+    story.deleteStoryComment(parseInt(req.params.id)).then((data: any) => {
         res.send(data.rows);
     }).catch((error: any) => {
         res.status(500).send({
-            message: 'Some error occurred while updating story comment.'
+            message: 'Some error occurred while deleting story comment.'
         });
     });
-}); */
+});
 
+    // Count the number of comments for a story
 
 export default controller;

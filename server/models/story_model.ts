@@ -12,7 +12,19 @@ const story = {
         if(result.rowCount > 0) {
             const commentResult = await pool.query('SELECT * FROM comments WHERE id_story = $1', [id]);
             result.rows[0].comments = commentResult.rows;
+
+            // If the story has comments, get the reaction count for the story
+            const likeCount = await pool.query('SELECT COUNT(id_reaction) as like_count FROM story_reactions WHERE id_story = $1 AND reaction_type = $2', [id, 'like']);
+            const disLikeCount = await pool.query('SELECT COUNT(id_reaction) as dislike_count FROM story_reactions WHERE id_story = $1 AND reaction_type = $2', [id, 'dislike']);
+            //const userReaction = await pool.query('SELECT reaction_type FROM story_reactions WHERE id_story = $1 AND id_user = $2', [id, 'dislike']);
+
+            result.rows[0].like_count = likeCount.rows[0].like_count;
+            result.rows[0].dislike_count = disLikeCount.rows[0].dislike_count;
         }
+        // count the number of comments for a story
+        const countStoryComments = await pool.query('SELECT COUNT(id_response) as comment_count FROM comments WHERE id_story = $1', [id]);
+        result.rows[0].comment_count = countStoryComments.rows[0].comment_count;
+        
         return result;
     },
     addNewStory: async (body: any) => {      
@@ -24,16 +36,21 @@ const story = {
         const result = await pool.query('insert into comments (id_story, id_user, content, date_added) VALUES ($1, $2, $3, $4) RETURNING *', [body.id_story, body.id_user, body.content, body.date_added]);       
         return result;
     },
+    // post a comment to a story
+    addStoryReaction: async (body: any) => {
+        const result = await pool.query('insert into story_reactions (id_story, id_user, reaction_type) VALUES ($1, $2, $3) RETURNING *', [body.id_story, body.id_user, body.reaction_type]);       
+        return result;
+    },
+    // delete a comment from a story
+    deleteStoryReaction: async (id: number) => {
+        const result = await pool.query('DELETE FROM story_reactions WHERE id_response = $1', [id]);
+        return result;
+    },
     // delete a comment from a story
     deleteStoryComment: async (id: number) => {
         const result = await pool.query('DELETE FROM comments WHERE id_response = $1', [id]);
         return result;
     },
-    // update a comment from a story
-    /* updateStoryComment: async (body: any) => {
-        const result = await pool.query('UPDATE comments SET content = $1 WHERE id_response = $2', [body.content, body.id_response]);
-        return result;
-    } */
 }
 
 export default story;

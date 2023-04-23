@@ -65,6 +65,23 @@ class Stories {
                 });
             }));
         });
+        //delete comment
+        this.deleteComment = (id) => __awaiter(this, void 0, void 0, function* () {
+            return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
+                fetch(__classPrivateFieldGet(this, _Stories_backendUrl, "f") + "/deletecomment/" + id, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(response => {
+                    resolve(response);
+                })
+                    .catch(error => {
+                    reject(error);
+                });
+            }));
+        });
         _Stories_readJson.set(this, (allStories) => {
             allStories.forEach((story) => {
                 this.stories.push(new Story(story.id_story, story.author, story.title, story.story, story.blog_date, story.image_name, story.comments));

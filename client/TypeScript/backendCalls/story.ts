@@ -7,6 +7,7 @@ class Story {
     blog_date: Date;
     image_name: string;
     comments: StoryComment[]; // this is a new property
+    
 
     constructor(id: number, author: string, title: string, story: string, blog_date: Date, image_name: string, comments: StoryComment[]) {
         this.id_story = id;
@@ -16,6 +17,7 @@ class Story {
         this.blog_date = blog_date;
         this.image_name = image_name;
         this.comments = comments;
+       
     }
 }
 

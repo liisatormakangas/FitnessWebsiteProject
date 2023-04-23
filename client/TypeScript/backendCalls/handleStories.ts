@@ -35,7 +35,7 @@ class Stories {
                 });
         });
     };
-
+    
     addComment = async (comment: any) => {
         return new Promise(async (resolve, reject) => {
             fetch(this.#backendUrl + "/newcomment", {
@@ -44,6 +44,24 @@ class Stories {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(comment)
+            })
+                .then(response => {
+                    resolve(response);
+                })
+                .catch(error => {
+                    reject(error);
+                });
+        });
+    };
+
+    //delete comment
+    deleteComment = async (id: number) => {
+        return new Promise(async (resolve, reject) => {
+            fetch(this.#backendUrl + "/deletecomment/" + id, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             })
                 .then(response => {
                     resolve(response);

@@ -55,14 +55,24 @@ controller.delete('/deletecomment/:id', (req, res) => {
         });
     });
 });
-// Update a comment from a story
-/* controller.put('/updatecomment', (req, res) => {
-    story.updateStoryComment(req.body).then((data: any) => {
+controller.post('/newreaction', (req, res) => {
+    story_model_js_1.default.addStoryReaction(req.body).then((data) => {
         res.send(data.rows);
-    }).catch((error: any) => {
+        console.log(data.rows);
+    }).catch((error) => {
         res.status(500).send({
-            message: 'Some error occurred while updating story comment.'
+            message: 'Some error occurred while posting story comment.'
         });
     });
-}); */
+});
+controller.delete('/deletereaction/:id', (req, res) => {
+    story_model_js_1.default.deleteStoryComment(parseInt(req.params.id)).then((data) => {
+        res.send(data.rows);
+    }).catch((error) => {
+        res.status(500).send({
+            message: 'Some error occurred while deleting story comment.'
+        });
+    });
+});
+// Count the number of comments for a story
 exports.default = controller;
