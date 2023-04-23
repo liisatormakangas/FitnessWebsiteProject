@@ -18,7 +18,7 @@ const story = {
         const result = yield db_js_1.default.query('SELECT * FROM stories');
         return result;
     }),
-    getStoryById: (id) => __awaiter(void 0, void 0, void 0, function* () {
+    getStoryById: (id, id_user) => __awaiter(void 0, void 0, void 0, function* () {
         const result = yield db_js_1.default.query('SELECT * FROM stories WHERE id_story = $1', [id]);
         // If the story exists, get the comments for that story        
         if (result.rowCount > 0) {
@@ -27,9 +27,10 @@ const story = {
             // If the story has comments, get the reaction count for the story
             const likeCount = yield db_js_1.default.query('SELECT COUNT(id_reaction) as like_count FROM story_reactions WHERE id_story = $1 AND reaction_type = $2', [id, 'like']);
             const disLikeCount = yield db_js_1.default.query('SELECT COUNT(id_reaction) as dislike_count FROM story_reactions WHERE id_story = $1 AND reaction_type = $2', [id, 'dislike']);
-            //const userReaction = await pool.query('SELECT reaction_type FROM story_reactions WHERE id_story = $1 AND id_user = $2', [id, 'dislike']);
+            const userReaction = yield db_js_1.default.query('SELECT reaction_type FROM story_reactions WHERE id_story = $1 AND id_user = $2', [id, id_user]);
             result.rows[0].like_count = likeCount.rows[0].like_count;
             result.rows[0].dislike_count = disLikeCount.rows[0].dislike_count;
+            result.rows[0].reaction_type = userReaction.rows[0].reaction_type;
         }
         // count the number of comments for a story
         const countStoryComments = yield db_js_1.default.query('SELECT COUNT(id_response) as comment_count FROM comments WHERE id_story = $1', [id]);
@@ -51,8 +52,8 @@ const story = {
         return result;
     }),
     // delete a comment from a story
-    deleteStoryReaction: (id) => __awaiter(void 0, void 0, void 0, function* () {
-        const result = yield db_js_1.default.query('DELETE FROM story_reactions WHERE id_response = $1', [id]);
+    deleteStoryReaction: (id_user, id_story, reaction_type) => __awaiter(void 0, void 0, void 0, function* () {
+        const result = yield db_js_1.default.query('DELETE FROM story_reactions WHERE id_user = $1 AND id_story = $2 AND reaction_type = $3', [id_user, id_story, reaction_type]);
         return result;
     }),
     // delete a comment from a story

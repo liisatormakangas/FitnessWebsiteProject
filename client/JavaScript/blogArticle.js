@@ -59,16 +59,21 @@ const renderComments = (comments) => {
                     <i class="bi bi-trash"></i>
                 </button>
             </div>`;
-        blogComments.appendChild(li);
+        blogComments.insertBefore(li, blogComments.firstChild);
         const deleteBtn = li.querySelector('.delete-comment-btn');
         deleteBtn.addEventListener('click', () => {
-            // remove the comment from the comments array
-            const commentIndex = comments.indexOf(comment);
-            comments.splice(commentIndex, 1);
-            // remove the li element from the DOM
-            li.remove();
-            // update the comment count
-            commentCount.innerText = `Comments (${comments.length})`;
+            // delete the comment from the database
+            stories.deleteComment(comment.id_response).then((result) => {
+                // remove the comment from the comments array
+                const commentIndex = comments.indexOf(comment);
+                comments.splice(commentIndex, 1);
+                // remove the li element from the DOM
+                li.remove();
+                // update the comment count
+                commentCount.innerText = `Comments (${comments.length})`;
+            }).catch((error) => {
+                alert(error);
+            });
         });
     });
 };
@@ -81,7 +86,7 @@ commentInput.addEventListener("keypress", (event) => {
         const comment = new StoryComment(0, id_story, userId, commentInput.value, new Date());
         stories.addComment(comment).then((result) => {
             if (result) {
-                renderComments([comment]);
+                renderComments(result);
                 commentInput.value = "";
             }
         })

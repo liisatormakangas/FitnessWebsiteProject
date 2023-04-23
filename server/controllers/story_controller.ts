@@ -14,7 +14,9 @@ controller.get('/', (req, res) => {
 });
 
 controller.get('/:id', (req, res) => {
-    story.getStoryById(parseInt(req.params.id)).then((data: any) => {
+    //TODO: get user_id from token with jwt.decode
+    const user_id = 1;
+    story.getStoryById(parseInt(req.params.id), user_id).then((data: any) => {
         res.send(data.rows[0]);
     }).catch((error: any) => {
         res.status(500).send({
@@ -72,8 +74,10 @@ controller.post('/newreaction', (req, res) => {
     });
 });
 
-controller.delete('/deletereaction/:id', (req, res) => {
-    story.deleteStoryComment(parseInt(req.params.id)).then((data: any) => {
+controller.delete('/deletereaction/:story/:type', (req, res) => {    
+    //TODO: get user_id from token with jwt.decode
+    const user_id = 1;
+    story.deleteStoryReaction(user_id, parseInt(req.params.story), req.params.type).then((data: any) => {
         res.send(data.rows);
     }).catch((error: any) => {
         res.status(500).send({

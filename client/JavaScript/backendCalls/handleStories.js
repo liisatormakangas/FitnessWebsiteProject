@@ -57,6 +57,7 @@ class Stories {
                     },
                     body: JSON.stringify(comment)
                 })
+                    .then(response => response.json())
                     .then(response => {
                     resolve(response);
                 })
