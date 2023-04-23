@@ -14,6 +14,14 @@ controller.get('/', (req, res) => {
 });
 
 controller.get('/:id', (req, res) => {
+    //get token from request header
+    const token = req.headers.authorization; 
+
+    if (token === "bearer null") {
+        res.status(401).json({
+            message: 'Please login or register'
+        });
+    } else {
     story.getStoryById(parseInt(req.params.id)).then((data: any) => {
         res.send(data.rows[0]);
     }).catch((error: any) => {
@@ -21,6 +29,7 @@ controller.get('/:id', (req, res) => {
             message: 'Some error occurred while retrieving stories.'
         });
     });
+}
 });
 
 controller.post('/new', (req, res) => {

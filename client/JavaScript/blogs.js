@@ -73,6 +73,7 @@ const renderStories = (story) => {
     //creating the read more link
     const readMore = document.createElement("a");
     readMore.className = "btn";
+    readMore.id = "readMoreLink";
     readMore.href = "blogArticle.html?id=" + story.id_story;
     readMore.innerText = "Read More >";
     cardBody.appendChild(readMore);
