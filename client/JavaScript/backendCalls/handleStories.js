@@ -37,9 +37,23 @@ class Stories {
             }));
         });
         this.getStoryById = (id) => __awaiter(this, void 0, void 0, function* () {
+            // get token from local storage
+            const token = localStorage.getItem('token');
             return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
-                fetch(__classPrivateFieldGet(this, _Stories_backendUrl, "f") + "/" + id)
-                    .then(response => response.json())
+                fetch(__classPrivateFieldGet(this, _Stories_backendUrl, "f") + "/" + id, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                        // send token through Authorization header
+                    }
+                })
+                    .then(response => {
+                    if (response.status === 200) {
+                        return response.json();
+                    }
+                    else {
+                        throw new Error(`${response.statusText}.Please register or login`);
+                    }
+                })
                     .then(response => {
                     resolve(response); //returns a single Story object
                 })

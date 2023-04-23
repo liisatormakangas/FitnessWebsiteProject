@@ -19,54 +19,74 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
 var _Login_backendurl;
-class Login {
+export class Login {
     constructor(backendurl) {
         _Login_backendurl.set(this, "");
         this.sendLoginData = (formObject) => __awaiter(this, void 0, void 0, function* () {
-            fetch(__classPrivateFieldGet(this, _Login_backendurl, "f"), {
+            console.dir(formObject);
+            fetch(__classPrivateFieldGet(this, _Login_backendurl, "f") + '/login', {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(formObject)
+                body: JSON.stringify({
+                    "userName": formObject.username,
+                    "password": formObject.password
+                })
             })
-                .then(response => response.json())
-                .then(data => {
-                console.log(data);
-                if (data.message == 'Login successful') {
-                    // Login successful, change login button text to logout
-                    document.getElementById("loginButton").textContent = "Logout";
-                    // Save the token in the browser's local storage
-                    localStorage.setItem("token", data.token);
-                    // Display a welcome message
-                    alert("Login successed. welcome! " + data.username);
+                .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
                 }
-                else {
-                    // Login failed, display error message
-                    alert("Login failed. Please try again.");
+                return response.text();
+            })
+                .then(responseText => {
+                const resultJSON_Object = JSON.parse(responseText);
+                if (resultJSON_Object.success) {
+                    alert("Login successful. Welcome " + formObject.username + "!");
+                    const cookie = new Cookies();
+                    cookie.setCookie("session_token", resultJSON_Object.token, 1);
+                    window.location.reload();
                 }
             })
                 .catch(error => {
-                console.error('Error:', error);
-                alert("An error occurred while processing your request. Please try again.");
+                console.error(error);
+                alert("Error occured while logging in");
             });
-            // const loginButton = document.getElementById("loginButton");
-            // if (loginButton.textContent === "Login") {
-            // // User is logged out, so show login form
-            // const loginForm = document.getElementById("loginForm");
-            // loginForm.style.display = "block";
-            // } else {
-            // // User is logged in, so show logout button
-            // const logoutButton = document.createElement("button");
-            // logoutButton.textContent = "Logout";
-            // logoutButton.addEventListener("click", () => {
-            //     // Handle logout logic here
-            // });
-            // loginButton.replaceWith(logoutButton);
-            // }
         });
         __classPrivateFieldSet(this, _Login_backendurl, backendurl, "f");
     }
 }
 _Login_backendurl = new WeakMap();
-export { Login };
+export class Cookies {
+    constructor() {
+        this.setCookie = (name, value, days) => {
+            let expires = "";
+            if (days) {
+                const date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        };
+        this.getCookie = (name) => {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ')
+                    c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0)
+                    return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        };
+        // this is used to check if user is logged in with cookie name session token
+        this.isCookieSet = (name) => {
+            if (this.getCookie(name) == null) {
+                return false;
+            }
+            return true;
+        };
+    }
+}
