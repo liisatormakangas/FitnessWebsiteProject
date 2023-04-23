@@ -7,5 +7,8 @@
     },
     "exclude": [
         "server/*.ts"
-    ]
+    ],
+    "paths": {
+        "bootstrap": ["node_modules/bootstrap/dist/js/bootstrap.min.js"]
+      },"moduleResolution": "node"
 }
