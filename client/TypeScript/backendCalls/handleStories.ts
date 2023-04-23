@@ -44,8 +44,8 @@ class Stories {
                     resolve(response);//returns a single Story object
                 })
                 .catch(error => {
-                    reject(error);  
-                });
+                    reject(error);
+                });  
         });
 
     };

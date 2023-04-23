@@ -1,5 +1,5 @@
 ###Get
-GET http://localhost:3001/cart/ HTTP/1.1
+GET http://localhost:3001/course/ HTTP/1.1
 
 ###Post
 POST http://localhost:3001/login HTTP/1.1
@@ -9,18 +9,6 @@ Content-Type: application/json
     "userName": "LiisaTo",
     "password": "kukka"
 }
-
-# {
-#     "firstname": "test",
-#     "lastname": "test",
-#     "email": "test",
-#     "username": "test",
-#     "passwd": "test",
-#     "street_address": "test",
-#     "postal_code": "test",
-#     "phone_number": "test",
-# }
-
 
 ###Delete
 DELETE http://localhost:3001/delete/1 HTTP/1.1

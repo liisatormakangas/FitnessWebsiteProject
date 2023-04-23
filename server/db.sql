@@ -66,6 +66,7 @@ create table cart (
         on delete restrict on update cascade
 );
 
+
 insert into users (
 	firstname,
 	lastname,
@@ -88,19 +89,6 @@ insert into users (
 		'Bigcity',
 		'+358 50 123456'
 	);
-
-
-insert into stories (
-    author,
-    title,
-    story,
-    blog_date)
-	values (
-        '@John',
-        'Five Exercises for Stronger Triceps',
-        null,
-        '2023-03-27'
-        );
 
 insert into stories (
     author,

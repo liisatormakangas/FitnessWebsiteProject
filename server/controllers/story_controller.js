@@ -25,9 +25,9 @@ controller.get('/:id', (req, res) => {
     }
     else {
         story_model_js_1.default.getStoryById(parseInt(req.params.id)).then((data) => {
-            res.send(data.rows[0]);
+            res.status(200).send(data.rows[0]);
         }).catch((error) => {
-            res.status(500).send({
+            res.status(500).json({
                 message: 'Some error occurred while retrieving stories.'
             });
         });

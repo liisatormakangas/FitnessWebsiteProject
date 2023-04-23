@@ -18,28 +18,32 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
     return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
-var _Register_backendurl;
-class Register {
-    constructor(backendurl) {
-        _Register_backendurl.set(this, "");
-        this.addRegisteredUser = (formObject) => __awaiter(this, void 0, void 0, function* () {
-            alert("Register successful. Please login.");
-            const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
-            loginModal.show();
-            fetch(__classPrivateFieldGet(this, _Register_backendurl, "f"), {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formObject)
-            })
-                .then(response => response.json())
-                .then(data => {
-                console.log(data);
+var _Courses_backendUrl, _Courses_readJson;
+import { Course } from './course.js';
+class Courses {
+    constructor(backendUrl) {
+        _Courses_backendUrl.set(this, "");
+        this.getCourses = () => __awaiter(this, void 0, void 0, function* () {
+            return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
+                fetch(__classPrivateFieldGet(this, _Courses_backendUrl, "f"))
+                    .then(response => response.json())
+                    .then(response => {
+                    __classPrivateFieldGet(this, _Courses_readJson, "f").call(this, response);
+                    resolve(this.courses); //returns an array of Course objects
+                })
+                    .catch(error => {
+                    reject(error);
+                });
+            }));
+        });
+        _Courses_readJson.set(this, (json) => {
+            json.forEach((course) => {
+                this.courses.push(new Course(course.id_course, course.name_image1, course.extra_image2, course.extra_image3, course.extra_image4, course.video_name, course.course_name, course.trainer_name, course.course_description, course.weekdays, course.weekends, course.weekday_duration, course.weekend_duration, course.place, course.available_seats, course.price_month, course.price_year));
             });
         });
-        __classPrivateFieldSet(this, _Register_backendurl, backendurl, "f");
+        this.courses = [];
+        __classPrivateFieldSet(this, _Courses_backendUrl, backendUrl, "f");
     }
 }
-_Register_backendurl = new WeakMap();
-export { Register };
+_Courses_backendUrl = new WeakMap(), _Courses_readJson = new WeakMap();
+export { Courses };
