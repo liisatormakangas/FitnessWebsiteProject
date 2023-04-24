@@ -18,6 +18,9 @@ async function getUserPassword(username:any) {
 
 const loginUser = async (username:any, password:any) => {
     // Query the database to check if the username exists
+    const userDetails = await pool.query('SELECT * FROM users');
+        return userDetails.rows[0];
+
     let output= await  checkIfUsernameExists(username)
     if (output) {
       // If username does not exist, return an error

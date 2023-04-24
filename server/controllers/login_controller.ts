@@ -79,4 +79,3 @@ export default controller;
 //     localStorage.removeItem('token')
 //     res.status(200).json({ message: 'Logout successful' });
 //   });
-

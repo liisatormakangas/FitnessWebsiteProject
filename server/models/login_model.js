@@ -33,6 +33,8 @@ function getUserPassword(username) {
 }
 const loginUser = (username, password) => __awaiter(void 0, void 0, void 0, function* () {
     // Query the database to check if the username exists
+    const userDetails = yield db_js_1.default.query('SELECT * FROM users');
+    return userDetails.rows[0];
     let output = yield checkIfUsernameExists(username);
     if (output) {
         // If username does not exist, return an error
