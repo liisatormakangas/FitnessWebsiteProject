@@ -22,7 +22,7 @@ class Stories {
                 });
         });
     };
-
+    //use this to get a single story by id
     getStoryById = async (id: number) => {
         return new Promise(async (resolve, reject) => {
             fetch(this.#backendUrl + "/" + id)

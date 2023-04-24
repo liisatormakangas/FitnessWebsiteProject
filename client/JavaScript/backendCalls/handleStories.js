@@ -36,6 +36,7 @@ class Stories {
                 });
             }));
         });
+        //use this to get a single story by id
         this.getStoryById = (id) => __awaiter(this, void 0, void 0, function* () {
             return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
                 fetch(__classPrivateFieldGet(this, _Stories_backendUrl, "f") + "/" + id)
