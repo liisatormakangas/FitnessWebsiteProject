@@ -1,8 +1,8 @@
 import { Courses } from './backendCalls/handleCourses.js';
+import { Cookies } from './backendCalls/sendLoginData.js';
 const backendUrl = "http://localhost:3001/course";
 const courses = new Courses(backendUrl);
 const contentDiv = document.getElementById("content");
-const courseCard = document.querySelector(".product-card");
 //get all stories from the database
 courses.getCourses().then((courses) => {
     courses.forEach((course) => {
@@ -15,29 +15,62 @@ courses.getCourses().then((courses) => {
 const renderCourses = (course) => {
     const courseDiv = document.createElement("div");
     courseDiv.id = String(course.id_course);
-    courseDiv.classList.add("product-card");
-    courseDiv.innerHTML = `
-      <div id="priceInSpan" class="ribbon ribbon-top-right"><span></span></div>
-      <img id="courseMainImage" alt="Product image">
-      <h3 id="courseTitle"></h3>
-      <p id="courseDescription"></p>
-      <a href="courseDetails.html?id=" + ${course.id_course} class="view-more">View more</a>
-      <button class="buy-btn">Enroll now</button>
-      <div class="star-container">
+    courseDiv.className = "courseId";
+    const productCard = document.createElement("div");
+    productCard.className = "product-card";
+    const courseImage = document.createElement("img");
+    courseImage.className = "courseMainImage";
+    courseImage.alt = "Product image";
+    courseImage.src = `./images/${course.name_image1}`;
+    productCard.appendChild(courseImage);
+    const span = document.createElement("div");
+    span.id = "priceInSpan";
+    span.className = "ribbon ribbon-top-right";
+    const price = document.createElement("span");
+    price.innerHTML = "$ " + String(course.price_month) + " / month";
+    span.appendChild(price);
+    productCard.appendChild(span);
+    const courseName = document.createElement("h3");
+    courseName.id = "courseTitle";
+    courseName.innerHTML = course.course_name;
+    productCard.appendChild(courseName);
+    const courseDescript = document.createElement("p");
+    courseDescript.id = "courseDescription";
+    courseDescript.innerHTML = course.course_description;
+    productCard.appendChild(courseDescript);
+    const viewMore = document.createElement("a");
+    viewMore.href = "courseDetails.html?id=" + course.id_course;
+    viewMore.className = "view-more";
+    viewMore.innerHTML = "View more";
+    productCard.appendChild(viewMore);
+    const enrollBtn = document.createElement("button");
+    enrollBtn.className = "buy-btn";
+    enrollBtn.innerHTML = "Enroll now";
+    productCard.appendChild(enrollBtn);
+    const starContainer = document.createElement("div");
+    starContainer.className = "star-container";
+    starContainer.innerHTML = `
         <span class="fa fa-star checked"></span>
         <span class="fa fa-star checked"></span>
         <span class="fa fa-star checked"></span>
         <span class="fa fa-star checked"></span>
-        <span class="fa fa-star"></span>
-      </div>
-    `;
+        <span class="fa fa-star"></span>`;
+    productCard.appendChild(starContainer);
+    courseDiv.appendChild(productCard);
     contentDiv.appendChild(courseDiv);
-    const spanPrice = courseDiv.querySelector("#priceInSpan span");
-    const mainImage = courseDiv.querySelector("#courseMainImage");
-    const courseTitle = courseDiv.querySelector("#courseTitle");
-    const courseDescription = courseDiv.querySelector("#courseDescription");
-    spanPrice.innerHTML = "$ " + String(course.price_month) + " / month";
-    mainImage.src = `./images/${course.name_image1}`;
-    courseTitle.innerHTML = course.course_name;
-    courseDescription.innerHTML = course.course_description;
+    enrollBtn.addEventListener("click", () => {
+        const cookie = new Cookies();
+        const isLoggedIn = cookie.isCookieSet("session_token");
+        if (isLoggedIn) {
+            const token = cookie.getCookie("session_token");
+            const decodedToken = JSON.parse(atob(token.split('.')[1]));
+            const username = decodedToken.username;
+            //here are now the variables username and id_course that we need to send to the backend
+            console.log(course.id_course);
+            console.log(username);
+        }
+        else {
+            alert("You need to be logged in to enroll in a course");
+        }
+    });
 };

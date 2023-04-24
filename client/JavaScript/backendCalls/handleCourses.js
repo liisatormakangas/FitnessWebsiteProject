@@ -29,7 +29,7 @@ class Courses {
                     .then(response => response.json())
                     .then(response => {
                     __classPrivateFieldGet(this, _Courses_readJson, "f").call(this, response);
-                    resolve(this.courses); //returns an array of Course objects
+                    resolve(this.courses); //returns an array of Course objects created in the #readJson method
                 })
                     .catch(error => {
                     reject(error);
