@@ -14,22 +14,40 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const db_js_1 = __importDefault(require("../db.js"));
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
+function checkIfUsernameExists(username) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const query = 'SELECT * FROM users WHERE username = $1';
+        const result = yield db_js_1.default.query(query, [username]);
+        return result.rows.length > 0;
+    });
+}
+function getUserPassword(username) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const query = 'SELECT passwd FROM users WHERE username = $1';
+        const result = yield db_js_1.default.query(query, [username]);
+        if (result.rows.length === 0) {
+            throw new Error('Password not found');
+        }
+        return result.rows[0].passwd;
+    });
+}
 const loginUser = (username, password) => __awaiter(void 0, void 0, void 0, function* () {
     // Query the database to check if the username exists
-    const query = `SELECT * FROM users WHERE username = $1`;
-    const result = yield db_js_1.default.query(query, [username]);
-    if (result.rowCount === 0) {
+    let output = yield checkIfUsernameExists(username);
+    if (output) {
         // If username does not exist, return an error
+        const password_db = yield getUserPassword(username);
+        const matched = yield bcryptjs_1.default.compare(password, password_db);
+        if (matched) {
+            const userDetails = yield db_js_1.default.query('SELECT * FROM users WHERE username = $1', [username]);
+            return userDetails.rows[0];
+        }
+        else {
+            throw new Error('Invalid username or password');
+        }
+    }
+    else {
         throw new Error('Invalid username or password');
     }
-    // Compare password with the hashed password stored in the database
-    const user = result.rows[0];
-    const isMatch = yield bcryptjs_1.default.compare(password, user.passwd);
-    if (!isMatch) {
-        // If password does not match, return an error
-        throw new Error('Invalid username or password');
-    }
-    // If username and password match, return the user object
-    return user;
 });
 exports.default = loginUser;
