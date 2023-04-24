@@ -2,18 +2,20 @@ import { ShoppingCart } from "./backendCalls/cart";
 //wait for course.ts
 /* import {course} from "./course.ts"; */
 //get login and register from backendCalls
-import { Login } from "./backendCalls/sendLoginData";
-import { Register } from "./backendCalls/sendRegisterData";
+//import { Login } from "./backendCalls/sendLoginData";
+//import { Register } from "./backendCalls/sendRegisterData";
 //wait for define the cart btn
 const cartBtn = document.querySelector(".cartBtn");
 /* no backend done yet, need to check */
 const backendUrl = "http://localhost:3001/shoppingCart";
 //need to check too
-const loginForm = new Login("#loginForm");
+//const loginForm = new Login("#loginForm");
 //may not need to use register coz loginform has register button
-const register = new Register("/register");
+//const register = new Register("/register");
 
 //get this from login controller, so far save to localStorage
+//unable for awhile becuase the login controller is not done yet
+/*
 let token = "";
 
 function ifUserLogin() {
@@ -38,7 +40,7 @@ function ifUserLogin() {
   }
 
   // Call checkLoginStatus on page load
-window.onload = ifUserLogin;
+window.onload = ifUserLogin;*/
 
 function addShopCart() {
     fetch(`${backendUrl}`)
@@ -79,6 +81,7 @@ function addShopCart() {
         priceDiv.classList.add("cart-item-price");
         const price = document.createElement("h3");
         price.textContent = course.price;
+
         priceDiv.appendChild(price);
         rightDiv.appendChild(priceDiv);
         

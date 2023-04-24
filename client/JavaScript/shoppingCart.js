@@ -10,41 +10,44 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 //wait for course.ts
 /* import {course} from "./course.ts"; */
 //get login and register from backendCalls
-import { Login } from "./backendCalls/sendLoginData";
-import { Register } from "./backendCalls/sendRegisterData";
+//import { Login } from "./backendCalls/sendLoginData";
+//import { Register } from "./backendCalls/sendRegisterData";
 //wait for define the cart btn
 const cartBtn = document.querySelector(".cartBtn");
 /* no backend done yet, need to check */
 const backendUrl = "http://localhost:3001/shoppingCart";
 //need to check too
-const loginForm = new Login("#loginForm");
+//const loginForm = new Login("#loginForm");
 //may not need to use register coz loginform has register button
-const register = new Register("/register");
+//const register = new Register("/register");
 //get this from login controller, so far save to localStorage
+//unable for awhile becuase the login controller is not done yet
+/*
 let token = "";
+
 function ifUserLogin() {
     // Check if the user is already logged in (has a token)
     token = localStorage.getItem("token");
     const enrollButton = document.querySelectorAll(".enroll-button");
     const loginModal = document.querySelector("#loginButton");
     if (token) {
-        // User is already logged in, enable the enroll button
-        enrollButton.forEach((enrollButton) => {
-            enrollButton.removeAttribute("disabled");
-        });
-    }
-    else {
-        // User is not logged in, disable the enroll button
-        const loginModal = document.querySelector('#loginForm');
+      // User is already logged in, enable the enroll button
+      enrollButton.forEach((enrollButton) => {
+        enrollButton.removeAttribute("disabled");
+      });
+    } else {
+      // User is not logged in, disable the enroll button
+      const loginModal = document.querySelector('#loginForm');
         const bsModal = new bootstrap.Modal(loginModal, { keyboard: false });
         bsModal.show();
-        enrollButton.forEach((enrollButton) => {
-            enrollButton.setAttribute("disabled", "true");
-        });
+      enrollButton.forEach((enrollButton) => {
+        enrollButton.setAttribute("disabled", "true");
+      });
     }
-}
-// Call checkLoginStatus on page load
-window.onload = ifUserLogin;
+  }
+
+  // Call checkLoginStatus on page load
+window.onload = ifUserLogin;*/
 function addShopCart() {
     fetch(`${backendUrl}`)
         .then((response => response.json()))
@@ -207,3 +210,4 @@ enrollButton.forEach((enrollButton) => __awaiter(void 0, void 0, void 0, functio
 }) */
 /* find server */
 fetch("/shoppingCart");
+export {};

@@ -13,7 +13,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const db_js_1 = __importDefault(require("../db.js"));
-const bcryptjs_1 = __importDefault(require("bcryptjs"));
 function checkIfUsernameExists(username) {
     return __awaiter(this, void 0, void 0, function* () {
         const query = 'SELECT * FROM users WHERE username = $1';
@@ -33,20 +32,10 @@ function getUserPassword(username) {
 }
 const loginUser = (username, password) => __awaiter(void 0, void 0, void 0, function* () {
     // Query the database to check if the username exists
-    let output = yield checkIfUsernameExists(username);
-    if (output) {
-        // If username does not exist, return an error
-        const password_db = yield getUserPassword(username);
-        const matched = yield bcryptjs_1.default.compare(password, password_db);
-        if (matched) {
-            const userDetails = yield db_js_1.default.query('SELECT * FROM users WHERE username = $1', [username]);
-            return userDetails.rows[0];
-        }
-        else {
-            throw new Error('Invalid username or password');
-        }
-    }
-    else {
+    const query = `SELECT * FROM users WHERE username = $1`;
+    const result = yield db_js_1.default.query(query, [username]);
+    if (result.rowCount === 0) {
+        // If username does not exist, return an error 
         throw new Error('Invalid username or password');
     }
 });
