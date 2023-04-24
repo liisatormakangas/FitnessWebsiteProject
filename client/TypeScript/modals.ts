@@ -1,4 +1,3 @@
-
 // form validation for login
 const loginForm = document.getElementById("loginForm") as HTMLFormElement;
 

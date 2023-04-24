@@ -2,10 +2,14 @@ import express, { Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 //need to create a new model for the user
-import User from '../models/user_model';
+//import User from '../models/user_model';
 import Course from '../models/course_model';
+//import bootstrap from 'bootstrap';
 
 const router = express.Router();
+
+// Register a new user
+//app.use('/api/register', registerController);
 
 router.post('/addtocart/:courseId', async (req: Request, res: Response) => {
     try {
@@ -36,6 +40,7 @@ router.post('/addtocart/:courseId', async (req: Request, res: Response) => {
           message: 'The course does not exist',
         });
       }
+
       const cartItem = await CartItem.findOne({
         where: { userId: decoded.userId, courseId },
       });
