@@ -49,7 +49,7 @@ export class Cookies {
     document.cookie = name + "=" + (value || "")  + expires + "; path=/";
   }
 
-  getCookie = (name) => {
+  getCookie = (name: any) => {
     const nameEQ = name + "=";
     const ca = document.cookie.split(';');
     for(let i=0;i < ca.length;i++) {

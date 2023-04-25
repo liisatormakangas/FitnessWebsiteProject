@@ -40,12 +40,7 @@ class Stories {
             // get token from local storage
             const token = localStorage.getItem('token');
             return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
-                fetch(__classPrivateFieldGet(this, _Stories_backendUrl, "f") + "/" + id, {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                        // send token through Authorization header
-                    }
-                })
+                fetch(__classPrivateFieldGet(this, _Stories_backendUrl, "f") + "/" + id)
                     .then(response => {
                     if (response.status === 200) {
                         return response.json();

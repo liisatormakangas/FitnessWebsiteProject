@@ -66,6 +66,7 @@ create table cart (
         on delete restrict on update cascade
 );
 
+
 insert into users (
 	firstname,
 	lastname,

@@ -13,7 +13,8 @@ controller.get('/', (req, res) => {
     });
 });
 
-controller.post('/add/:course_id', (req, res) => {
+//here is old code, for reference in cse mess up
+/* controller.post('/add/:course_id', (req, res) => {
     cart.addCourse(parseInt(req.params.course_id)).then((data: any) => {
         res.send(data.rows[0]);
     }).catch((error: any) => {
@@ -21,6 +22,16 @@ controller.post('/add/:course_id', (req, res) => {
             message: 'Some error occurred while adding course to cart.'
         });
     });
-});
-
+}); */
+controller.post('/add-to-cart', (req, res) => {
+    const { userId, courseId } = req.body;
+    cart.addCourse(userId, courseId).then((data: any) => {
+      res.send(data.rows[0]);
+    }).catch((error: any) => {
+      res.status(500).send({
+        message: 'Some error occurred while adding course to cart.'
+      });
+    });
+  });
+  
 export default controller;
