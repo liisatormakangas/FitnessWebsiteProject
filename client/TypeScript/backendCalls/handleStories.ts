@@ -1,4 +1,6 @@
 import { Story } from './story.js';
+import {Cookies} from './sendLoginData.js';
+
 
 class Stories {
     stories: Story[];
@@ -23,23 +25,38 @@ class Stories {
         });
     };
 
+
+    // getStoryById = async (id: number) => {
+    //     // get token from local storage
+    //     const token = localStorage.getItem('token');
+    //     return new Promise(async (resolve, reject) => {
+    //         fetch(this.#backendUrl + "/" + id, {
+    //             headers: {
+    //                 Authorization: `Bearer ${token}` 
+    //                 // send token through Authorization header
+    //             }
+    //         })
+    //             .then(response => {
+    //                 if (response.status === 200){
+    //                     return response.json();
+    //                 } else {
+    //                     throw new Error(`${response.statusText}.Please register or login`);
+    //                 }
+    //             })
+    //             .then(response => {
+    //                 resolve(response);//returns a single Story object
+    //             })
+    //             .catch(error => {
+    //                 reject(error);  
+    //             });
+    //     });
+
+    // };
+
     getStoryById = async (id: number) => {
-        // get token from local storage
-        const token = localStorage.getItem('token');
         return new Promise(async (resolve, reject) => {
-            fetch(this.#backendUrl + "/" + id, {
-                headers: {
-                    Authorization: `Bearer ${token}` 
-                    // send token through Authorization header
-                }
-            })
-                .then(response => {
-                    if (response.status === 200){
-                        return response.json();
-                    } else {
-                        throw new Error(`${response.statusText}.Please register or login`);
-                    }
-                })
+            fetch(this.#backendUrl + "/" + id)
+                .then(response => response.json())
                 .then(response => {
                     resolve(response);//returns a single Story object
                 })
@@ -47,8 +64,8 @@ class Stories {
                     reject(error);  
                 });
         });
-
     };
+
 
     addComment = async (comment: any) => {
         return new Promise(async (resolve, reject) => {

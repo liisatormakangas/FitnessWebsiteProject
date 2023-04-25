@@ -31,6 +31,8 @@ const user = {
         const result = await pool.query(query,params);
         return result;
     },
+    
+    // from register to login 
     loginUser: async (username:any, password:any) => {
         // Query the database to check if the username exists
         const query = `SELECT TOP 1 FROM users WHERE username = $1`;

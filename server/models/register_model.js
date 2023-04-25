@@ -43,6 +43,7 @@ const user = {
         const result = yield db_js_1.default.query(query, params);
         return result;
     }),
+    // from register to login 
     loginUser: (username, password) => __awaiter(void 0, void 0, void 0, function* () {
         // Query the database to check if the username exists
         const query = `SELECT TOP 1 FROM users WHERE username = $1`;

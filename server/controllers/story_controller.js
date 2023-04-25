@@ -16,23 +16,31 @@ controller.get('/', (req, res) => {
     });
 });
 controller.get('/:id', (req, res) => {
-    //get token from request header
-    const token = req.headers.authorization;
-    if (token === "bearer null") {
-        res.status(401).json({
-            message: 'Please login or register'
+    story_model_js_1.default.getStoryById(parseInt(req.params.id)).then((data) => {
+        res.send(data.rows[0]);
+    }).catch((error) => {
+        res.status(500).send({
+            message: 'Some error occurred while retrieving stories.'
         });
-    }
-    else {
-        story_model_js_1.default.getStoryById(parseInt(req.params.id)).then((data) => {
-            res.send(data.rows[0]);
-        }).catch((error) => {
-            res.status(500).send({
-                message: 'Some error occurred while retrieving stories.'
-            });
-        });
-    }
+    });
 });
+// controller.get('/:id', (req, res) => {
+//     //get token from request header
+//     const token = req.headers.authorization; 
+//     if (token === "bearer null") {
+//         res.status(401).json({
+//             message: 'Please login or register'
+//         });
+//     } else {
+//     story.getStoryById(parseInt(req.params.id)).then((data: any) => {
+//         res.send(data.rows[0]);
+//     }).catch((error: any) => {
+//         res.status(500).send({
+//             message: 'Some error occurred while retrieving stories.'
+//         });
+//     });
+// }
+// });
 controller.post('/new', (req, res) => {
     story_model_js_1.default.addNewStory(req.body).then((data) => {
         res.send(data.rows);
