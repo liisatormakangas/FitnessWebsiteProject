@@ -15,6 +15,17 @@ const blogComments = document.getElementById("commentlist") as HTMLUListElement;
 const commentInput = document.getElementById("newcomment") as HTMLInputElement;
 const commentCount = document.getElementById("comment_count") as HTMLHeadElement;
 
+// Like/dislike buttons
+const likeButton = document.getElementById("green") as HTMLButtonElement;
+const dislikeButton = document.getElementById("red") as HTMLButtonElement;
+const likeCountSpan = document.getElementById("num-likes") as HTMLSpanElement;
+const dislikeCountSpan = document.getElementById("num-dislikes") as HTMLSpanElement;
+
+let likeCount: number = 0;
+let dislikeCount: number = 0;
+let likeClicked: boolean = false;
+let dislikeClicked: boolean = false;
+
 // This is used to get the story id from the url:
 const queryParams = new URLSearchParams(window.location.search);
 const id_story = Number(queryParams.get('id'));
@@ -33,6 +44,7 @@ const renderStory = (story: Story) => {
     blogFullText.innerText = story.story;
     blogDate.innerText = new Date(story.blog_date).toLocaleDateString('en-US', {day: 'numeric', month: 'long', year: 'numeric'} );
     blogAuthor.innerText = `By: ${story.author}`;
+    updateReactions(story);
     renderComments(story.comments);
 }
 
@@ -59,7 +71,7 @@ const renderComments = (comments: StoryComment[]) => {
         li.innerHTML = `
             <div class="comment">
                 <div class="comment-author">
-                    <h3>${comment.id_user}</h3>
+                    <h3>${comment.username}</h3>
                     <div class="meta">${new Date(comment.date_added).toLocaleDateString('en-US', {day: 'numeric', month: 'long', year: 'numeric'})}</div>
                 </div>
                 <div class="comment-content">
@@ -94,9 +106,7 @@ const renderComments = (comments: StoryComment[]) => {
 commentInput.addEventListener("keypress", (event: KeyboardEvent) => {
     if (event.key === "Enter") {
         event.preventDefault();
-        //TODO: fix user id
-        const userId = 1;
-        const comment = new StoryComment(0, id_story, userId, commentInput.value, new Date());
+        const comment = new StoryComment(0, id_story, 0, commentInput.value, new Date(), '');
         stories.addComment(comment).then((result: any) => {
             if (result) {
                 renderComments(result);
@@ -109,19 +119,6 @@ commentInput.addEventListener("keypress", (event: KeyboardEvent) => {
     }
 });
 
-    //delete a comment
-
-
-// Like/dislike buttons
-const likeButton = document.getElementById("green") as HTMLButtonElement;
-const dislikeButton = document.getElementById("red") as HTMLButtonElement;
-const likeCountSpan = document.getElementById("num-likes") as HTMLSpanElement;
-const dislikeCountSpan = document.getElementById("num-dislikes") as HTMLSpanElement;
-
-let likeCount: number = 0;
-let dislikeCount: number = 0;
-let likeClicked: boolean = false;
-let dislikeClicked: boolean = false;
 
 likeButton.addEventListener("click", () => {
   if (!likeClicked) {
@@ -143,22 +140,37 @@ likeButton.addEventListener("click", () => {
   }
 });
 
-dislikeButton.addEventListener("click", () => {
-  if (!dislikeClicked) {
-    dislikeCount++;
-    dislikeCountSpan.textContent = dislikeCount.toString();
-    dislikeButton.style.backgroundColor = "#FF0266";
-    dislikeClicked = true;
-    if (likeClicked) {
-      likeCount--;
-      likeCountSpan.textContent = likeCount.toString();
-      likeButton.style.backgroundColor = "transparent";
-      likeClicked = false;
+const updateReactions = (story: Story) => {
+    dislikeClicked = story.reaction_type === "dislike";
+    likeClicked = story.reaction_type === "like";
+    if (dislikeClicked) {
+        dislikeButton.style.backgroundColor = "#FF0266";
     }
-  } else {
-    dislikeCount--;
+    if (likeClicked) {
+        likeButton.style.backgroundColor = "#03DAC6";
+    }
+    likeCount = story.like_count;
+    dislikeCount = story.dislike_count;
+    likeCountSpan.textContent = likeCount.toString();
     dislikeCountSpan.textContent = dislikeCount.toString();
-    dislikeButton.style.backgroundColor = "transparent";
-    dislikeClicked = false;
-  }
+}
+
+dislikeButton.addEventListener("click", () => {
+    if (!dislikeClicked) {
+        dislikeCount++;
+        dislikeCountSpan.textContent = dislikeCount.toString();
+        dislikeButton.style.backgroundColor = "#FF0266";
+        dislikeClicked = true;
+        if (likeClicked) {
+          likeCount--;
+          likeCountSpan.textContent = likeCount.toString();
+          likeButton.style.backgroundColor = "transparent";
+          likeClicked = false;
+        }
+      } else {
+        dislikeCount--;
+        dislikeCountSpan.textContent = dislikeCount.toString();
+        dislikeButton.style.backgroundColor = "transparent";
+        dislikeClicked = false;
+      }
 });

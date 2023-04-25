@@ -1,11 +1,11 @@
 import { Register } from "./backendCalls/sendRegisterData.js";
-import { Login } from "./backendCalls/sendLoginData.js";
+
 
 const backendUrlRegister = "http://localhost:3001/register";
-const backendUrlLogin = "http://localhost:3001/login";
+
 
 const register = new Register(backendUrlRegister);
-const login = new Login(backendUrlLogin);
+
 
 
 const registerForm = document.getElementById("registerForm") as HTMLFormElement;
@@ -54,26 +54,3 @@ registerForm.addEventListener("submit", (event: Event) => {
 
     register.addRegisteredUser(formObject);
 });
-
-// loginForm.addEventListener("submit", (event: Event) => {
-//     event.preventDefault();
-
-//     const formData = new FormData(loginForm);
-//     const formObject = {};
-//     formData.forEach((value, key) => { formObject[key] = value });
-
-//     login.sendLoginData(formObject);
-
-loginForm.addEventListener("submit", (event: Event) => {
-    event.preventDefault();
-
-    const formData = new FormData(loginForm);
-    const formObject = {};
-    formData.forEach((value, key) => { formObject[key] = value });
-
-    login.sendLoginData(formObject);
-
-});
-
-
-

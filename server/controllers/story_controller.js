@@ -4,8 +4,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const story_model_js_1 = __importDefault(require("../models/story_model.js"));
 const controller = express_1.default.Router();
+const secretKey = process.env.SECRET_KEY;
 controller.get('/', (req, res) => {
     story_model_js_1.default.getAllStories().then((data) => {
         res.send(data.rows);
@@ -16,15 +18,25 @@ controller.get('/', (req, res) => {
     });
 });
 controller.get('/:id', (req, res) => {
-    //TODO: get user_id from token with jwt.decode
-    const user_id = 1;
-    story_model_js_1.default.getStoryById(parseInt(req.params.id), user_id).then((data) => {
-        res.send(data.rows[0]);
-    }).catch((error) => {
-        res.status(500).send({
-            message: 'Some error occurred while retrieving stories.'
+    //get token from request header
+    const token = req.headers.authorization;
+    if (!token || token.toLowerCase() === "bearer null") {
+        res.status(401).json({
+            message: 'Please login or register'
         });
-    });
+    }
+    else {
+        //get user id from token
+        const decoded = jsonwebtoken_1.default.decode(token.split(' ')[1]);
+        const userId = decoded.userid;
+        story_model_js_1.default.getStoryById(parseInt(req.params.id), userId).then((data) => {
+            res.send(data.rows[0]);
+        }).catch((error) => {
+            res.status(500).send({
+                message: 'Some error occurred while retrieving stories.' + error.message
+            });
+        });
+    }
 });
 controller.post('/new', (req, res) => {
     story_model_js_1.default.addNewStory(req.body).then((data) => {
@@ -38,7 +50,21 @@ controller.post('/new', (req, res) => {
 });
 //Post a comment to a story
 controller.post('/newcomment', (req, res) => {
-    story_model_js_1.default.addStoryComment(req.body).then((data) => {
+    const token = req.headers.authorization;
+    if (!token || token.toLowerCase() === "bearer null") {
+        res.status(401).json({
+            message: 'Please login or register'
+        });
+        return;
+    }
+    //get user id and username from token
+    const decoded = jsonwebtoken_1.default.decode(token.split(' ')[1]);
+    const userId = decoded.userid;
+    const username = decoded.username;
+    story_model_js_1.default.addStoryComment(req.body, userId).then((data) => {
+        data.rows.forEach((row) => {
+            row.username = username;
+        });
         res.send(data.rows);
         console.log(data.rows);
     }).catch((error) => {
@@ -63,7 +89,7 @@ controller.post('/newreaction', (req, res) => {
         console.log(data.rows);
     }).catch((error) => {
         res.status(500).send({
-            message: 'Some error occurred while posting story comment.'
+            message: 'Some error occurred while posting new story reaction.'
         });
     });
 });
@@ -74,9 +100,8 @@ controller.delete('/deletereaction/:story/:type', (req, res) => {
         res.send(data.rows);
     }).catch((error) => {
         res.status(500).send({
-            message: 'Some error occurred while deleting story comment.'
+            message: 'Some error occurred while deleting story reaction.'
         });
     });
 });
-// Count the number of comments for a story
 exports.default = controller;

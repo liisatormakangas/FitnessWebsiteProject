@@ -1,60 +1,73 @@
+export class Login {
+  #backendurl = "";
 
-class Login {
-    #backendurl = "";
-
-    constructor(backendurl: string) {
-        this.#backendurl = backendurl;
-    }
-
-    sendLoginData = async (formObject: object) => {
-        fetch(this.#backendurl, {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formObject)
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log( data);
-                if (data.message =='Login successful') {
-                    // Login successful, change login button text to logout
-                    document.getElementById("loginButton").textContent = "Logout";
-                    // Save the token in the browser's local storage
-                    localStorage.setItem("token", data.token);
-                    // Display a welcome message
-                    alert("Login successed. welcome! " + data.username);
-                    
-                } else {
-                    // Login failed, display error message
-                    alert("Login failed. Please try again.");
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert("An error occurred while processing your request. Please try again.");
-            })
-    
-            // const loginButton = document.getElementById("loginButton");
-
-            // if (loginButton.textContent === "Login") {
-            // // User is logged out, so show login form
-            // const loginForm = document.getElementById("loginForm");
-            // loginForm.style.display = "block";
-            // } else {
-            // // User is logged in, so show logout button
-            // const logoutButton = document.createElement("button");
-            // logoutButton.textContent = "Logout";
-            // logoutButton.addEventListener("click", () => {
-            //     // Handle logout logic here
-            // });
-
-            // loginButton.replaceWith(logoutButton);
-            // }
-           
-    }
-
+  constructor(backendurl: string) {
+      this.#backendurl = backendurl;
+  }   
+  sendLoginData = async (formObject:any) => {
+    console.dir(formObject);
+    fetch(this.#backendurl + '/login', {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          "userName": formObject.username,
+          "password":formObject.password
+          })
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(responseText => {
+      const resultJSON_Object = JSON.parse(responseText);
+      if(resultJSON_Object.success){
+        alert("Login successful. Welcome " + formObject.username + "!");
+        const cookie = new Cookies();
+        cookie.setCookie("session_token", resultJSON_Object.token, 1);
+        window.location.reload();
+      }
+    })
+    .catch(error => {
+      console.error(error);
+      alert("Error occured while logging in");
+    });
+  }
 }
 
-export { Login };
+export class Cookies {
+  setCookie = (name, value, days) => {
+    let expires = "";
+    if (days) {
+      const date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+  }
+
+  getCookie = (name) => {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for(let i=0;i < ca.length;i++) {
+      let c = ca[i];
+      while (c.charAt(0)==' ') c = c.substring(1,c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+  }
+  // this is used to check if user is logged in with cookie name session token
+  isCookieSet = (name) => {
+    if(this.getCookie(name) == null){
+      return false;
+    }
+    return true;
+  }
+}
+     
+
+
 

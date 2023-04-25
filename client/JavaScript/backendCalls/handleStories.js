@@ -19,6 +19,7 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
 var _Stories_backendUrl, _Stories_readJson;
+import { Cookies } from './sendLoginData.js';
 import { Story } from './story.js';
 class Stories {
     constructor(backendUrl) {
@@ -37,9 +38,23 @@ class Stories {
             }));
         });
         this.getStoryById = (id) => __awaiter(this, void 0, void 0, function* () {
+            // get token from cookie
+            const token = new Cookies().getCookie('session_token');
             return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
-                fetch(__classPrivateFieldGet(this, _Stories_backendUrl, "f") + "/" + id)
-                    .then(response => response.json())
+                fetch(__classPrivateFieldGet(this, _Stories_backendUrl, "f") + "/" + id, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                        // send token through Authorization header
+                    }
+                })
+                    .then(response => {
+                    if (response.status === 200) {
+                        return response.json();
+                    }
+                    else {
+                        throw new Error(`${response.statusText}.Please register or login`);
+                    }
+                })
                     .then(response => {
                     resolve(response); //returns a single Story object
                 })
@@ -49,11 +64,14 @@ class Stories {
             }));
         });
         this.addComment = (comment) => __awaiter(this, void 0, void 0, function* () {
+            // get token from cookie
+            const token = new Cookies().getCookie('session_token');
             return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
                 fetch(__classPrivateFieldGet(this, _Stories_backendUrl, "f") + "/newcomment", {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`
                     },
                     body: JSON.stringify(comment)
                 })
