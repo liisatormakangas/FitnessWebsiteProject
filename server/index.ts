@@ -2,9 +2,8 @@ import express, { Express, Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
-import loginController from './controllers/login_controller.js';
 
-
+import loginRouter from './controllers/login_controller.js';
 import storyRouter from './controllers/story_controller.js';
 import courseRouter from './controllers/course_controller.js';
 import cartRouter from './controllers/cart_controller.js';
@@ -23,6 +22,6 @@ app.use('/story', storyRouter);
 app.use('/course', courseRouter);
 app.use('/cart', cartRouter);
 app.use('/register', registerRouter);
-app.use('/login', loginController);
+app.use('/login', loginRouter);
 
 app.listen(PORT)

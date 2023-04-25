@@ -4,8 +4,8 @@ import story from '../models/story_model.js';
 const controller = express.Router();
 
 controller.get('/', (req, res) => {
-    story.getAllStories().then((data: any) => {      
-        res.send(data.rows);        
+    story.getAllStories().then((data: any) => {
+        res.send(data.rows);
     }).catch((error: any) => {
         res.status(500).send({
             message: 'Some error occurred while retrieving stories.'
@@ -14,14 +14,6 @@ controller.get('/', (req, res) => {
 });
 
 controller.get('/:id', (req, res) => {
-    //get token from request header
-    const token = req.headers.authorization; 
-
-    if (token === "bearer null") {
-        res.status(401).json({
-            message: 'Please login or register'
-        });
-    } else {
     story.getStoryById(parseInt(req.params.id)).then((data: any) => {
         res.send(data.rows[0]);
     }).catch((error: any) => {
@@ -29,14 +21,13 @@ controller.get('/:id', (req, res) => {
             message: 'Some error occurred while retrieving stories.'
         });
     });
-}
 });
 
 controller.post('/new', (req, res) => {
-    story.addNewStory(req.body).then((data: any) => {        
+    story.addNewStory(req.body).then((data: any) => {
         res.send(data.rows);
         console.log(data.rows);
-        
+
     }).catch((error: any) => {
         res.status(500).send({
             message: 'Some error occurred while posting story.'
@@ -44,12 +35,12 @@ controller.post('/new', (req, res) => {
     });
 });
 
-    //Post a comment to a story
+//Post a comment to a story
 controller.post('/newcomment', (req, res) => {
-    story.addStoryComment(req.body).then((data: any) => {        
+    story.addStoryComment(req.body).then((data: any) => {
         res.send(data.rows);
         console.log(data.rows);
-        
+
     }).catch((error: any) => {
         res.status(500).send({
             message: 'Some error occurred while posting story comment.'
@@ -57,7 +48,7 @@ controller.post('/newcomment', (req, res) => {
     });
 });
 
-    // Delete a comment from a story
+// Delete a comment from a story
 controller.delete('/deletecomment/:id', (req, res) => {
     story.deleteStoryComment(parseInt(req.params.id)).then((data: any) => {
         res.send(data.rows);
@@ -67,7 +58,7 @@ controller.delete('/deletecomment/:id', (req, res) => {
         });
     });
 });
-    // Update a comment from a story
+// Update a comment from a story
 /* controller.put('/updatecomment', (req, res) => {
     story.updateStoryComment(req.body).then((data: any) => {
         res.send(data.rows);
