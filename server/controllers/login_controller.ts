@@ -3,7 +3,7 @@ import express from 'express';
 import jwt, { JwtPayload } from 'jsonwebtoken';
 import loginUser from '../models/login_model';
 import { config } from 'dotenv';
-import cookieParser from 'cookie-parser';
+//import cookieParser from 'cookie-parser';
 import pool from '../db.js';
 import bcrypt from 'bcryptjs';
 

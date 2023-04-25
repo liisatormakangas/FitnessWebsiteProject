@@ -57,8 +57,8 @@ const story = {
         return result;
     }),
     // post a reaction to a story
-    addStoryReaction: (body) => __awaiter(void 0, void 0, void 0, function* () {
-        const result = yield db_js_1.default.query('insert into story_reactions (id_story, id_user, reaction_type) VALUES ($1, $2, $3) RETURNING *', [body.id_story, body.id_user, body.reaction_type]);
+    addStoryReaction: (body, id_user) => __awaiter(void 0, void 0, void 0, function* () {
+        const result = yield db_js_1.default.query('insert into story_reactions (id_story, id_user, reaction_type) VALUES ($1, $2, $3) RETURNING *', [body.id_story, id_user, body.reactionType]);
         return result;
     }),
     // delete reaction from a story
@@ -67,8 +67,8 @@ const story = {
         return result;
     }),
     // delete a comment from a story
-    deleteStoryComment: (id) => __awaiter(void 0, void 0, void 0, function* () {
-        const result = yield db_js_1.default.query('DELETE FROM comments WHERE id_response = $1', [id]);
+    deleteStoryComment: (id, id_user) => __awaiter(void 0, void 0, void 0, function* () {
+        const result = yield db_js_1.default.query('DELETE FROM comments WHERE id_response = $1 and id_user = $2', [id, id_user]);
         return result;
     }),
 };

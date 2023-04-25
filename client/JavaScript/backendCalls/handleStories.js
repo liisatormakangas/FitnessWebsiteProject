@@ -43,9 +43,9 @@ class Stories {
             return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
                 fetch(__classPrivateFieldGet(this, _Stories_backendUrl, "f") + "/" + id, {
                     headers: {
+                        'Content-Type': 'application/json',
                         Authorization: `Bearer ${token}`
-                        // send token through Authorization header
-                    }
+                    },
                 })
                     .then(response => {
                     if (response.status === 200) {
@@ -86,11 +86,58 @@ class Stories {
         });
         //delete comment
         this.deleteComment = (id) => __awaiter(this, void 0, void 0, function* () {
+            // get token from cookie
+            const token = new Cookies().getCookie('session_token');
             return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
                 fetch(__classPrivateFieldGet(this, _Stories_backendUrl, "f") + "/deletecomment/" + id, {
                     method: 'DELETE',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`
+                    }
+                })
+                    .then(response => {
+                    resolve(response);
+                })
+                    .catch(error => {
+                    reject(error);
+                });
+            }));
+        });
+        this.addReaction = (id_story, reactionType) => __awaiter(this, void 0, void 0, function* () {
+            // get token from cookie
+            const token = new Cookies().getCookie('session_token');
+            return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
+                fetch(__classPrivateFieldGet(this, _Stories_backendUrl, "f") + "/newreaction", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`
+                    },
+                    body: JSON.stringify({
+                        id_story: id_story,
+                        reactionType: reactionType,
+                    })
+                })
+                    .then(response => response.json())
+                    .then(response => {
+                    resolve(response);
+                })
+                    .catch(error => {
+                    reject(error);
+                });
+            }));
+        });
+        //delete reaction
+        this.deleteReaction = (id_story, reactionType) => __awaiter(this, void 0, void 0, function* () {
+            // get token from cookie
+            const token = new Cookies().getCookie('session_token');
+            return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
+                fetch(__classPrivateFieldGet(this, _Stories_backendUrl, "f") + "/deletereaction/" + id_story + '/' + reactionType, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`
                     }
                 })
                     .then(response => {

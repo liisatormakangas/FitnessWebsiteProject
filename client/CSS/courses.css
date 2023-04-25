@@ -41,7 +41,7 @@
       background-color: #000;
       color: #fff;
       width: 300px;
-      height: 480px;
+      height: 610px;
       padding: 5px;
       text-align: center;
       position: relative;
@@ -74,10 +74,10 @@
       padding: 15px 0;
       background-color: #03DAC6;
       box-shadow: 0 5px 10px rgba(0,0,0,.1);
-      color: #fff;
+      color: black;
       font: 700 18px/1 'Lato', sans-serif;
       text-shadow: 0 1px 1px rgba(0,0,0,.2);
-      text-transform: uppercase;
+      /* text-transform: uppercase; */
       text-align: center;
     }
     /* top right*/
@@ -117,14 +117,14 @@
   }
     p {
       font-size: 14px;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
       text-align: justify;
     }
   
     .view-more {
-      position: relative; 
-      bottom: 10px;
-      left: 10px;
+      position: absolute; 
+      bottom: 12%;
+      right: 10px;
       color: white;
       border: none;
       /* padding: 10px 10px; */
@@ -134,7 +134,7 @@
       text-decoration: underline;
       /* text-align: left; */
       font-weight: bold;
-      padding-left: 20px;
+      
     }
     .view-more:hover {
       color: #FF0266;

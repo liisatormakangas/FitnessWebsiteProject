@@ -48,22 +48,11 @@ const renderStory = (story: Story) => {
     renderComments(story.comments);
 }
 
-// render the comments
-/* const renderComments = (comments: StoryComment[]) => {
-    commentCount.innerText = `Comments (${comments.length})`; // update the comment count
-
-    comments.forEach((comment: StoryComment) => {
-        const li = document.createElement("li");
-        li.setAttribute('class', 'list-group-item');
-        li.innerHTML = '<li><div class="comment"><div class="comment-author"><h3>' + comment.id_user + 
-                        '</h3><div class="meta">' + new Date(comment.date_added).toLocaleDateString('en-US', {day: 'numeric', month: 'long', year: 'numeric'} ) + 
-                        '</div></div><div class="comment-content"><p>' + comment.content + '</p></div></div></li>';
-        blogComments.appendChild(li);
-    });
-} */
+const blogCommentList: StoryComment[] = [];
 
 const renderComments = (comments: StoryComment[]) => {
-    commentCount.innerText = `Comments (${comments.length})`; // update the comment count
+    blogCommentList.push(...comments);
+    commentCount.innerText = `Comments (${blogCommentList.length})`; // update the comment count
 
     comments.forEach((comment: StoryComment) => {
         const li = document.createElement("li");
@@ -83,19 +72,23 @@ const renderComments = (comments: StoryComment[]) => {
             </div>`;
         blogComments.insertBefore(li, blogComments.firstChild);
 
-        const deleteBtn = li.querySelector('.delete-comment-btn');
+        const deleteBtn = li.querySelector('.delete-comment-btn') as HTMLButtonElement;
+        // hide delete button if the comment is not made by the logged in user
+        if (comment.canDelete !== true) {
+            deleteBtn.style.display = 'none';
+        }
         deleteBtn.addEventListener('click', () => {
             // delete the comment from the database
             stories.deleteComment(comment.id_response).then((result: any) => {
                 // remove the comment from the comments array
-                const commentIndex = comments.indexOf(comment);
-                comments.splice(commentIndex, 1);
+                const commentIndex = blogCommentList.indexOf(comment);
+                blogCommentList.splice(commentIndex, 1);
 
                 // remove the li element from the DOM
                 li.remove();
 
                 // update the comment count
-                commentCount.innerText = `Comments (${comments.length})`;
+                commentCount.innerText = `Comments (${blogCommentList.length})`;
             }).catch((error: any) => {
                 alert(error);
             });
@@ -106,7 +99,7 @@ const renderComments = (comments: StoryComment[]) => {
 commentInput.addEventListener("keypress", (event: KeyboardEvent) => {
     if (event.key === "Enter") {
         event.preventDefault();
-        const comment = new StoryComment(0, id_story, 0, commentInput.value, new Date(), '');
+        const comment = new StoryComment(0, id_story, 0, commentInput.value, new Date(), '', true);
         stories.addComment(comment).then((result: any) => {
             if (result) {
                 renderComments(result);
@@ -117,27 +110,6 @@ commentInput.addEventListener("keypress", (event: KeyboardEvent) => {
             alert(error);
         });
     }
-});
-
-
-likeButton.addEventListener("click", () => {
-  if (!likeClicked) {
-    likeCount++;
-    likeCountSpan.textContent = likeCount.toString();
-    likeButton.style.backgroundColor = "#03DAC6";
-    likeClicked = true;
-    if (dislikeClicked) {
-      dislikeCount--;
-      dislikeCountSpan.textContent = dislikeCount.toString();
-      dislikeButton.style.backgroundColor = "transparent";
-      dislikeClicked = false;
-    }
-  } else {
-    likeCount--;
-    likeCountSpan.textContent = likeCount.toString();
-    likeButton.style.backgroundColor = "transparent";
-    likeClicked = false;
-  }
 });
 
 const updateReactions = (story: Story) => {
@@ -155,22 +127,54 @@ const updateReactions = (story: Story) => {
     dislikeCountSpan.textContent = dislikeCount.toString();
 }
 
-dislikeButton.addEventListener("click", () => {
-    if (!dislikeClicked) {
-        dislikeCount++;
-        dislikeCountSpan.textContent = dislikeCount.toString();
-        dislikeButton.style.backgroundColor = "#FF0266";
-        dislikeClicked = true;
-        if (likeClicked) {
-          likeCount--;
-          likeCountSpan.textContent = likeCount.toString();
-          likeButton.style.backgroundColor = "transparent";
-          likeClicked = false;
+likeButton.addEventListener("click", () => {
+  if (!likeClicked) {    
+    stories.addReaction(id_story, "like").then((result: any) => {      
+        likeCount++;
+        likeCountSpan.textContent = likeCount.toString();
+        likeButton.style.backgroundColor = "#03DAC6";
+        likeClicked = true;
+        if (dislikeClicked) {
+            stories.deleteReaction(id_story, "dislike").then((result: any) => {
+                dislikeCount--;
+                dislikeCountSpan.textContent = dislikeCount.toString();
+                dislikeButton.style.backgroundColor = "transparent";
+                dislikeClicked = false;
+            });
         }
+    });
+  } else {    
+    stories.deleteReaction(id_story, "like").then((result: any) => {
+    likeCount--;
+    likeCountSpan.textContent = likeCount.toString();
+    likeButton.style.backgroundColor = "transparent";
+    likeClicked = false;
+    });
+  }
+});
+
+dislikeButton.addEventListener("click", () => {
+    if (!dislikeClicked) {        
+        stories.addReaction(id_story, "dislike").then((result: any) => {    
+            dislikeCount++;
+            dislikeCountSpan.textContent = dislikeCount.toString();
+            dislikeButton.style.backgroundColor = "#FF0266";
+            dislikeClicked = true;
+            if (likeClicked) {
+                stories.deleteReaction(id_story, "like").then((result: any) => {
+                    likeCount--;
+                    likeCountSpan.textContent = likeCount.toString();
+                    likeButton.style.backgroundColor = "transparent";
+                    likeClicked = false;
+                });
+            }
+        });
       } else {
-        dislikeCount--;
-        dislikeCountSpan.textContent = dislikeCount.toString();
-        dislikeButton.style.backgroundColor = "transparent";
-        dislikeClicked = false;
+        stories.addReaction(id_story, "dislike").then((result: any) => {    
+            dislikeCount--;
+            dislikeCountSpan.textContent = dislikeCount.toString();
+            dislikeButton.style.backgroundColor = "transparent";
+            dislikeClicked = false;
+        });
       }
 });

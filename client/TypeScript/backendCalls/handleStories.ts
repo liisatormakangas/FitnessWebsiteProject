@@ -28,12 +28,12 @@ class Stories {
         // get token from cookie
         const token = new Cookies().getCookie('session_token');
         return new Promise(async (resolve, reject) => {
-            fetch(this.#backendUrl + "/" + id, {
-                headers: {
-                    Authorization: `Bearer ${token}` 
-                    // send token through Authorization header
-                }
-            })
+            fetch(this.#backendUrl + "/" + id, {                
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}` 
+                    },
+                })
                 .then(response => {
                     if (response.status === 200){
                         return response.json();
@@ -45,8 +45,8 @@ class Stories {
                     resolve(response);//returns a single Story object
                 })
                 .catch(error => {
-                    reject(error);  
-                });
+                    reject(error);
+                });  
         });
 
     };
@@ -75,11 +75,60 @@ class Stories {
 
     //delete comment
     deleteComment = async (id: number) => {
+        // get token from cookie
+        const token = new Cookies().getCookie('session_token');
         return new Promise(async (resolve, reject) => {
             fetch(this.#backendUrl + "/deletecomment/" + id, {
                 method: 'DELETE',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',                    
+                    Authorization: `Bearer ${token}` 
+                }
+            })
+                .then(response => {
+                    resolve(response);
+                })
+                .catch(error => {
+                    reject(error);
+                });
+        });
+    };
+
+    addReaction = async (id_story: number, reactionType: string) => {
+        // get token from cookie
+        const token = new Cookies().getCookie('session_token');
+        return new Promise(async (resolve, reject) => {
+            fetch(this.#backendUrl + "/newreaction", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}` 
+                },
+                body: JSON.stringify({
+                    id_story: id_story,
+                    reactionType: reactionType,
+                })
+            })
+                .then(response => response.json())
+                .then(response => {
+                    resolve(response);
+                })
+                .catch(error => {
+                    reject(error);
+                });
+        });
+    };
+
+    //delete reaction
+    deleteReaction = async (id_story: number, reactionType: string) => {
+        // get token from cookie
+        const token = new Cookies().getCookie('session_token');
+        return new Promise(async (resolve, reject) => {
+            fetch(this.#backendUrl + "/deletereaction/" + id_story + '/' + reactionType, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',                    
+                    Authorization: `Bearer ${token}` 
                 }
             })
                 .then(response => {
