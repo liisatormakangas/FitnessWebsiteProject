@@ -511,7 +511,7 @@ insert into courses (
         60.00,
         500.00
         );
-
+/* 
     insert into cart(
         id_user,
         id_course
@@ -540,7 +540,7 @@ insert into comments (
         'I really like this course, it is very fun and the trainer is very nice!',
         '2020-12-01'
         );
-
+ */
 create table story_reactions (
     id_reaction serial primary key,
     id_story int not null,
