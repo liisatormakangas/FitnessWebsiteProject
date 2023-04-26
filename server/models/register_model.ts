@@ -6,6 +6,15 @@ const user = {
     registerUser: async (user_data: any) => {
         // Hash the password before storing it in the database
         const hashedPassword = await bcrypt.hash(user_data.passwd, 10);
+      
+         // Check if the username already exists in the database
+         const query_check_username = `SELECT * FROM users WHERE username = $1`;
+         const result_check_username = await pool.query(query_check_username, [user_data.username]);
+        
+         if (result_check_username.rows.length > 0) {
+             throw new Error('Username already exists');
+         }else{
+            // Query the database to insert the user data
         const query = `INSERT INTO users (
             firstname,
             lastname,
@@ -30,6 +39,7 @@ const user = {
             ];
         const result = await pool.query(query,params);
         return result;
+        }
     },
     
     // from register to login 
