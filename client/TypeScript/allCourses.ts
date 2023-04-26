@@ -82,10 +82,6 @@ const renderCourses = (course: Course) => {
 			const token = cookie.getCookie("session_token");
 			const decodedToken = JSON.parse(atob(token.split('.')[1]));
 			const username = decodedToken.username;
-
-			//here are now the variables username and id_course that we need to send to the backend
-			console.log(course.id_course);
-			console.log(username);
 			
 		} else {
 			alert("You need to be logged in to enroll in a course");

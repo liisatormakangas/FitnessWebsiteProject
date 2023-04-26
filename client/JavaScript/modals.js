@@ -10,11 +10,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import { Login, Cookies } from './backendCalls/sendLoginData.js';
 // form validation for login
 const loginForm = document.getElementById("loginForm");
-const loginButton = document.getElementById('loginButton');
 //these variables create the login and register modals
 const registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
 const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
-// export const notificationModal = new bootstrap. Modal(document.getElementById('notificationModal'));
 loginForm.addEventListener('submit', (event) => __awaiter(void 0, void 0, void 0, function* () {
     event.preventDefault();
     event.stopPropagation();
@@ -64,6 +62,7 @@ const modals = () => {
     const registerButton = document.getElementById('registerButton');
     const linkToLogin = document.getElementById('toLogin');
     const linkToRegister = document.getElementById('toRegister');
+    const joinUsNowButton = document.getElementById("joinUsNow");
     //these event listeners handle the buttons and opens and closes the modals
     // login button event listener
     registerButton.addEventListener('click', () => {
@@ -79,6 +78,16 @@ const modals = () => {
     linkToRegister.addEventListener('click', () => {
         loginModal.hide();
         registerModal.show();
+    });
+    joinUsNowButton.addEventListener('click', () => {
+        const cookie = new Cookies();
+        const isLoggedIn = cookie.isCookieSet("session_token");
+        if (isLoggedIn) {
+            return;
+        }
+        else {
+            registerModal.show();
+        }
     });
     const logoutButton = document.getElementById('logoutButton');
     logoutButton.addEventListener('click', () => {

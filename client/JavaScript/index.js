@@ -1,10 +1,12 @@
 import { Register } from "./backendCalls/sendRegisterData.js";
+import { Cookies } from "./backendCalls/sendLoginData.js";
 const backendUrlRegister = "http://localhost:3001/register";
 const register = new Register(backendUrlRegister);
 const registerForm = document.getElementById("registerForm");
 const passwordInput = document.getElementById('passwd');
 const confirmPasswordInput = document.getElementById('passwd2');
 const loginForm = document.getElementById("loginForm");
+const blogLinks = document.querySelectorAll(".blog-btn");
 registerForm.addEventListener('submit', (event) => {
     if (!registerForm.checkValidity()) {
         event.preventDefault();
@@ -40,4 +42,18 @@ registerForm.addEventListener("submit", (event) => {
         console.log("formObject[key]");
     });
     register.addRegisteredUser(formObject);
+});
+blogLinks.forEach((blogLink) => {
+    blogLink.addEventListener("click", (event) => {
+        event.preventDefault();
+        const cookie = new Cookies();
+        const isLoggedIn = cookie.isCookieSet("session_token");
+        if (isLoggedIn) {
+            const id = event.currentTarget.getAttribute('data-id');
+            window.location.href = `blogArticle.html?id=${id}`;
+        }
+        else {
+            alert("You need to be logged in to enroll in a course");
+        }
+    });
 });
