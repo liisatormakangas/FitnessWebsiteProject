@@ -49,7 +49,7 @@
     </div><!-- upper menu ends here -->
     <nav class="navbar navbar-expand-lg bg-black"><!-- bottom menu starts here -->
       <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="./images/white-male-g2f8d9956c_640.jpg" alt="logo"></a>
+        <a class="navbar-brand" href="#"><img src="./images/fitnhealth-low-resolution-color-logo.png" alt="logo"></a>
         <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
           aria-label="Toggle navigation">
@@ -89,7 +89,7 @@
     <div class="container-fluid brd-crmb-container"><!-- bread crumb starts -->
       <ul class="breadcrumb">
         <li><a href="index.html">Home</a></li>
-        <li><a href="blogs.html">Blogs</a></li>
+        <li><a href="blogs.html">Blog</a></li>
         <li>Blog</li>
       </ul>
     </div><!-- bread crumb ends -->
@@ -104,26 +104,14 @@
         </div>
         
         <div id="storyFullText" class="content-text"></div>
-        <!-- <br>
-        <br> -->
+        <!-- Reaction like/dislike -->
         <div class="react-container">
-          <div class="like-button">
-            <button>
-              Like <i class="fa-solid fa-thumbs-up"></i>
-            </button>
-          </div>
-          <div class="dislike-button">
-            <button>
-              Dislike <i class="fa-solid fa-thumbs-down"></i>
-            </button>
-          </div>
-          <div class="share-button">
-            <button>
-              Share <i class="fas fa-share-alt"></i>
-            </button>
-          </div>
+          <button class="btn" id="green"><i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i><span id="num-likes">0</span></button>
+          <button class="btn" id="red"><i class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i><span id="num-dislikes">0</span></button>
+          <button class="btn" id="share"><i class="fas fa-share-alt fa-lg"></i><span id="num-shares">0</span></button>
         </div>
-        <h3>Comments</h3>
+       
+        <h3 id="comment_count">Comments</h3>
         <form>
           <input id="newcomment" class="form-control" placeholder="Enter a new comment...">
         </form>
@@ -138,12 +126,12 @@
         <div class="col-md-4">
           <div class="footerlogo">
             <a href="#">
-              <img src="./images/white-male-g2f8d9956c_640.jpg" alt="logo">
+              <img src="./images/fitnhealth-low-resolution-logo-color-on-transparent-background (1).png"  alt="logo">
             </a>
 
           </div>
           <ul class="list-unstyled">
-            <li><a href="#" class="text-decoration-none ">Fitness</a></li>
+            <!--<li><a href="#" class="text-decoration-none ">Fitness</a></li>-->
             <li><a href="#" class="text-decoration-none">Terms and Conditions</a></li>
             <p>&copy; 2023 Fitness Web</p>
           </ul>
@@ -171,8 +159,8 @@
 
     </div>
   </footer><!-- footer ends -->
-  <!-- login modal -->
- <div class="modal" tabindex="-1" id="loginModal">
+<!-- login modal -->
+<div class="modal" tabindex="-1" id="loginModal">
   <div class="modal-dialog">
       <div class="modal-content">
           <div class="modal-header modHeader">
@@ -196,7 +184,7 @@
                       </div>
                       <div style="margin-bottom: 20px">
                           <label class="form-label" for="password">password:</label>
-                          <input class="form-control loginInput" type="text" id="password" name="password"
+                          <input class="form-control loginInput" type="password" id="password" name="password"
                               required>
                           <div class="invalid-feedback">Please enter a password.</div>
                       </div>
@@ -315,10 +303,6 @@
       integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
       crossorigin="anonymous"></script>
   <!-- Load your custom scripts -->
-  <script src="./JavaScript/modals.js" type="module"></script>
-  
-
+<script src="./JavaScript/modals.js" type="module"></script>
 </body>
-
-
 </html>

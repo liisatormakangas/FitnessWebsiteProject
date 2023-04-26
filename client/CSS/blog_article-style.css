@@ -141,82 +141,45 @@
     gap: 20px;
   margin-bottom: 40px;
   margin-top: 40px;
-  margin-left: 20px;
-  margin-right: 20px;
 }
-/*Style for SAVE fearture*/
-.like-button {
-  display: flex;
-  justify-content: center;
-}
-
-.like-button button {
-  display: flex;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: #03DAC6;
-  color: black;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-} 
-.like-button button i {
-  margin-right: 10px;
-  margin-left: 10px;
-  font-size: 16px;
-}
-.like-button button:hover {
-  background-color: #FF0266;
+  /* Like/dislike buutons- icons */
+  .green{
+    color: #03DAC6;
   }
-
-/*Style for rate button*/
-.dislike-button button {
-  display: flex;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: #03DAC6;
-  color: black;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.dislike-button i {
-  color: black;
-  font-size: 16px;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-.dislike-button button:hover {
-  background-color: #FF0266;
+  
+  .red{
+    color: #FF0266;
   }
-/*Style for share button*/
-.share-button button {
-  display: flex;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: #03DAC6;
-  color: black;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.share-button i {
-  color: black;
-  font-size: 16px;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-.share-button button:hover {
-  background-color: #FF0266;
+  #num-likes {
+    padding-left: 10px;
   }
+  #num-dislikes {
+    padding-left: 10px;
+  }
+  #num-shares {
+    padding-left: 10px;
+  }
+  .btn{
+    background-color:white;
+    border-radius: 20px;
+    border: 1px solid black;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  /* comments */
+  form {
+    border: 1px solid black;
+    margin: 20px 0;
+  }
+  .delete-comment-btn {
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: white;
+  }
+  .delete-comment-btn:hover {
+    background-color: #FF0266;
+    }
+
 /* breadcrumbs style */
 ul.breadcrumb {
     padding: 10px 16px;
@@ -291,3 +254,4 @@ footer {
     font-size: 2em;
     margin-right: 40px;
   }
+

@@ -4,7 +4,7 @@ const register = new Register(backendUrlRegister);
 const registerForm = document.getElementById("registerForm");
 const passwordInput = document.getElementById('passwd');
 const confirmPasswordInput = document.getElementById('passwd2');
-// const loginForm = document.getElementById("loginForm") as HTMLFormElement;
+const loginForm = document.getElementById("loginForm");
 registerForm.addEventListener('submit', (event) => {
     if (!registerForm.checkValidity()) {
         event.preventDefault();

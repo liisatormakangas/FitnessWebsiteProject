@@ -66,6 +66,7 @@ create table cart (
         on delete restrict on update cascade
 );
 
+
 insert into users (
 	firstname,
 	lastname,
@@ -88,26 +89,6 @@ insert into users (
 		'Bigcity',
 		'+358 50 123456'
 	);
-
-
-insert into stories (
-    -- change this later
-    author,
-    title,
-    story,
-    blog_date)
-	values (
-        '@John',
-        'Five Exercises for Stronger Triceps',
-         'I did it! I ran my first full marathon and it was an experience of a lifetime. Crossing that finish line after months of training was one of the most fulfilling moments of my life. Now that it is over, I wanted to share my journey with all of you. 
-First of all, I have to admit that I was never an avid runner. In fact, running used to be my least favourite activity. However, a few years ago, I decided to challenge myself and signed up for my first 5k. From there, I began to enjoy the rush of endorphins and the feeling of accomplishment that came with finishing a race. So, I continued to run and set higher goals for myself. 
-When I decided to run a full marathon, I knew it was going to be a massive challenge. I started by researching training programs online and reading books about long-distance running. I also spoke to other runners and got advice from experienced marathoners. Finally, I put together a training plan that worked for me. 
-My training plan consisted of running five days a week, with gradually increasing mileage each week. I also incorporated strength training and cross-training at gym to prevent injuries and build overall fitness. I followed a strict diet plan that consisted of a balance of protein, carbs, and healthy fats to fuel my body for the long runs. 
-During my training, I faced several obstacles, such as injuries, mental burnout, and self-doubt. However, I kept reminding myself of my end goal and pushed through the challenges. I also found that having a running buddy and joining a running group helped me stay motivated and accountable. 
-Finally, race day arrived, and I felt a mix of excitement and nerves. But I also felt I was ready for this and that was just an incredible day! It was not about the marathon, it was about achieving a goal I had set to myself.'
-        '2023-03-27'
-        'blog_triceps.jpg'
-        );
 
 insert into stories (
     author,
@@ -527,7 +508,7 @@ insert into courses (
         60.00,
         500.00
         );
-
+/* 
     insert into cart(
         id_user,
         id_course
@@ -556,4 +537,25 @@ insert into comments (
         'I really like this course, it is very fun and the trainer is very nice!',
         '2020-12-01'
         );
-    
+ */
+create table story_reactions (
+    id_reaction serial primary key,
+    id_story int not null,
+    id_user int not null,
+    reaction_type varchar(255) not null,
+    foreign key (id_story) references stories(id_story),
+    foreign key (id_user) references users(id_user)
+    );
+
+insert into story_reactions (
+    id_story,
+    id_user,
+    reaction_type
+    )
+    values (
+        1,
+        1,
+        'like'
+        );
+
+        

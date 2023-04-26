@@ -1,11 +1,10 @@
 import { Story } from './backendCalls/story.js';
 import { Stories } from './backendCalls/handleStories.js';
-import {Cookies} from './backendCalls/sendLoginData.js';
+import { Cookies } from './backendCalls/sendLoginData.js';
 
 const backendUrl = "http://localhost:3001/story";
 
 const stories = new Stories(backendUrl);
-const cookie = new Cookies();
 
 const blogContainer = document.getElementById("container") as HTMLDivElement;
 
@@ -96,25 +95,24 @@ const renderStories = (story: Story) => {
     paragraphElement.innerText = paragraph;
     cardBody.appendChild(paragraphElement);
 
-    
-  // create the read more link
-  const readMoreLink = document.createElement('a');
-  readMoreLink.className = 'btn read-more-link';
-//   readMoreLink.href = `blogArticle.html?id=${story.id_story}`;
-  readMoreLink.innerText = 'Read more >>';
-  cardBody.appendChild(readMoreLink);
+    //creating the read more link
+    const readMore = document.createElement("a");
+    readMore.className = "btn read-more-link";
 
-  readMoreLink.addEventListener('click', () => {
-    const isLoggedIn = cookie.isCookieSet('session_token');
-    if (isLoggedIn) {
-      window.location.href = `blogArticle.html?id=${story.id_story}`;
-    } else {
-      alert('You need to be logged in to read more');
-    }
-  });
-  
+    //readMore.href = "blogArticle.html?id=" + story.id_story;
+    readMore.innerText = "Read More >>";
+    cardBody.appendChild(readMore);
 
     blogCard.appendChild(cardBody);
     blogContainer.appendChild(blogCard);
-}
 
+    readMore.addEventListener('click', () => {
+        const cookie = new Cookies();
+        const isLoggedIn = cookie.isCookieSet("session_token");
+        if (isLoggedIn) {
+            window.location.href = `blogArticle.html?id=${story.id_story}`;
+        } else {
+            alert("You need to be logged in to read the full article");
+        }
+    });
+};

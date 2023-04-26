@@ -15,6 +15,7 @@
   "dependencies": {
     "@types/co": "^4.6.3",
     "@types/cors": "^2.8.13",
+    "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.17",
     "@types/jsonwebtoken": "^9.0.1",
     "@types/node": "^18.15.11",
@@ -37,4 +38,5 @@
     "@types/cookie-parser": "^1.4.3",
     "@types/dotenv": "^8.2.0"
   }
+ 
 }

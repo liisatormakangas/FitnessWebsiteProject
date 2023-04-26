@@ -12,7 +12,7 @@ const registerForm = document.getElementById("registerForm") as HTMLFormElement;
 const passwordInput = document.getElementById('passwd') as HTMLInputElement;
 const confirmPasswordInput = document.getElementById('passwd2') as HTMLInputElement;
 
-// const loginForm = document.getElementById("loginForm") as HTMLFormElement;
+const loginForm = document.getElementById("loginForm") as HTMLFormElement;
 
 registerForm.addEventListener('submit', (event) => {
     if (!registerForm.checkValidity()) {
@@ -54,5 +54,3 @@ registerForm.addEventListener("submit", (event: Event) => {
 
     register.addRegisteredUser(formObject);
 });
-
-
