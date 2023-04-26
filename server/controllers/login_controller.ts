@@ -19,7 +19,7 @@ controller.post('/', async (req, res) => {
   try {
      // Verify the username and password of the user trying to log in
     const user = await loginUser(userName, password);
-    const token = jwt.sign({username: user.username}, secretKey, {expiresIn: '30m'});
+    const token = jwt.sign({username: user.username, userid: user.id_user}, secretKey, {expiresIn: '30m'});
     const response = { 
       token: token,
       message: 'Login successful',
@@ -79,4 +79,3 @@ export default controller;
 //     localStorage.removeItem('token')
 //     res.status(200).json({ message: 'Logout successful' });
 //   });
-
