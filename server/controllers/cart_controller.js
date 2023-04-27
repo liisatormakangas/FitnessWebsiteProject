@@ -10,6 +10,7 @@ const controller = express_1.default.Router();
 controller.get('/', (req, res) => {
     //to get user id
     const userId = req.body.id_user;
+    console.log(req.body.id_user);
     console.log(req.body);
     cart_model_js_1.default.getCart(userId).then((data) => {
         res.send(data.rows);
@@ -33,8 +34,8 @@ controller.post('/add-to-cart', (req, res) => {
     //new code, to get user id and course id 4/26 new code
     const userId = req.body.userId;
     const courseId = req.body.courseId;
-    console.log(req.body.courseId);
-    cart_model_js_1.default.addCourse(userId, courseId).then((data) => {
+    //4/26 new code change the order of userId and courseId
+    cart_model_js_1.default.addCourse(courseId, userId).then((data) => {
         res.send(data.rows[0]);
     }).catch((error) => {
         res.status(500).send({
