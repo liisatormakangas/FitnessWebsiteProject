@@ -11,8 +11,12 @@
     background-color: #000000;
     color: #ffffff;
     border-radius: 16px;
-    max-width: 815px;
-    margin-bottom: 40px
+    max-width: 900px;
+    margin-bottom: 40px;
+    border: 3px solid #000000;
+}
+.calculator form{
+    color: #000000;
 }
 .calculator-row {
     display: flex;
@@ -30,18 +34,51 @@
     border-radius: 16px;
     max-width: 815px;
 }
-.cal-button{
+#calculator-submit{
     background-color: #FF0266;
-    border-radius: 20px;
+    border-radius: 7px;
     border: none;
     color: #ffffff;
     font-weight: bold;
     width: auto;
 }
+#calculator-submit:hover{
+    background-color: #03DAC6;
+    color: #000000;
+}
 .form-label{
     font-weight: bold;
+    font-size: 0.8rem;
 }
 .result{
     font-size: large;
     font-weight: bold;
+    color: #FFFFFF;
 }
+.calculator .form-check-input:checked{
+    background-color: #FF0266;
+    border-color: #FF0266;
+    
+}
+.calculator .form-control, .form-check-input, #activity{
+    border-color: #000000;
+}
+.calculator-inputs-content{
+    background-color: #03DAC6;
+    border-radius: 16px;
+}
+.units{
+    font-size: 0.7rem;
+}
+.output .result{
+    font-size: 1rem;
+    font-weight: bold;
+}
+.result-value{
+    background-color: #03DAC6;
+    min-height: 50px;
+    color: #000000;
+}
+
+    
+

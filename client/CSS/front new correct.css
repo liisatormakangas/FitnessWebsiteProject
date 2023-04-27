@@ -1,3 +1,6 @@
+*{
+  font-family: 'Montserrat';
+}
 .main {
     background: url(../images/coverimg.jpg) no-repeat;
     background-size: cover;
