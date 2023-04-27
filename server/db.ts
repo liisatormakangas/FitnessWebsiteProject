@@ -1,5 +1,6 @@
 import { Pool } from 'pg';
 require('dotenv').config();
+require('dotenv').config();
 
 const pool: Pool = new Pool({
     user: 'postgres',

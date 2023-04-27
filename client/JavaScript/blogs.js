@@ -1,4 +1,5 @@
 import { Stories } from './backendCalls/handleStories.js';
+import { Cookies } from './backendCalls/sendLoginData.js';
 const backendUrl = "http://localhost:3001/story";
 const stories = new Stories(backendUrl);
 const blogContainer = document.getElementById("container");
@@ -72,11 +73,20 @@ const renderStories = (story) => {
     cardBody.appendChild(paragraphElement);
     //creating the read more link
     const readMore = document.createElement("a");
-    readMore.className = "btn";
-    readMore.id = "readMoreLink";
-    readMore.href = "blogArticle.html?id=" + story.id_story;
-    readMore.innerText = "Read More >";
+    readMore.className = "btn read-more-link";
+    //readMore.href = "blogArticle.html?id=" + story.id_story;
+    readMore.innerText = "Read More >>";
     cardBody.appendChild(readMore);
     blogCard.appendChild(cardBody);
     blogContainer.appendChild(blogCard);
+    readMore.addEventListener('click', () => {
+        const cookie = new Cookies();
+        const isLoggedIn = cookie.isCookieSet("session_token");
+        if (isLoggedIn) {
+            window.location.href = `blogArticle.html?id=${story.id_story}`;
+        }
+        else {
+            alert("You need to be logged in to read the full article");
+        }
+    });
 };

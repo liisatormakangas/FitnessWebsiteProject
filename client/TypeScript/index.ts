@@ -34,7 +34,7 @@ registerForm.addEventListener('input', (event) => {
   });
 
   confirmPasswordInput.addEventListener('input', (event) => {
-    if (form.checkValidity() && passwordInput.value === confirmPasswordInput.value) {
+    if (registerForm.checkValidity() && passwordInput.value === confirmPasswordInput.value) {
       document.querySelector('#submitRegisterData').removeAttribute('disabled');
     } else {
       confirmPasswordInput.classList.add('is-invalid');
@@ -54,4 +54,3 @@ registerForm.addEventListener("submit", (event: Event) => {
 
     register.addRegisteredUser(formObject);
 });
-
