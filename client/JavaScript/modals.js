@@ -10,11 +10,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import { Login, Cookies } from './backendCalls/sendLoginData.js';
 // form validation for login
 const loginForm = document.getElementById("loginForm");
-const loginButton = document.getElementById('loginButton');
 //these variables create the login and register modals
 const registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
 const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
-// export const notificationModal = new bootstrap. Modal(document.getElementById('notificationModal'));
 loginForm.addEventListener('submit', (event) => __awaiter(void 0, void 0, void 0, function* () {
     event.preventDefault();
     event.stopPropagation();
@@ -43,21 +41,6 @@ loginForm.addEventListener('submit', (event) => __awaiter(void 0, void 0, void 0
         }
     }
 }), false);
-// loginButton.addEventListener('click', () => {
-//     if (localStorage.getItem('token')) {
-//         logout();
-//         console.log('logged out');
-//     } else {
-//         loginModal.show();
-//     }
-// });
-// const logout = () => {
-//     localStorage.removeItem('token');
-//     // redirect the user to the home page
-//     window.location.href = 'index.html';
-//     // change the button text to 'Login'
-//     loginButton.innerHTML = 'Login';
-// }
 const modals = () => {
     //these variables determine the button elements in the html to handle the modals
     const loginButton = document.getElementById('loginButton');
@@ -72,10 +55,10 @@ const modals = () => {
     loginButton.addEventListener('click', () => {
         loginModal.show();
     });
-    linkToLogin.addEventListener('click', () => {
-        registerModal.hide();
-        loginModal.show();
-    });
+    // linkToLogin.addEventListener('click', () => {
+    //     registerModal.hide();
+    //     loginModal.show();
+    // });
     linkToRegister.addEventListener('click', () => {
         loginModal.hide();
         registerModal.show();
