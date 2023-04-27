@@ -162,8 +162,7 @@
   transform: translateY(-50%);
 }
 
-  /*  footer css is here */
- 
+/*  footer css is here */
 footer {
   /* width: 1560px; */
   background: black;
@@ -228,3 +227,43 @@ footer .list-unstyled.d-flex {
   display: flex;
   gap: 10px; /* Adjust the spacing between the icons */
 }
+
+@media(max-width: 768px) {  
+  .upper-menu {
+    padding-top: 5px;
+  }
+  footer .row {
+    padding-left: 20px;
+  }
+  footer h5 {
+    font-size: 12px;
+  }
+  .contact li,
+  .contact a,
+  .list-unstyled a,
+  .list-unstyled p {
+    font-size: 10px;
+  }
+  footer .list-unstyled.d-flex {
+    flex-direction: column;
+    align-items: center;
+  }
+  .contact li {
+    gap: 5px;
+  }
+  .navbar-brand img {
+    height: 50px;
+    padding: 0;
+    left: 10px;
+    bottom: 10px;
+  }
+  .social-icons a,
+  .login-cart-wrapper a,
+  .register-btn,
+  .navbar-toggler-icon,
+  .cart i {
+    font-size: 1em;
+    height: 25px;     
+  }
+}
+
