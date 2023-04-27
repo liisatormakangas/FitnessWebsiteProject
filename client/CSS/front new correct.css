@@ -613,6 +613,13 @@ section .main,
   bottom: 3%;
   background-color: #000;
 }
+#to-top-link a{
+  text-decoration: none;
+  color: #FF0266;
+}
+#to-top-link a:hover{
+  color: #03DAC6;
+}
 
 @media(max-width: 992px) {
   .main {
