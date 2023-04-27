@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const story_model_js_1 = __importDefault(require("../models/story_model.js"));
 const controller = express_1.default.Router();
 const secretKey = process.env.SECRET_KEY;
@@ -17,7 +18,17 @@ controller.get('/', (req, res) => {
     });
 });
 controller.get('/:id', (req, res) => {
-    story_model_js_1.default.getStoryById(parseInt(req.params.id)).then((data) => {
+    //get token from request header
+    const token = req.headers.authorization;
+    if (!token || token.toLowerCase() === "bearer null") {
+        res.status(401).json({
+            message: 'Please login or register'
+        });
+        return;
+    }
+    const decoded = jsonwebtoken_1.default.decode(token.split(' ')[1]);
+    const userId = decoded.userid;
+    story_model_js_1.default.getStoryById(parseInt(req.params.id), userId).then((data) => {
         res.send(data.rows[0]);
     }).catch((error) => {
         res.status(500).send({
@@ -37,7 +48,23 @@ controller.post('/new', (req, res) => {
 });
 //Post a comment to a story
 controller.post('/newcomment', (req, res) => {
-    story_model_js_1.default.addStoryComment(req.body).then((data) => {
+    //get token from request header
+    const token = req.headers.authorization;
+    if (!token || token.toLowerCase() === "bearer null") {
+        res.status(401).json({
+            message: 'Please login or register'
+        });
+        return;
+    }
+    const decoded = jsonwebtoken_1.default.decode(token.split(' ')[1]);
+    const userId = decoded.userid;
+    const username = decoded.username;
+    story_model_js_1.default.addStoryComment(req.body, userId).then((data) => {
+        // add username for each row
+        data.rows.forEach((row) => {
+            row.username = username;
+            row.canDelete = true;
+        });
         res.send(data.rows);
         console.log(data.rows);
     }).catch((error) => {
@@ -46,8 +73,40 @@ controller.post('/newcomment', (req, res) => {
         });
     });
 });
+controller.post('/newreaction', (req, res) => {
+    //get token from request header
+    const token = req.headers.authorization;
+    if (!token || token.toLowerCase() === "bearer null") {
+        res.status(401).json({
+            message: 'Please login or register'
+        });
+        return;
+    }
+    const decoded = jsonwebtoken_1.default.decode(token.split(' ')[1]);
+    const userId = decoded.userid;
+    const username = decoded.username;
+    story_model_js_1.default.addStoryReaction(req.body, userId).then((data) => {
+        res.send(data.rows);
+        console.log(data.rows);
+    }).catch((error) => {
+        res.status(500).send({
+            message: 'Some error occurred while posting story reaction. ' + error.message
+        });
+    });
+});
+// Delete a comment from a story
 controller.delete('/deletecomment/:id', (req, res) => {
-    story_model_js_1.default.deleteStoryComment(parseInt(req.params.id)).then((data) => {
+    //get token from request header
+    const token = req.headers.authorization;
+    if (!token || token.toLowerCase() === "bearer null") {
+        res.status(401).json({
+            message: 'Please login or register'
+        });
+        return;
+    }
+    const decoded = jsonwebtoken_1.default.decode(token.split(' ')[1]);
+    const userId = decoded.userid;
+    story_model_js_1.default.deleteStoryComment(parseInt(req.params.id), userId).then((data) => {
         res.send(data.rows);
     }).catch((error) => {
         res.status(500).send({
@@ -55,3 +114,24 @@ controller.delete('/deletecomment/:id', (req, res) => {
         });
     });
 });
+// Delete reaction from a story
+controller.delete('/deletereaction/:story/:type', (req, res) => {
+    //get token from request header
+    const token = req.headers.authorization;
+    if (!token || token.toLowerCase() === "bearer null") {
+        res.status(401).json({
+            message: 'Please login or register'
+        });
+        return;
+    }
+    const decoded = jsonwebtoken_1.default.decode(token.split(' ')[1]);
+    const userId = decoded.userid;
+    story_model_js_1.default.deleteStoryReaction(userId, parseInt(req.params.story), req.params.type).then((data) => {
+        res.send(data.rows);
+    }).catch((error) => {
+        res.status(500).send({
+            message: 'Some error occurred while deleting story reaction.'
+        });
+    });
+});
+exports.default = controller;

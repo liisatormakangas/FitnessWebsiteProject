@@ -61,22 +61,21 @@ const renderCourses = (course) => {
     courseDiv.appendChild(productCard);
     contentDiv.appendChild(courseDiv);
     const button = courseDiv.querySelector(".buy-btn");
+    console.log(button);
     if (button) {
         button.addEventListener("click", () => __awaiter(void 0, void 0, void 0, function* () {
             const cookie = new Cookies();
             const isLoggedIn = cookie.isCookieSet("session_token");
             if (isLoggedIn) {
                 const token = cookie.getCookie("session_token");
-                const decodedToken = JSON.parse(atob(token.split('.')[1])); //eyJ1c2VybmFtZSI6IlNjYXJsZXQiLCJpYXQiOjE2ODI1ODM5MjMsImV4cCI6MTY4MjU4NTcyM30
-                const userId = decodedToken.id_user; //4 
-                alert(userId);
+                const decodedToken = JSON.parse(atob(token.split('.')[1]));
+                const userId = decodedToken.id_user;
                 const courseId = course.id_course;
-                console.log(1, courseId);
-                console.log(2, userId);
-                /* 		  const userId = decodedToken.user_id;
-                          console.log(userId); */
+                const courseName = course.course_name;
+                const coursePrice = course.price_month;
+                const cartItem = { courseId, courseName, coursePrice };
                 try {
-                    const response = yield fetch(`${shoppingCartUrl}/add-to-cart?userID={userID}`, {
+                    const response = yield fetch(`${shoppingCartUrl}/add-to-cart`, {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
@@ -84,11 +83,12 @@ const renderCourses = (course) => {
                         },
                         //4/26 change, due to it put course id as user id, change this and the backend code 
                         body: JSON.stringify({ userId, courseId }),
-                        //old code
-                        //body: JSON.stringify({ userId, courseId }),
                     });
                     if (response.ok) {
                         alert("Course added to shopping cart!");
+                        const existingCartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
+                        existingCartItems.push(cartItem);
+                        localStorage.setItem("cartItems", JSON.stringify(existingCartItems));
                     }
                     else {
                         alert("There was an error adding the course to the shopping cart");
@@ -111,4 +111,38 @@ courses.getCourses().then((courses) => {
 })
     .catch((error) => {
     console.log(error);
+});
+//display count of itmes in the shopping cart
+const existingCartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
+const shoppingCartIcon = document.querySelector(".fa-shopping-cart");
+shoppingCartIcon.innerHTML = existingCartItems.length.toString();
+//put into shopping cart page
+const shoppingCartDiv = document.getElementById("shopping-cart");
+shoppingCartDiv.innerHTML = "";
+existingCartItems.forEach((cartItem) => {
+    const cartItemDiv = document.createElement("div");
+    cartItemDiv.className = "cart-item";
+    const courseImage = document.createElement("img");
+    courseImage.className = "courseMainImage";
+    courseImage.alt = "Product image";
+    courseImage.src = . / images / $;
+    {
+        cartItem.courseName;
+    }
+    jpg;
+    cartItemDiv.appendChild(courseImage);
+    const courseName = document.createElement("h3");
+    courseName.innerHTML = cartItem.courseName;
+    cartItemDiv.appendChild(courseName);
+    const coursePrice = document.createElement("span");
+    coursePrice.innerHTML = "$ " + cartItem.coursePrice;
+    cartItemDiv.appendChild(coursePrice);
+    shoppingCartDiv.appendChild(cartItemDiv);
+    // Clear shopping cart
+    const clearCartBtn = document.getElementById("clear-cart-btn");
+    clearCartBtn.addEventListener("click", () => {
+        localStorage.removeItem("cartItems");
+        shoppingCartIcon.innerHTML = "0";
+        shoppingCartDiv.innerHTML = "";
+    });
 });

@@ -68,7 +68,6 @@ const renderCourses = (course: Course) => {
 	contentDiv.appendChild(courseDiv);
   
 	const button = courseDiv.querySelector(".buy-btn");
-	console.log(button); 
   
 	if (button) {
 	  button.addEventListener("click", async () => {
@@ -76,23 +75,24 @@ const renderCourses = (course: Course) => {
 		const isLoggedIn = cookie.isCookieSet("session_token");
 		if (isLoggedIn) {
 		  const token = cookie.getCookie("session_token");
-		  const decodedToken = JSON.parse(atob(token.split('.')[1]));
-		  const username = decodedToken.username;
+		  const decodedToken = JSON.parse(atob(token.split('.')[1])); //eyJ1c2VybmFtZSI6IlNjYXJsZXQiLCJpYXQiOjE2ODI1ODM5MjMsImV4cCI6MTY4MjU4NTcyM30
+		  const userId = decodedToken.id_user; //4 
+			alert(userId);
 		  const courseId = course.id_course;
-		  console.log(courseId); 
- 		  console.log(username);
+		  console.log(1, courseId); 
+ 		  console.log(2, userId);
 /* 		  const userId = decodedToken.user_id;
 		  console.log(userId); */
 		  
 		  try {
-			const response = await fetch(`${shoppingCartUrl}/add-to-cart`, {
+			const response = await fetch(`${shoppingCartUrl}/add-to-cart?userID={userID}`, {
 			  method: "POST",
 			  headers: {
 				"Content-Type": "application/json",
 				Authorization: `Bearer ${token}`,
 			  },
 			  //4/26 change, due to it put course id as user id, change this and the backend code 
-			  body: JSON.stringify({ username, courseId }),
+			  body: JSON.stringify({ userId, courseId }),
 			 //old code
 			  //body: JSON.stringify({ userId, courseId }),
 			});

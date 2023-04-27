@@ -16,9 +16,6 @@ controller.get('/', (req, res) => {
 });
 
 controller.get('/:id', (req, res) => {
-<<<<<<< HEAD
-    story.getStoryById(parseInt(req.params.id)).then((data: any) => {
-=======
     //get token from request header
     const token = req.headers.authorization;
     if (!token || token.toLowerCase() === "bearer null") {
@@ -32,7 +29,6 @@ controller.get('/:id', (req, res) => {
     const userId = (decoded as any).userid;
 
     story.getStoryById(parseInt(req.params.id), userId).then((data: any) => {
->>>>>>> main
         res.send(data.rows[0]);
     }).catch((error: any) => {
         res.status(500).send({
@@ -56,9 +52,6 @@ controller.post('/new', (req, res) => {
 
 //Post a comment to a story
 controller.post('/newcomment', (req, res) => {
-<<<<<<< HEAD
-    story.addStoryComment(req.body).then((data: any) => {
-=======
     //get token from request header
     const token = req.headers.authorization;
     if (!token || token.toLowerCase() === "bearer null") {
@@ -78,7 +71,6 @@ controller.post('/newcomment', (req, res) => {
             row.username = username;
             row.canDelete = true;
         });
->>>>>>> main
         res.send(data.rows);
         console.log(data.rows);
 
@@ -89,11 +81,6 @@ controller.post('/newcomment', (req, res) => {
     });
 });
 
-<<<<<<< HEAD
-// Delete a comment from a story
-controller.delete('/deletecomment/:id', (req, res) => {
-    story.deleteStoryComment(parseInt(req.params.id)).then((data: any) => {
-=======
 controller.post('/newreaction', (req, res) => {
     //get token from request header
     const token = req.headers.authorization;
@@ -133,7 +120,6 @@ controller.delete('/deletecomment/:id', (req, res) => {
     const userId = (decoded as any).userid;
     
     story.deleteStoryComment(parseInt(req.params.id), userId).then((data: any) => {
->>>>>>> main
         res.send(data.rows);
     }).catch((error: any) => {
         res.status(500).send({
@@ -141,11 +127,6 @@ controller.delete('/deletecomment/:id', (req, res) => {
         });
     });
 });
-<<<<<<< HEAD
-// Update a comment from a story
-/* controller.put('/updatecomment', (req, res) => {
-    story.updateStoryComment(req.body).then((data: any) => {
-=======
 
 // Delete reaction from a story
 controller.delete('/deletereaction/:story/:type', (req, res) => {    
@@ -162,7 +143,6 @@ controller.delete('/deletereaction/:story/:type', (req, res) => {
     const userId = (decoded as any).userid;
 
     story.deleteStoryReaction(userId, parseInt(req.params.story), req.params.type).then((data: any) => {
->>>>>>> main
         res.send(data.rows);
     }).catch((error: any) => {
         res.status(500).send({

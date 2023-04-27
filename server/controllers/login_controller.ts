@@ -19,7 +19,7 @@ controller.post('/', async (req, res) => {
   try {
      // Verify the username and password of the user trying to log in
     const user = await loginUser(userName, password);
-    const token = jwt.sign({username: user.username}, secretKey, {expiresIn: '30m'});
+    const token = jwt.sign({id_user: user.id_user,username: user.username}, secretKey, {expiresIn: '30m'});
     const response = { 
       token: token,
       message: 'Login successful',
