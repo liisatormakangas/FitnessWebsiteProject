@@ -98,11 +98,11 @@
     getWeightControl() {
         // get weight control for >20 adults
         if (this.weight < this.trweight) {
-            return "GAIN";
+            return "TO GAIN WEIGHT";
           } else if (this.weight > this.trweight) {
-            return "LOSE";
+            return "TO LOSE WEIGHT";
           } else if (this.weight == this.trweight){
-            return "MAINTAIN";
+            return "TO MAINTAIN WEIGHT";
           } else {
               return "INVALID";
           }

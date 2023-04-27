@@ -55,10 +55,10 @@ const modals = () => {
     loginButton.addEventListener('click', () => {
         loginModal.show();
     });
-    // linkToLogin.addEventListener('click', () => {
-    //     registerModal.hide();
-    //     loginModal.show();
-    // });
+    linkToLogin.addEventListener('click', () => {
+        registerModal.hide();
+        loginModal.show();
+    });
     linkToRegister.addEventListener('click', () => {
         loginModal.hide();
         registerModal.show();
