@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import { Courses } from './backendCalls/handleCourses.js';
 import { Cookies } from './backendCalls/sendLoginData.js';
 const backendUrl = "http://localhost:3001/course";
+const shoppingCartUrl = "http://localhost:3001/cart";
 const courses = new Courses(backendUrl);
 const contentDiv = document.getElementById("content");
 //get all stories from the database
@@ -60,7 +61,7 @@ const renderCourses = (course) => {
     courseDiv.appendChild(productCard);
     contentDiv.appendChild(courseDiv);
     const button = courseDiv.querySelector(".buy-btn");
-    /* console.log(button); */
+    console.log(button);
     if (button) {
         button.addEventListener("click", () => __awaiter(void 0, void 0, void 0, function* () {
             const cookie = new Cookies();
@@ -69,9 +70,11 @@ const renderCourses = (course) => {
                 const token = cookie.getCookie("session_token");
                 const decodedToken = JSON.parse(atob(token.split('.')[1]));
                 const username = decodedToken.username;
-                const userId = decodedToken.user_id;
                 const courseId = course.id_course;
-                const shoppingCartUrl = "http://localhost:3001/shoppingCart/add";
+                console.log(courseId);
+                console.log(username);
+                /* 		  const userId = decodedToken.user_id;
+                          console.log(userId); */
                 try {
                     const response = yield fetch(`${shoppingCartUrl}/add-to-cart`, {
                         method: "POST",
@@ -79,7 +82,10 @@ const renderCourses = (course) => {
                             "Content-Type": "application/json",
                             Authorization: `Bearer ${token}`,
                         },
-                        body: JSON.stringify({ userId, courseId }),
+                        //4/26 change, due to it put course id as user id, change this and the backend code 
+                        body: JSON.stringify({ username, courseId }),
+                        //old code
+                        //body: JSON.stringify({ userId, courseId }),
                     });
                     if (response.ok) {
                         alert("Course added to shopping cart!");

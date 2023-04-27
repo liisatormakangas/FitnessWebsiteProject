@@ -25,7 +25,8 @@ controller.post('/', (req, res) => __awaiter(void 0, void 0, void 0, function* (
     try {
         // Verify the username and password of the user trying to log in
         const user = yield (0, login_model_1.default)(userName, password);
-        const token = jsonwebtoken_1.default.sign({ username: user.username }, secretKey, { expiresIn: '30m' });
+        // add usderid:user.id_user 4-26 new code
+        const token = jsonwebtoken_1.default.sign({ username: user.username, userId: user.id_user }, secretKey, { expiresIn: '30m' });
         const response = {
             token: token,
             message: 'Login successful',

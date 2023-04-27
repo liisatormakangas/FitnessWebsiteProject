@@ -3,8 +3,16 @@ import cart from '../models/cart_model.js';
 
 const controller = express.Router();
 
+
+
+
+//old code fot 4/26 before find out couse id and uset id use wrong
+
 controller.get('/', (req, res) => {
-    cart.getCart().then((data: any) => {
+    //to get user id
+    const userId = req.body.id_user;
+    console.log(req.body);
+    cart.getCart(userId).then((data: any) => {
         res.send(data.rows);
     }).catch((error: any) => {
         res.status(500).send({
@@ -12,6 +20,7 @@ controller.get('/', (req, res) => {
         });
     });
 });
+
 
 //here is old code, for reference in cse mess up
 /* controller.post('/add/:course_id', (req, res) => {
@@ -23,8 +32,13 @@ controller.get('/', (req, res) => {
         });
     });
 }); */
+
+
 controller.post('/add-to-cart', (req, res) => {
-    const { userId, courseId } = req.body;
+    //new code, to get user id and course id 4/26 new code
+    const userId = req.body.userId;
+    const courseId = req.body.courseId;
+    console.log(req.body.courseId);
     cart.addCourse(userId, courseId).then((data: any) => {
       res.send(data.rows[0]);
     }).catch((error: any) => {
