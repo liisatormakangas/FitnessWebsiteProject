@@ -5,7 +5,6 @@ const register = new Register(backendUrlRegister);
 const registerForm = document.getElementById("registerForm");
 const passwordInput = document.getElementById('passwd');
 const confirmPasswordInput = document.getElementById('passwd2');
-const loginForm = document.getElementById("loginForm");
 const blogLinks = document.querySelectorAll(".blog-btn");
 registerForm.addEventListener('submit', (event) => {
     if (!registerForm.checkValidity()) {
@@ -53,7 +52,7 @@ blogLinks.forEach((blogLink) => {
             window.location.href = `blogArticle.html?id=${id}`;
         }
         else {
-            alert("You need to be logged in to enroll in a course");
+            alert("You need to be logged in to read the full article");
         }
     });
 });

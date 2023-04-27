@@ -58,7 +58,8 @@ const renderCourses = (course) => {
     productCard.appendChild(starContainer);
     courseDiv.appendChild(productCard);
     contentDiv.appendChild(courseDiv);
-    enrollBtn.addEventListener("click", () => {
+    enrollBtn.addEventListener("click", (event) => {
+        event.preventDefault();
         const cookie = new Cookies();
         const isLoggedIn = cookie.isCookieSet("session_token");
         if (isLoggedIn) {

@@ -8,10 +8,9 @@ const register = new Register(backendUrlRegister);
 const registerForm = document.getElementById("registerForm") as HTMLFormElement;
 const passwordInput = document.getElementById('passwd') as HTMLInputElement;
 const confirmPasswordInput = document.getElementById('passwd2') as HTMLInputElement;
-const loginForm = document.getElementById("loginForm") as HTMLFormElement;
 const blogLinks: any = document.querySelectorAll(".blog-btn");
 
-registerForm.addEventListener('submit', (event) => {
+registerForm.addEventListener('submit', (event: Event) => {
 	if (!registerForm.checkValidity()) {
 		event.preventDefault();
 		event.stopPropagation();
@@ -61,7 +60,7 @@ blogLinks.forEach((blogLink: any) => {
 			const id = (event.currentTarget as HTMLElement).getAttribute('data-id');
 			window.location.href = `blogArticle.html?id=${id}`;
 		} else {
-			alert("You need to be logged in to enroll in a course");
+			alert("You need to be logged in to read the full article");
 		}
 	});
 

@@ -41,28 +41,12 @@ loginForm.addEventListener('submit', (event) => __awaiter(void 0, void 0, void 0
         }
     }
 }), false);
-// loginButton.addEventListener('click', () => {
-//     if (localStorage.getItem('token')) {
-//         logout();
-//         console.log('logged out');
-//     } else {
-//         loginModal.show();
-//     }
-// });
-// const logout = () => {
-//     localStorage.removeItem('token');
-//     // redirect the user to the home page
-//     window.location.href = 'index.html';
-//     // change the button text to 'Login'
-//     loginButton.innerHTML = 'Login';
-// }
 const modals = () => {
     //these variables determine the button elements in the html to handle the modals
     const loginButton = document.getElementById('loginButton');
     const registerButton = document.getElementById('registerButton');
     const linkToLogin = document.getElementById('toLogin');
     const linkToRegister = document.getElementById('toRegister');
-    const joinUsNowButton = document.getElementById("joinUsNow");
     //these event listeners handle the buttons and opens and closes the modals
     // login button event listener
     registerButton.addEventListener('click', () => {
@@ -71,23 +55,13 @@ const modals = () => {
     loginButton.addEventListener('click', () => {
         loginModal.show();
     });
-    linkToLogin.addEventListener('click', () => {
-        registerModal.hide();
-        loginModal.show();
-    });
+    // linkToLogin.addEventListener('click', () => {
+    //     registerModal.hide();
+    //     loginModal.show();
+    // });
     linkToRegister.addEventListener('click', () => {
         loginModal.hide();
         registerModal.show();
-    });
-    joinUsNowButton.addEventListener('click', () => {
-        const cookie = new Cookies();
-        const isLoggedIn = cookie.isCookieSet("session_token");
-        if (isLoggedIn) {
-            return;
-        }
-        else {
-            registerModal.show();
-        }
     });
     const logoutButton = document.getElementById('logoutButton');
     logoutButton.addEventListener('click', () => {
