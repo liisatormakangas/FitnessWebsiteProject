@@ -58,8 +58,8 @@ create table comments (
 
 create table cart (
     id_cart serial primary key,
-    id_user int,
-    id_course int,
+    id_user int NOT Null,
+    id_course int NOT Null,
     foreign key (id_user) references users(id_user)
         on delete restrict on update cascade,
     foreign key (id_course) references courses(id_course)

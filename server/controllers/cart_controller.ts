@@ -3,9 +3,6 @@ import cart from '../models/cart_model.js';
 
 const controller = express.Router();
 
-
-
-
 //old code fot 4/26 before find out couse id and uset id use wrong
 
 controller.get('/', (req, res) => {
@@ -20,7 +17,6 @@ controller.get('/', (req, res) => {
         });
     });
 });
-
 
 //here is old code, for reference in cse mess up
 /* controller.post('/add/:course_id', (req, res) => {
