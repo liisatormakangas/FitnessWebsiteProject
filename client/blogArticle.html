@@ -89,7 +89,7 @@
     <div class="container-fluid brd-crmb-container"><!-- bread crumb starts -->
       <ul class="breadcrumb">
         <li><a href="index.html">Home</a></li>
-        <li><a href="blogs.html">Blogs</a></li>
+        <li><a href="blogs.html">Blog</a></li>
         <li>Blog</li>
       </ul>
     </div><!-- bread crumb ends -->
@@ -104,26 +104,14 @@
         </div>
         
         <div id="storyFullText" class="content-text"></div>
-        <!-- <br>
-        <br> -->
+        <!-- Reaction like/dislike -->
         <div class="react-container">
-          <div class="like-button">
-            <button>
-              Like <i class="fa-solid fa-thumbs-up"></i>
-            </button>
-          </div>
-          <div class="dislike-button">
-            <button>
-              Dislike <i class="fa-solid fa-thumbs-down"></i>
-            </button>
-          </div>
-          <div class="share-button">
-            <button>
-              Share <i class="fas fa-share-alt"></i>
-            </button>
-          </div>
+          <button class="btn" id="green"><i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i><span id="num-likes">0</span></button>
+          <button class="btn" id="red"><i class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i><span id="num-dislikes">0</span></button>
+          <button class="btn" id="share"><i class="fas fa-share-alt fa-lg"></i><span id="num-shares">0</span></button>
         </div>
-        <h3>Comments</h3>
+       
+        <h3 id="comment_count">Comments</h3>
         <form>
           <input id="newcomment" class="form-control" placeholder="Enter a new comment...">
         </form>
@@ -171,8 +159,8 @@
 
     </div>
   </footer><!-- footer ends -->
-  <!-- login modal -->
- <div class="modal" tabindex="-1" id="loginModal">
+<!-- login modal -->
+<div class="modal" tabindex="-1" id="loginModal">
   <div class="modal-dialog">
       <div class="modal-content">
           <div class="modal-header modHeader">
@@ -315,10 +303,6 @@
       integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
       crossorigin="anonymous"></script>
   <!-- Load your custom scripts -->
-  <script src="./JavaScript/modals.js" type="module"></script>
-  
-
+<script src="./JavaScript/modals.js" type="module"></script>
 </body>
-
-
 </html>

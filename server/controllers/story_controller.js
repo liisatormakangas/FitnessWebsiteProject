@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const story_model_js_1 = __importDefault(require("../models/story_model.js"));
 const controller = express_1.default.Router();
+const secretKey = process.env.SECRET_KEY;
 controller.get('/', (req, res) => {
     story_model_js_1.default.getAllStories().then((data) => {
         res.send(data.rows);
@@ -20,7 +21,7 @@ controller.get('/:id', (req, res) => {
         res.send(data.rows[0]);
     }).catch((error) => {
         res.status(500).send({
-            message: 'Some error occurred while retrieving stories.'
+            message: 'Some error occurred while retrieving stories.' + error.message
         });
     });
 });
@@ -45,7 +46,6 @@ controller.post('/newcomment', (req, res) => {
         });
     });
 });
-// Delete a comment from a story
 controller.delete('/deletecomment/:id', (req, res) => {
     story_model_js_1.default.deleteStoryComment(parseInt(req.params.id)).then((data) => {
         res.send(data.rows);
@@ -55,14 +55,3 @@ controller.delete('/deletecomment/:id', (req, res) => {
         });
     });
 });
-// Update a comment from a story
-/* controller.put('/updatecomment', (req, res) => {
-    story.updateStoryComment(req.body).then((data: any) => {
-        res.send(data.rows);
-    }).catch((error: any) => {
-        res.status(500).send({
-            message: 'Some error occurred while updating story comment.'
-        });
-    });
-}); */
-exports.default = controller;
