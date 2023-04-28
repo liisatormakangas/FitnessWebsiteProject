@@ -20,7 +20,7 @@
     margin-bottom: 40px;
     border: 3px solid #000000;
 }
-.calculator form{
+.calculator form {
     color: #000000;
 }
 
@@ -67,7 +67,6 @@
 .calculator .form-check-input:checked{
     background-color: #FF0266;
     border-color: #FF0266;
-    
 }
 .calculator .form-control, .form-check-input, #activity{
     border-color: #000000;

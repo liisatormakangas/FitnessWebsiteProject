@@ -110,7 +110,7 @@
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="courses.html">Courses</a></li>
-          <li>Body Balance</li>
+          <li id="courseNameNav"></li>
         </ul>
       </div>
       <div class="name-rating">
@@ -125,7 +125,7 @@
       </div>
       <div class="video">
         <video width="320" height="240" autoplay controls>
-          <source src="images/Yoga.mp4" type="video/mp4">
+          <source id="courseVideo" src="images/Yoga.mp4" type="video/mp4">
         </video>
       </div>
       <div class="trainer-row-container">
@@ -135,7 +135,7 @@
           </div>
           <div class="trainer-name">
             <div class="trainer">Trainer</div>
-            <div id="trainerName" class="name"></div>
+            <div id="courseTrainerName" class="name"></div>
           </div>
         </div>
         <div class="react-container">
@@ -156,7 +156,7 @@
           </div>
         </div>
         <div class="enroll-button">
-          <button>
+          <button id="courseEnrollButton">
             Enroll now <i class="fas fa-shopping-cart"></i>
           </button>
         </div>
@@ -165,36 +165,28 @@
       <div class="class-container">
         <div class="column">
           <h2>Description</h2>
-          <p>This <b>body balance</b> yoga course is designed to improve stability and coordination through a series of
-            postures and movements.
-            The classes focus on building strength in the core, legs, and feet, while also incorporating mindfulness
-            techniques to enhance body awareness and control.
-            Students of all levels can benefit from this course, which offers a supportive and energizing environment
-            for developing greater balance and harmony within the body.
-          </p>
+          <p id="courseDescription"></p>
         </div>
         <div class="column">
           <h2>Schedule</h2>
 
-          <h5>
-            <li>Monday - Friday:
-          </h5> 17.00 - 19.00</li>
-          <h5>
-            <li>Saturday - Sunday:
-          </h5> 9.00 - 11.00</li>
+          <h5 id="courseScheduleWeek"></h5>
+            <li id="courseTimeWeek"></li>
+          <h5 id="courseScheduleWeekend"></h5>
+            <li id="courseTimeWeekend"></li>
 
           <h5>Place:</h5>
-          <p>Studio Fitness Club, Pentti katu 1, 90570 Oulu</p>
+          <p>Studio Fitness Club, Yliopistokatu 9, 90570 Oulu</p>
         </div>
         <div class="column">
           <h2>Place available</h2>
-          <p>6/10</p>
+          <p id="placesAvailable"></p>
           <h3>Price</h3>
           <h5>
-            <li>60 $ / Month</li>
+            <li id="pricePerMonth"></li>
           </h5>
           <h5>
-            <li>500 $ / Year</li>
+            <li id="pricePerYear"></li>
           </h5>
         </div>
       </div>
@@ -202,13 +194,13 @@
       <div class="morePic">More pictures of this class</div>
       <div class="image-container">
         <div class="image">
-          <img src="images/Yoga2.jpg" alt="Image 2">
+          <img id="courseImages2" alt="Image 2">
         </div>
         <div class="image">
-          <img src="images/Yoga3.jpg" alt="Image 3">
+          <img id="courseImages3" alt="Image 3">
         </div>
         <div class="image">
-          <img src="images/Yoga4.jpg" alt="Image 4">
+          <img id="courseImages4"alt="Image 4">
         </div>
       </div>
 
@@ -262,9 +254,9 @@
     integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
     crossorigin="anonymous"></script>
   <!-- Load your custom scripts -->
-  <script src="./JavaScript/index.js" type="module"></script>
-  <script src="./JavaScript/course.js" type="module"></script>
-  <script src="./JavaScript/modals.js" type="module"></script>
+  <script src="./JavaScript/modals.js"></script>
+  <script src="./JavaScript/coursedetails.js" type="module"></script>
+  
 
 </body>
 

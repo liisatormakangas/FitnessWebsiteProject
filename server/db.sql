@@ -558,4 +558,14 @@ insert into story_reactions (
         'like'
         );
 
-        
+update courses set course_description = 'This body balance yoga course is designed to improve stability and coordination through a series of postures and movements. The classes focus on building strength in the core, legs, and feet, while also incorporating mindfulness techniques to enhance body awareness and control. Students of all levels can benefit from this course.' where id_course = 1;
+
+alter table courses add column trainer_image_name varchar(50);
+UPDATE courses SET trainer_image_name = 'trainer-f1.png' WHERE id_course = 1;
+UPDATE courses SET trainer_image_name = 'trainer-f2.png' WHERE id_course = 2;
+UPDATE courses SET trainer_image_name = 'trainer-f3.png' WHERE id_course = 3;
+UPDATE courses SET trainer_image_name = 'trainer-f4.png' WHERE id_course = 4;
+UPDATE courses SET trainer_image_name = 'trainer-f1.png' WHERE id_course = 5;
+UPDATE courses SET trainer_image_name = 'trainer-f2.png' WHERE id_course = 6;
+UPDATE courses SET trainer_image_name = 'trainer-f3.png' WHERE id_course = 7;
+UPDATE courses SET trainer_image_name = 'trainer-f4.png' WHERE id_course = 8;

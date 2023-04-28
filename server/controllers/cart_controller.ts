@@ -19,16 +19,21 @@ controller.get('/', (req, res) => {
     });
 });
 
-//here is old code, for reference in cse mess up
-/* controller.post('/add/:course_id', (req, res) => {
-    cart.addCourse(parseInt(req.params.course_id)).then((data: any) => {
-        res.send(data.rows[0]);
+controller.post('/add-to-cart', (req, res) => {
+    //new code, to get user id and course id 4/26 new code
+    const userId = req.body.userId;
+    const courseId = req.body.courseId;
+    console.log(userId, courseId);
+    
+    //4/26 new code change the order of userId and courseId
+    cart.addCourse(courseId, userId).then((data: any) => {
+      res.send(data.rows[0]);
     }).catch((error: any) => {
-        res.status(500).send({
-            message: 'Some error occurred while adding course to cart.'
-        });
+      res.status(500).send({
+        message: 'Some error occurred while adding course to cart.'
+      });
     });
-}); */
+  });
 
 
 controller.post('/add-to-cart', (req, res) => {
