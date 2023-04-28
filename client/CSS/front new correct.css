@@ -1,7 +1,6 @@
-* {
+*{
   font-family: 'Montserrat';
 }
-
 .main {
   background: url(../images/coverimg.jpg) no-repeat;
   background-size: cover;
@@ -613,6 +612,13 @@ section .main,
   right: 3%;
   bottom: 3%;
   background-color: #000;
+}
+#to-top-link a{
+  text-decoration: none;
+  color: #FF0266;
+}
+#to-top-link a:hover{
+  color: #03DAC6;
 }
 
 @media(max-width: 992px) {

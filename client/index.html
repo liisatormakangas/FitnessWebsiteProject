@@ -7,9 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Great+Vibes&family=Libre+Baskerville&family=Noto+Sans+JP:wght@300&display=swap"
-        rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
@@ -35,7 +33,10 @@
     <!-- JavaScript Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <title>Fitness</title>
+    <title>Fit'nHealth . Home</title>
+    <!-- favicon title -->
+    <link rel = "icon" type = "image/png" href = "./images/fitnhealth-low-resolution-color-logo.png">
+    <link rel = "apple-touch-icon" type = "image/png" href = "./images/fitnhealth-low-resolution-color-logo.png"/>
 </head>
 
 <body>
@@ -79,23 +80,23 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mx-auto  mt-auto">
-                        <li class="nav-item">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item ms-md-2 ms-lg-4">
                             <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="blogs.html">Blog</a>
+                        <li class="nav-item  ms-md-2 ms-lg-4">
+                            <a class="nav-link" href="blogs.html">Blogs</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item  ms-md-2 ms-lg-4">
                             <a class="nav-link" href="courses.html">Courses</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item  ms-md-2 ms-lg-4">
                             <a class="nav-link" href="about.html">About</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item  ms-md-2 ms-lg-4">
                             <a class="nav-link" href="about.html#contact">Contact</a>
                         </li>
-                        <form class="search-box ms-md-5">
+                        <form class="form-inline search-box ms-md-2 ms-lg-5">
                             <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
                             <input type="text" class="search-input" placeholder="Search..">
                             <button class="search-button">
@@ -109,7 +110,7 @@
     </div><!-- header ends here -->
 
     <!-- cover, main section starts here add container-fluid at first div -->
-    <section class="main container-fluid ">
+    <section class="main container-fluid " id="top-id">
         <div class="container">
             <div class="row no-gutters">
                 <div class="col-lg-7">
@@ -421,7 +422,7 @@
             </div>
             <div class="container p-md-4 p-sm-2 calculator"> <!-- calculator starts -->
                 <div class="row"><!-- main row starts -->
-                    <div class="col-md-6 inputs pt-3"><!-- inputs starts -->
+                    <div class="col-md-6 calculator-inputs-content p-4"><!-- inputs starts -->
                         <form class="needs-validation" id="bmi-form" novalidate>
 
                             <div class="row mb-3"><!-- Height starts -->
@@ -432,7 +433,7 @@
                                     <input type="height" class="form-control" id="height" required>
                                 </div>
                                 <div class="col-sm-1">
-                                    <span>cm</span>
+                                    <span class="units">cm</span>
                                 </div>
                                 <!-- <div class="invalid-feedback">Invalid input!</div> -->
                             </div><!-- Height ends -->
@@ -444,7 +445,7 @@
                                     <input type="text" class="form-control" id="weight" required>
                                 </div>
                                 <div class="col-sm-1">
-                                    <span>kg</span>
+                                    <span class="units">kg</span>
                                 </div>
                                 <!-- <div class="invalid-feedback">Invalid input!</div> -->
                             </div><!-- Weight ends -->
@@ -479,7 +480,7 @@
                                     <input type="number" class="form-control" id="age" required>
                                 </div>
                                 <div class="col-1 ps-0">
-                                    <span>years</span>
+                                    <span class="units">years</span>
                                 </div>
                             </div><!-- Age ends -->
                             <div class="row mb-3"><!-- activity starts -->
@@ -504,42 +505,49 @@
                                     <input type="text" class="form-control" id="tar-weight" required>
                                 </div>
                                 <div class="col-sm-1">
-                                    <span>kg</span>
+                                    <span class="units">kg</span>
                                 </div>
                             </div><!-- TargetWeight ends -->
                             <div class="col-12 text-center">
-                                <button type="submit" class="btn btn-primary cal-button ms-3 mt-3">Show Results</button>
+                                <button type="submit" class="btn btn-primary cal-button ms-3 mt-3" id="calculator-submit">Show Results</button>
                             </div>
                         </form>
                     </div><!-- input ends -->
-                    <div class="col-md-6 output text-center pt-3 text-center"><!-- output starts -->
+                    <div class="col-md-6 output p-3 text-center"><!-- output starts -->
                         <div class="col-12 result mt-3">
                             <p>YOUR BMI VALUE :
                         </div>
                         <div class="col-12 mt-2">
-                            <span id="bmi-value"></span>
+                            <div class="result-value"><span id="bmi-value"></span></div>
                         </div>
                         <div class="col-12 result mt-3">
                             <p>YOUR WEIGHT CATEGORY :
                         </div>
                         <div class="col-12 mt-2">
-                            <span id="bmi-status"></span>
+                            <div class="result-value"> <span id="bmi-status"></span></div>
                         </div>
                         <div class="col-12 result mt-3">
                             <p>YOUR BMR VALUE :
                         </div>
                         <div class="col-12 mt-2">
-                            <span id="bmr-value"></span>
+                            <div class="result-value"> <span id="bmr-value"></span></div>
                         </div>
                         <div class="col-12 result mt-3">
-                            <p>CALORIES REQUIRED TO - <span id="control"></span>- WEIGHT :
-                        </div>
-                        <div class="col-12 mt-2">
-                            <span id="calories"></span>
-                        </div>
+                            <p>CALORIES REQUIRED <span id="control"></span>:
+                            </div>
+                                <div class="result-value"><span id="calories"></span></div>
+                        
+                        <!-- <div class="col-12 mt-2">
+                            <div class="result-value"> <span id="calories"></span></div>
+                        </div> -->
                     </div><!-- output ends -->
                 </div><!-- main row ends -->
             </div> <!-- calculator ends -->
+            <div id="to-top-link" class="text-end mb-2">
+                <a href="#top-id">
+                    <i class="fa-solid fa-arrow-up me-1"></i>Go to Top
+                </a>
+            </div>
         </div><!-- body container ends -->
     </section>
 
