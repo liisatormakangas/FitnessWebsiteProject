@@ -7,9 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Great+Vibes&family=Libre+Baskerville&family=Noto+Sans+JP:wght@300&display=swap"
-        rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
@@ -35,14 +33,17 @@
     <!-- JavaScript Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <title>Fitness</title>
+    <title>Fit'nHealth . Home</title>
+    <!-- favicon title -->
+    <link rel = "icon" type = "image/png" href = "./images/fitnhealth-low-resolution-color-logo.png">
+    <link rel = "apple-touch-icon" type = "image/png" href = "./images/fitnhealth-low-resolution-color-logo.png"/>
 </head>
 
 <body>
     <!-- main section -->
     <div class="w-100"><!-- header starts here -->
         <div class="upper-menu p-sm-2 p-md-3"><!-- upper menu starts here -->
-            <div class="social-icons px-5"><!-- social-icons starts here -->
+            <div class="social-icons px-3"><!-- social-icons starts here -->
                 <a href="#"><i class="fab fa-facebook me-sm-2 me-md-4"></i></a>
                 <a href="#"><i class="fab fa-youtube me-sm-2 me-md-4"></i></a>
                 <a href="#"><i class="fab fa-instagram me-sm-2 me-md-4"></i></a>
@@ -50,15 +51,15 @@
             <!-- <div class="search-container me-sm-1 me-md-5"> serach bar starts -->
             <!-- <div class="search-box">
               <input type="text" class="search-input" placeholder="Search..">
-              <button class="search-button">
+              <button class="search-button"
                 <i class="fas fa-search"></i>
               </button>
             </div> -->
             <!-- </div> search bar ends -->
             <div class="login-cart-section"><!-- login,reg,cart starts here -->
                 <div class="login-cart-wrapper">
-                    <a id="loginButton" class="mx-3"><i class="fa-solid fa-right-to-bracket pe-1"></i>Login</a>
-                    <a id="logoutButton" class="mx-3"><i class="fa-solid fa-right-from-bracket pe-1"></i>Logout</a>
+                    <a id="loginButton" class="mx-2"><i class="fa-solid fa-right-to-bracket pe-1"></i>Login</a>
+                    <a id="logoutButton" class="mx-2"><i class="fa-solid fa-right-from-bracket pe-1"></i>Logout</a>
                     <button id="registerButton" class="register-btn mx-3">Register</button>
                     <div class="cart mx-3">
                         <a href="cart.html" id="cart-icon">
@@ -70,7 +71,8 @@
         </div><!-- upper menu ends here -->
         <nav class="navbar navbar-expand-lg bg-black"><!-- bottom menu starts here -->
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="./images/fitnhealth-low-resolution-color-logo.png"
+                <a class="navbar-brand" href="#"><img
+                        src="./images/fitnhealth-low-resolution-logo-color-on-transparent-background (1).png"
                         alt="logo"></a>
                 <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -78,23 +80,23 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mx-auto  mt-auto">
-                        <li class="nav-item">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item ms-md-2 ms-lg-4">
                             <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="blogs.html">Blog</a>
+                        <li class="nav-item  ms-md-2 ms-lg-4">
+                            <a class="nav-link" href="blogs.html">Blogs</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item  ms-md-2 ms-lg-4">
                             <a class="nav-link" href="courses.html">Courses</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item  ms-md-2 ms-lg-4">
                             <a class="nav-link" href="about.html">About</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item  ms-md-2 ms-lg-4">
                             <a class="nav-link" href="about.html#contact">Contact</a>
                         </li>
-                        <form class="search-box ms-md-5">
+                        <form class="form-inline search-box ms-md-2 ms-lg-5">
                             <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
                             <input type="text" class="search-input" placeholder="Search..">
                             <button class="search-button">
@@ -108,14 +110,14 @@
     </div><!-- header ends here -->
 
     <!-- cover, main section starts here add container-fluid at first div -->
-    <section class="main container-fluid ">
+    <section class="main container-fluid " id="top-id">
         <div class="container">
             <div class="row no-gutters">
                 <div class="col-lg-7">
                     <h1>
                         ENHANCE YOUR BODY POWER
                     </h1>
-                    <button class="btn joinwus" type="submit"> JOIN WITH US </button>
+                    <button id="joinUsNow" class="btn joinwus" type="button"> JOIN WITH US </button>
 
                 </div>
             </div>
@@ -130,11 +132,11 @@
                     WE ARE BEYOND A BODYWORKOUT CENTER
                 </h1>
                 <P>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et qui nobis omnis
-                    sint vel dicta iusto eius ut cupiditate,
-                    incidunt veritatis quo. Totam id accusantium ullam tenetur sint tempora ipsum!
-                    sint vel dicta iusto eius ut cupiditate,
-                    incidunt veritatis quo. Totam id accusantium ullam tenetur sint tempora ipsum!
+                    We are more than just a body workout center - we're a community of like-minded individuals who are
+                    dedicated to improving our health and well-being. Our diverse range of fitness courses caters to
+                    every level of fitness, from beginner to advanced. In addition, our fitness and wellness blogs
+                    provide valuable insights and tips to help you achieve your goals. Join us on this journey to a
+                    healthier, happier you!
                 </P>
             </div>
             <div class="">
@@ -144,7 +146,7 @@
                         JOIN OUR WORKOUT TRAINING
                     </h1>
                 </div>
-                <div id="container">
+                <div id="container" class="container" style="text-align: center">
                     <div id="content">
                         <div class="product-card">
                             <div class="ribbon ribbon-top-right"><span>$ 60 / month</span></div>
@@ -153,7 +155,7 @@
                             <p>Yoga promotes body balance by improving strength, flexibility, and alignment.
                                 Through mindfulness and meditation practices, yoga can help cultivate a greater sense of
                                 physical and mental equilibrium.</p>
-                            <a href="classes.html" class="view-more">View more</a>
+                            <a href="classes.html?id=1" class="view-more">View more</a>
                             <button class="buy-btn">Enroll now</button>
                             <div class="star-container">
                                 <span class="fa fa-star checked"></span>
@@ -171,7 +173,7 @@
                             <p>Yoga promotes body balance by improving strength, flexibility, and alignment.
                                 Through mindfulness and meditation practices, yoga can help cultivate a greater sense of
                                 physical and mental equilibrium.</p>
-                            <a href="#" class="view-more">View more</a>
+                            <a href="courseDetails.html?id=2" class="view-more">View more</a>
                             <button class="buy-btn">Enroll now</button>
                             <div class="star-container">
                                 <span class="fa fa-star checked"></span>
@@ -189,7 +191,7 @@
                             <p>Yoga promotes body balance by improving strength, flexibility, and alignment.
                                 Through mindfulness and meditation practices, yoga can help cultivate a greater sense of
                                 physical and mental equilibrium.</p>
-                            <a href="#" class="view-more">View more</a>
+                            <a href="courseDetails.html?id=3" class="view-more">View more</a>
                             <button class="buy-btn">Enroll now</button>
                             <div class="star-container">
                                 <span class="fa fa-star checked"></span>
@@ -207,7 +209,7 @@
                             <p>Yoga promotes body balance by improving strength, flexibility, and alignment.
                                 Through mindfulness and meditation practices, yoga can help cultivate a greater sense of
                                 physical and mental equilibrium.</p>
-                            <a href="classDetails.html/id=2" class="view-more">View more</a>
+                            <a href="courseDetails.html?id=4" class="view-more">View more</a>
                             <button class="buy-btn">Enroll now</button>
                             <div class="star-container">
                                 <span class="fa fa-star checked"></span>
@@ -227,45 +229,42 @@
         </div>
         <!-- trainer section -->
         <div class="trainer container-fluid">
-            <h1>Our trainers</h1>
+            <h1>OUR TRAINERS</h1>
             <div class="trainer-container">
                 <div class="trainer-row">
                     <div class="trainer-col col-md-4 col-sm-6">
                         <div class="img-area">
-                            <img src="images/christina-wocintechchat-com-SJvDxw0azqw-unsplash-removebg-preview.png"
-                                alt="" class="img-fluid">
+                            <img src="images/trainer-f4_new.png" alt="" class="img-fluid">
                             <div class="img-text">
-                                <h3>Jane Jane</h3>
+                                <h3>Jane Seymour</h3>
                                 <h5>Yoga master</h5>
                             </div>
                         </div>
                     </div>
                     <div class="trainer-col col-md-4 col-sm-6">
                         <div class="img-area">
-                            <img src="images/stephanie-liverani-Zz5LQe-VSMY-unsplash-removebg-preview.png" alt=""
-                                class="img-fluid">
+                            <img src="images/trainer-f1_new.png" alt="" class="img-fluid">
                             <div class="img-text">
                                 <h3>Stephanie Liverani</h3>
-                                <h5>Core trainer master</h5>
+                                <h5>Core Trainer Master</h5>
                             </div>
                         </div>
                     </div>
                     <div class="trainer-col col-md-4 col-sm-6">
                         <div class="img-area">
-                            <img src="images/vicky-hladynets-C8Ta0gwPbQg-unsplash-removebg-preview.png" alt=""
-                                class="img-fluid">
+                            <img src="images/trainer-f2_new.png" alt="" class="img-fluid">
                             <div class="img-text">
                                 <h3>Vicky Haldynet</h3>
-                                <h5>Aerobic</h5>
+                                <h5>Gym Master</h5>
                             </div>
                         </div>
                     </div>
                     <div class="trainer-col col-md-4 col-sm-6">
                         <div class="img-area">
-                            <img src="images/ew-removebg-preview.png" style="height: 211px;" alt="">
+                            <img src="images/trainer-f3_new.png" alt="">
                             <div class="img-text">
-                                <h3>Vicky Haldynet</h3>
-                                <h5>Aerobic</h5>
+                                <h3>Johnny Smith</h3>
+                                <h5>Personal Trainer</h5>
                             </div>
                         </div>
                     </div>
@@ -273,7 +272,7 @@
             </div>
         </div> <!-- trainer end here -->
 
-    <!-- testimonial starts from here -->
+        <!-- testimonial starts from here -->
     </section>
     <section style="background-color: black;">
         <div class="hacustomer container-fluid">
@@ -335,6 +334,7 @@
     </section>
 
     <section class="blog-section">
+        <h1>READ INTERESTING BLOGS</h1>
         <div class="container blog-container">
             <div class="row blog-row">
                 <div class="card">
@@ -346,10 +346,10 @@
                         <div class="author-date">
                             <div class="author col-4">
                                 <img id="icon1" src="./images/svg_icons/user.svg">
-                                <div>@Maria</div>
+                                <div style="margin-left: 4%">@Maria</div>
                             </div>
                             <div class="date col-8">
-                                <img id="icon2" src="./images/svg_icons/clock.svg">
+                                <img style="margin-right: 4%" id="icon2" src="./images/svg_icons/clock.svg">
                                 <div>July 22, 2023</div>
                             </div>
                         </div>
@@ -363,7 +363,7 @@
                             maintaining a healthy spine and reducing the risk of low back pain.
                         </div>
                         <!-- change the class name from btn to blog-btn to aviod complict  -->
-                        <a class="blog-btn" href="blogArticle.html?id=2">Read more > </a>
+                        <button data-id="2" class="blog-btn" >Read more >> </button>
                     </div>
                 </div>
             </div>
@@ -377,10 +377,10 @@
                         <div class="author-date">
                             <div class="author col-4">
                                 <img id="icon1" src="./images/svg_icons/user.svg">
-                                <div>@Ellen</div>
+                                <div style="margin-left: 4%">@Ellen</div>
                             </div>
                             <div class="date col-8">
-                                <img id="icon2" src="./images/svg_icons/clock.svg">
+                                <img style="margin-right: 4%" id="icon2" src="./images/svg_icons/clock.svg">
                                 <div>March 12, 2023</div>
                             </div>
                         </div>
@@ -391,15 +391,20 @@
                             a balanced diet when it comes to achieving your fitness goals.
                         </div>
                         <!-- change the class name from btn to blog-btn to aviod complict  -->
-                        <a class="blog-btn" href="blogArticle.html?id=5">Read more > </a>
+                        <button data-id="5" class="blog-btn">Read more >> </button>
                     </div>
                 </div>
             </div>
+            <div class="viewmore">
+                <h4> <a href="blogs.html">View All Blogs</a></h4>
+            </div>
         </div>
+        <hr style="color:a black; height: 3px; border: none; background-color: black; width: 90%; margin:auto">
+
     </section>
 
     <!--  BMI Calculator is here -->
-    <section style="background-color: black;">
+    <section>
         <div class="container bodycalculator"><!-- body container starts -->
             <div class="row calculator-row">
                 <div class="col-12 text-center">
@@ -417,7 +422,7 @@
             </div>
             <div class="container p-md-4 p-sm-2 calculator"> <!-- calculator starts -->
                 <div class="row"><!-- main row starts -->
-                    <div class="col-md-6 inputs pt-3"><!-- inputs starts -->
+                    <div class="col-md-6 calculator-inputs-content p-4"><!-- inputs starts -->
                         <form class="needs-validation" id="bmi-form" novalidate>
 
                             <div class="row mb-3"><!-- Height starts -->
@@ -428,7 +433,7 @@
                                     <input type="height" class="form-control" id="height" required>
                                 </div>
                                 <div class="col-sm-1">
-                                    <span>cm</span>
+                                    <span class="units">cm</span>
                                 </div>
                                 <!-- <div class="invalid-feedback">Invalid input!</div> -->
                             </div><!-- Height ends -->
@@ -440,7 +445,7 @@
                                     <input type="text" class="form-control" id="weight" required>
                                 </div>
                                 <div class="col-sm-1">
-                                    <span>kg</span>
+                                    <span class="units">kg</span>
                                 </div>
                                 <!-- <div class="invalid-feedback">Invalid input!</div> -->
                             </div><!-- Weight ends -->
@@ -475,7 +480,7 @@
                                     <input type="number" class="form-control" id="age" required>
                                 </div>
                                 <div class="col-1 ps-0">
-                                    <span>years</span>
+                                    <span class="units">years</span>
                                 </div>
                             </div><!-- Age ends -->
                             <div class="row mb-3"><!-- activity starts -->
@@ -500,42 +505,49 @@
                                     <input type="text" class="form-control" id="tar-weight" required>
                                 </div>
                                 <div class="col-sm-1">
-                                    <span>kg</span>
+                                    <span class="units">kg</span>
                                 </div>
                             </div><!-- TargetWeight ends -->
                             <div class="col-12 text-center">
-                                <button type="submit" class="btn btn-primary cal-button ms-3 mt-3">Show Results</button>
+                                <button type="submit" class="btn btn-primary cal-button ms-3 mt-3" id="calculator-submit">Show Results</button>
                             </div>
                         </form>
                     </div><!-- input ends -->
-                    <div class="col-md-6 output text-center pt-3 text-center"><!-- output starts -->
+                    <div class="col-md-6 output p-3 text-center"><!-- output starts -->
                         <div class="col-12 result mt-3">
                             <p>YOUR BMI VALUE :
                         </div>
                         <div class="col-12 mt-2">
-                            <span id="bmi-value"></span>
+                            <div class="result-value"><span id="bmi-value"></span></div>
                         </div>
                         <div class="col-12 result mt-3">
                             <p>YOUR WEIGHT CATEGORY :
                         </div>
                         <div class="col-12 mt-2">
-                            <span id="bmi-status"></span>
+                            <div class="result-value"> <span id="bmi-status"></span></div>
                         </div>
                         <div class="col-12 result mt-3">
                             <p>YOUR BMR VALUE :
                         </div>
                         <div class="col-12 mt-2">
-                            <span id="bmr-value"></span>
+                            <div class="result-value"> <span id="bmr-value"></span></div>
                         </div>
                         <div class="col-12 result mt-3">
-                            <p>CALORIES REQUIRED TO - <span id="control"></span>- WEIGHT :
-                        </div>
-                        <div class="col-12 mt-2">
-                            <span id="calories"></span>
-                        </div>
+                            <p>CALORIES REQUIRED <span id="control"></span>:
+                            </div>
+                                <div class="result-value"><span id="calories"></span></div>
+                        
+                        <!-- <div class="col-12 mt-2">
+                            <div class="result-value"> <span id="calories"></span></div>
+                        </div> -->
                     </div><!-- output ends -->
                 </div><!-- main row ends -->
             </div> <!-- calculator ends -->
+            <div id="to-top-link" class="text-end mb-2">
+                <a href="#top-id">
+                    <i class="fa-solid fa-arrow-up me-1"></i>Go to Top
+                </a>
+            </div>
         </div><!-- body container ends -->
     </section>
 
@@ -546,7 +558,9 @@
                 <div class="col-md-4">
                     <div class="footerlogo">
                         <a href="#">
-                            <img style="margin-bottom: 10px" src="./images/fitnhealth-low-resolution-logo-color-on-transparent-background (1).png" alt="logo">
+                            <img style="margin-bottom: 10px"
+                                src="./images/fitnhealth-low-resolution-logo-color-on-transparent-background (1).png"
+                                alt="logo">
                         </a>
                     </div>
                     <ul class="list-unstyled">
