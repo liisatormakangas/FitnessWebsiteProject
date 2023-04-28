@@ -68,15 +68,14 @@ const renderCourses = (course) => {
             if (isLoggedIn) {
                 const token = cookie.getCookie("session_token");
                 const decodedToken = JSON.parse(atob(token.split('.')[1])); //eyJ1c2VybmFtZSI6IlNjYXJsZXQiLCJpYXQiOjE2ODI1ODM5MjMsImV4cCI6MTY4MjU4NTcyM30
-                const userId = decodedToken.id_user; //4 
-                alert(userId);
+                const userId = decodedToken.userid; // access the userid field from the decoded payload
+                //const userId = decodedToken.id_user; //4 
+                alert(userId); //cant get user id 
                 const courseId = course.id_course;
-                console.log(1, courseId);
-                console.log(2, userId);
                 /* 		  const userId = decodedToken.user_id;
                           console.log(userId); */
                 try {
-                    const response = yield fetch(`${shoppingCartUrl}/add-to-cart?userID={userID}`, {
+                    const response = yield fetch(`${shoppingCartUrl}/add-to-cart?userId={userId}`, {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",

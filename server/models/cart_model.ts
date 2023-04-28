@@ -15,7 +15,7 @@ const cart = {
     }, */
     //new code, to add a course to the cart and change course?id to user_id,
     // and chnge _id to courseId: number, userId:number 4/26 new code
-        addCourse: async (courseId: number, userId:number) => {
+        addCourse: async (courseId: number, userId:number, ) => {
         //console.log(courseId);
         //console.log(userId);
         const result = await pool.query('INSERT INTO cart(id_user, id_course) VALUES ($1, $2)', [userId, courseId]);

@@ -32,8 +32,10 @@ controller.get('/', (req, res) => {
 }); */
 controller.post('/add-to-cart', (req, res) => {
     //new code, to get user id and course id 4/26 new code
-    const userId = req.body.userId;
-    const courseId = req.body.courseId;
+    /*     const userId = req.body.userId;
+        const courseId = req.body.courseId; */
+    //4-28 new code
+    const { userId, courseId } = req.body;
     //4/26 new code change the order of userId and courseId
     cart_model_js_1.default.addCourse(courseId, userId).then((data) => {
         res.send(data.rows[0]);
