@@ -18,6 +18,7 @@ controller.get('/', (req, res) => {
 controller.get('/:id', (req, res) => {
     //get token from request header
     const token = req.headers.authorization;
+    
     if (!token || token.toLowerCase() === "bearer null") {
         res.status(401).json({
             message: 'Please login or register'
