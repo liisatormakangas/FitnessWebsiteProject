@@ -18,7 +18,15 @@ const user = {
     registerUser: (user_data) => __awaiter(void 0, void 0, void 0, function* () {
         // Hash the password before storing it in the database
         const hashedPassword = yield bcryptjs_1.default.hash(user_data.passwd, 10);
-        const query = `INSERT INTO users (
+        // Check if the username already exists in the database
+        const query_check_username = `SELECT * FROM users WHERE username = $1`;
+        const result_check_username = yield db_js_1.default.query(query_check_username, [user_data.username]);
+        if (result_check_username.rows.length > 0) {
+            throw new Error('Username already exists');
+        }
+        else {
+            // Query the database to insert the user data
+            const query = `INSERT INTO users (
             firstname,
             lastname,
             email,
@@ -29,20 +37,22 @@ const user = {
             city,
             phone_number
           ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`;
-        const params = [
-            user_data.firstname,
-            user_data.lastname,
-            user_data.email,
-            user_data.username,
-            hashedPassword,
-            user_data.street_address,
-            user_data.postal_code,
-            user_data.city,
-            user_data.phone_number
-        ];
-        const result = yield db_js_1.default.query(query, params);
-        return result;
+            const params = [
+                user_data.firstname,
+                user_data.lastname,
+                user_data.email,
+                user_data.username,
+                hashedPassword,
+                user_data.street_address,
+                user_data.postal_code,
+                user_data.city,
+                user_data.phone_number
+            ];
+            const result = yield db_js_1.default.query(query, params);
+            return result;
+        }
     }),
+    // from register to login 
     loginUser: (username, password) => __awaiter(void 0, void 0, void 0, function* () {
         // Query the database to check if the username exists
         const query = `SELECT TOP 1 FROM users WHERE username = $1`;

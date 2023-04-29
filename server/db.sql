@@ -58,8 +58,8 @@ create table comments (
 
 create table cart (
     id_cart serial primary key,
-    id_user int,
-    id_course int,
+    id_user int NOT Null,
+    id_course int NOT Null,
     foreign key (id_user) references users(id_user)
         on delete restrict on update cascade,
     foreign key (id_course) references courses(id_course)
@@ -125,7 +125,6 @@ insert into stories (
 2. The triceps pushdown is a great exercise to isolate and target the triceps. To perform this exercise, stand in front of a cable machine with a rope attachment. Grip the rope with both hands and bring it down to your chest. Keep your elbows close to your body and press the rope down until your arms are straight. Aim for three sets of 12-15 reps. 
 3. Dips are a bodyweight exercise that targets the triceps, chest, and shoulders. To perform this exercise, find parallel bars or use a dip machine. With your arms straight, lower your body until your elbows are bent to a 90-degree angle, then press back up until your arms are straight. Aim for three sets of 10-12 reps. 
 4. Skull crushers are a popular exercise for targeting the triceps. To perform this exercise, lie on a flat bench and hold a barbell with your hands shoulder-width apart. Lower the barbell toward your forehead, keeping your elbows close to your head. Press the barbell back up until your arms are straight. Aim for three sets of 8-12 reps. 
-
 5. The overhead triceps extension targets the long head of the triceps, which is located on the back of the arm. Stand with your feet shoulder-width apart and hold a dumbbell with both hands. Raise the dumbbell overhead, keeping your elbows close to your head and your palms facing upward. Slowly lower the dumbbell behind your head by bending your elbows. Keep your upper arms stationary throughout the movement. Once your forearms are parallel to the floor, pause for a second and then raise the dumbbell back to the starting position by extending your elbows. Repeat for the desired number of reps.',
         '2023-01-04',
         'blog_triceps.jpg'
@@ -151,7 +150,7 @@ It is also important to note that core strengthening exercises alone may not be 
 In conclusion, strong abdominal muscles are crucial for maintaining a healthy spine and reducing the risk of low back pain. If you are experiencing low back pain or want to prevent it from occurring, consider working with a physiotherapist to develop a safe and effective core-strengthening program. Remember, a healthy spine is essential for overall health and well-being.',
         '2022-07-22',
         'blog_abdominal.jpg'
-    );	
+        );
 
 insert into stories (
     author,
@@ -213,8 +212,9 @@ Hope these advice will help you in your own path of training. Talk to you again 
         '2022-11-27',
         'blog_growMuscles.jpg'
     );
+/* 
 update stories set story=' ' where id_story = 1;
-
+ */
 insert into courses (
     name_image1,
     extra_image2,
@@ -561,4 +561,14 @@ insert into story_reactions (
         'like'
         );
 
-        
+update courses set course_description = 'This body balance yoga course is designed to improve stability and coordination through a series of postures and movements. The classes focus on building strength in the core, legs, and feet, while also incorporating mindfulness techniques to enhance body awareness and control. Students of all levels can benefit from this course.' where id_course = 1;
+
+alter table courses add column trainer_image_name varchar(50);
+UPDATE courses SET trainer_image_name = 'trainer-f1.png' WHERE id_course = 1;
+UPDATE courses SET trainer_image_name = 'trainer-f2.png' WHERE id_course = 2;
+UPDATE courses SET trainer_image_name = 'trainer-f3.png' WHERE id_course = 3;
+UPDATE courses SET trainer_image_name = 'trainer-f4.png' WHERE id_course = 4;
+UPDATE courses SET trainer_image_name = 'trainer-f1.png' WHERE id_course = 5;
+UPDATE courses SET trainer_image_name = 'trainer-f2.png' WHERE id_course = 6;
+UPDATE courses SET trainer_image_name = 'trainer-f3.png' WHERE id_course = 7;
+UPDATE courses SET trainer_image_name = 'trainer-f4.png' WHERE id_course = 8;

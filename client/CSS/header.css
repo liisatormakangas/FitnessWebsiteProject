@@ -10,41 +10,18 @@
     /* align-items: center; */
 }
 .upper-menu a{
-    font-size: 1.5rem;
+    font-size: 1 rem;
     text-decoration: none;
     color: #fff;
 }
 .upper-menu a:hover{
   color: #FF0266;
 } 
-
-.search-box {
-  position: relative;
-  display: flex;
-  width: 100%;
-}
-.search-input {
-  padding: 5px;
-  border: 1px solid #000000;
-  border-radius: 10px 0 0 10px;
-  border-right: none;
-  outline: none;
-  width: 100%;
-  /*  font-size: 20px; */
-}
-.search-button {
-  text-align: center;
-  /* height: 51px; */
-  width: 40px;
-  outline: none;
+#logoutButton,
+#loginButton{
   cursor: pointer;
-  border: 1px solid #000000;
-  border-radius: 0 10px 10px 0;
-  border-left: none;
-  /* background: none; */
-  /* font-size: 20px; */
-  border-left: 2px solid #000000;
 }
+
 
 /* login cart */
 
@@ -95,8 +72,13 @@
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 1rem;
     cursor: pointer;
+    
+  }
+  .register-btn:hover{
+    background-color: #03DAC6 !important;
+    color: #000000;
   }
   .hamburger-menu .login-cart-section {
     display: none; /* Hide the login, reg, cart sections by default */
@@ -114,28 +96,73 @@
  .navbar-nav .nav-link{
     color: #fff !important;
   }
+  .navbar-nav .nav-link:hover{
+    color: #FF0266 !important;
+  }
+  .navbar-nav .nav-link.active {
+    border-bottom: 4px solid #fff !important;
+  }
   /* ul */
-  .navbar-nav{
-    padding-right: 30px;
-    padding-left: 30px;
-  }
+
   /* li */
-  .nav-item{
+  /* .nav-item{
     margin-right: 50px;
+  } */
+  .navbar-brand{
+    height: 100px;
+    padding: 0;
+    margin: 0;
   }
 
-/*add navbar logo img*/
-  .navbar-brand img {
+  .search-box {
+    height: 2rem;
+    position: relative;
     display: flex;
-    width: auto;
-    height: 120px;
-    position: absolute;
-    left: 0;
-    bottom: 0;
+    width: 100%;
   }
-
-  /*  footer css is here */
+  
+  .search-input {
+    height: 100%;
+    font-size: 1 rem; 
+    padding: 5px;
+    border: 1px solid #000000;
+    border-radius: 10px 0 0 10px;
+    border-right: none;
+    outline: none;
+    width: 100%;
+  }
  
+  .search-button {
+    text-align: center;
+    /* height: 51px; */
+    width: 40px;
+    outline: none;
+    cursor: pointer;
+    border: 1px solid #000000;
+    border-radius: 0 10px 10px 0;
+    border-left: none;
+    /* background: none; */
+    /* font-size: 20px; */
+    border-left: 2px solid #000000;
+    height: 100%;
+  }
+  .search-button:hover{
+    background-color: #FF0266 !important;
+    color:#ffffff;
+  }
+  
+/*add navbar logo img*/
+.navbar-brand img {
+  display: flex;
+  width: auto;
+  height: 120px;
+  position: relative;
+  left: 0;
+  top: 20%;
+  transform: translateY(-50%);
+}
+
+/*  footer css is here */
 footer {
   /* width: 1560px; */
   background: black;
@@ -200,3 +227,43 @@ footer .list-unstyled.d-flex {
   display: flex;
   gap: 10px; /* Adjust the spacing between the icons */
 }
+
+@media(max-width: 768px) {  
+  .upper-menu {
+    padding-top: 5px;
+  }
+  footer .row {
+    padding-left: 20px;
+  }
+  footer h5 {
+    font-size: 12px;
+  }
+  .contact li,
+  .contact a,
+  .list-unstyled a,
+  .list-unstyled p {
+    font-size: 10px;
+  }
+  footer .list-unstyled.d-flex {
+    flex-direction: column;
+    align-items: center;
+  }
+  .contact li {
+    gap: 5px;
+  }
+  .navbar-brand img {
+    height: 50px;
+    padding: 0;
+    left: 10px;
+    bottom: 10px;
+  }
+  .social-icons a,
+  .login-cart-wrapper a,
+  .register-btn,
+  .navbar-toggler-icon,
+  .cart i {
+    font-size: 1em;
+    height: 25px;     
+  }
+}
+

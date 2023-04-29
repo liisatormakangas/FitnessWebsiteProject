@@ -8,13 +8,54 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { Login, Cookies } from './backendCalls/sendLoginData.js';
-// form validation for login
+import { Register } from './backendCalls/sendRegisterData.js';
+const backendUrlRegister = "http://localhost:3001/register";
+const register = new Register(backendUrlRegister);
+const registerForm = document.getElementById("registerForm");
+const passwordInput = document.getElementById('passwd');
+const confirmPasswordInput = document.getElementById('passwd2');
 const loginForm = document.getElementById("loginForm");
-const loginButton = document.getElementById('loginButton');
 //these variables create the login and register modals
 const registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
 const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
-// export const notificationModal = new bootstrap. Modal(document.getElementById('notificationModal'));
+// Form validation for register form
+registerForm.addEventListener('submit', (event) => {
+    if (!registerForm.checkValidity()) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+    registerForm.classList.add('was-validated');
+});
+registerForm.addEventListener('input', (event) => {
+    if (registerForm.checkValidity() && passwordInput.value === confirmPasswordInput.value) {
+        document.querySelector('#submitRegisterData').removeAttribute('disabled');
+        confirmPasswordInput.classList.remove('is-invalid');
+    }
+    else {
+        document.querySelector('#submitRegisterData').setAttribute('disabled', '');
+        confirmPasswordInput.classList.add('is-invalid');
+    }
+});
+confirmPasswordInput.addEventListener('input', (event) => {
+    if (registerForm.checkValidity() && passwordInput.value === confirmPasswordInput.value) {
+        document.querySelector('#submitRegisterData').removeAttribute('disabled');
+    }
+    else {
+        confirmPasswordInput.classList.add('is-invalid');
+        document.querySelector('#submitRegisterData').setAttribute('disabled', '');
+    }
+});
+// sending the register data to the backend
+registerForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const formData = new FormData(registerForm);
+    const formObject = {};
+    formData.forEach((value, key) => {
+        formObject[key] = value;
+    });
+    register.addRegisteredUser(formObject);
+});
+// login functionality
 loginForm.addEventListener('submit', (event) => __awaiter(void 0, void 0, void 0, function* () {
     event.preventDefault();
     event.stopPropagation();
@@ -43,21 +84,6 @@ loginForm.addEventListener('submit', (event) => __awaiter(void 0, void 0, void 0
         }
     }
 }), false);
-// loginButton.addEventListener('click', () => {
-//     if (localStorage.getItem('token')) {
-//         logout();
-//         console.log('logged out');
-//     } else {
-//         loginModal.show();
-//     }
-// });
-// const logout = () => {
-//     localStorage.removeItem('token');
-//     // redirect the user to the home page
-//     window.location.href = 'index.html';
-//     // change the button text to 'Login'
-//     loginButton.innerHTML = 'Login';
-// }
 const modals = () => {
     //these variables determine the button elements in the html to handle the modals
     const loginButton = document.getElementById('loginButton');

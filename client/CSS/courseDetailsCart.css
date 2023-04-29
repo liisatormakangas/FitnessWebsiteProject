@@ -37,11 +37,12 @@ body{
 /* CLASS DETAILS */
 
 .class-name {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 700;
-  margin-bottom: 10px;
-  margin-left: 10px;
+  margin-bottom: 5px;
+  margin-left: 5px;
   background-color: #03DAC6;
+  padding: 0;
 }  
 .name-rating {
     display: flex;
