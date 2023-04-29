@@ -18,7 +18,7 @@ class Course {
     price_year: number;
     trainer_image_name: string;
 
-    constructor (id_course: number, name_image1: string, extra_image2: string, extra_image3: string, extra_image4: string, video_name: string, course_name: string,  trainer_name: string, course_description: string, weekdays: string, weekends: string, weekday_duration: string, weekend_duration: string, place: string, available_seats: number, price_month: number, price_year: number, trainer_image_name: string) {
+    constructor (id_course: number, name_image1: string, extra_image2: string, extra_image3: string, extra_image4: string, video_name: string, course_name: string, trainer_name: string, course_description: string, weekdays: string, weekends: string, weekday_duration: string, weekend_duration: string, place: string, available_seats: number, price_month: number, price_year: number, trainer_image_name: string) {
         this.id_course = id_course;
         this.name_image1 = name_image1;
         this.extra_image2 = extra_image2;

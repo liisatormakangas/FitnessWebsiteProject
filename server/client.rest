@@ -1,4 +1,7 @@
 ###Get
+GET http://localhost:3001/cart/ HTTP/1.1
+
+###Get
 GET http://localhost:3001/story/ HTTP/1.1
 
 ###Post
@@ -6,8 +9,10 @@ POST http://localhost:3001/ HTTP/1.1
 Content-Type: application/json
 
 {
-    "userName": "LiisaTo",
-    "password": "kukka"
+    
+    "username": "susheha",
+    "passwd": "1111",
+   
 }
 
 ###Delete

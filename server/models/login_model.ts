@@ -19,7 +19,7 @@ async function getUserPassword(username:any) {
 const loginUser = async (username:any, password:any) => {
     // Query the database to check if the username exists
 
-    let output= await  checkIfUsernameExists(username)
+    let output= await checkIfUsernameExists(username)
     if (output) {
       // If username does not exist, return an error
       const password_db =await getUserPassword(username)

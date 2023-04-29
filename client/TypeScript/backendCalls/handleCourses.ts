@@ -19,7 +19,7 @@ class Courses {
                     resolve(this.courses);//returns an array of Course objects created in the #readJson method
                 })
                 .catch(error => {
-                    reject(error);  
+                    reject(error);
                 });
         });
     };

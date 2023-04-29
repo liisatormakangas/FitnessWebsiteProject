@@ -7,12 +7,21 @@ const express_1 = __importDefault(require("express"));
 const register_model_js_1 = __importDefault(require("../models/register_model.js"));
 const controller = express_1.default.Router();
 controller.post('/', (req, res) => {
-    register_model_js_1.default.registerUser(req.body).then((data) => {
+    register_model_js_1.default.registerUser(req.body)
+        .then((data) => {
         res.send(data);
-    }).catch((error) => {
-        res.status(500).send({
-            message: 'Some error occurred while retrieving information.'
-        });
+    })
+        .catch((error) => {
+        if (error.message === 'Username already exists') {
+            res.status(400).send({
+                message: 'Username already exists. Please choose a different username.'
+            });
+        }
+        else {
+            res.status(500).send({
+                message: 'Some error occurred while registering the user.'
+            });
+        }
     });
 });
 exports.default = controller;
