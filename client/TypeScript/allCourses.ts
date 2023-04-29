@@ -3,6 +3,7 @@ import { Courses } from './backendCalls/handleCourses.js';
 import { Cookies } from './backendCalls/sendLoginData.js';
 
 const backendUrl = "http://localhost:3001/course";
+const shoppingCartUrl = "http://localhost:3001/cart";
 
 const courses = new Courses(backendUrl);
 
@@ -75,24 +76,45 @@ const renderCourses = (course: Course) => {
 	courseDiv.appendChild(productCard);
 	contentDiv.appendChild(courseDiv);
 
-	enrollBtn.addEventListener("click", () => {
-		const cookie = new Cookies();
-		const isLoggedIn = cookie.isCookieSet("session_token");
-		if (isLoggedIn) {
-			const token = cookie.getCookie("session_token");
-			const decodedToken = JSON.parse(atob(token.split('.')[1]));
-			const username = decodedToken.username;
+	const button = courseDiv.querySelector(".buy-btn");
 
-			//here are now the variables username and id_course that we need to send to the backend
-			console.log(course.id_course);
-			console.log(username);
-			
-		} else {
-			alert("You need to be logged in to enroll in a course");
-		}
-	});
+	if (button) {
+		button.addEventListener("click", async () => {
+			const cookie = new Cookies();
+			const isLoggedIn = cookie.isCookieSet("session_token");
 
+			if (isLoggedIn) {
+				const token = cookie.getCookie("session_token");
+				const decodedToken = JSON.parse(atob(token.split('.')[1]));
+				const userId = decodedToken.userid;
+				const courseId = course.id_course;
+				console.log(userId);
+				console.log(courseId);
+
+				try {
+					const response = await fetch(`${shoppingCartUrl}/add-to-cart`, {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+						},
+						body: JSON.stringify({ userId, courseId }),
+					});
+
+					if (response.ok) {
+						alert("Course added to shopping cart!");
+					} else {
+						alert("There was an error adding the course to the shopping cart");
+					}
+				} catch (error) {
+					console.log(error);
+				}
+			} else {
+				alert("You need to be logged in to add a course to the shopping cart");
+			}
+		});
+	}
 };
+
 
 
 
