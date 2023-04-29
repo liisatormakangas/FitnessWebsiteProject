@@ -13,7 +13,7 @@ controller.get('/', (req, res) => {
     });
 });
 
-controller.get('/:id', (req, res) => {
+controller.get('/:id', (req, res) =>  {
     course.getCourseById(parseInt(req.params.id)).then((data: any) => {
         res.send(data.rows[0]);
     }).catch((error: any) => {

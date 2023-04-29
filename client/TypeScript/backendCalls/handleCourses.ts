@@ -1,4 +1,5 @@
 import { Course } from './course.js';
+//import { Cookies } from './sendLoginData.js';
 
 class Courses {
     courses: Course[];
@@ -22,6 +23,19 @@ class Courses {
                 });
         });
     };
+    getCourseById = async (id: number) => {
+        return new Promise(async (resolve, reject) => {
+            fetch(this.#backendUrl + "/" + id)
+                .then(response => response.json())
+                .then(response => {
+                    resolve(response);//returns a single Course object
+                })
+                .catch(error => {
+                    reject(error);
+                });  
+        });
+
+    };
 
     #readJson = (json: any) => {
         json.forEach((course: any) => {
@@ -33,6 +47,7 @@ class Courses {
                 course.extra_image4,
                 course.video_name,
                 course.course_name,
+                course.trainer_image_name,
                 course.trainer_name,
                 course.course_description,
                 course.weekdays,

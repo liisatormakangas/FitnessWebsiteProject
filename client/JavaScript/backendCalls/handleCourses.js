@@ -20,6 +20,7 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
 };
 var _Courses_backendUrl, _Courses_readJson;
 import { Course } from './course.js';
+//import { Cookies } from './sendLoginData.js';
 class Courses {
     constructor(backendUrl) {
         _Courses_backendUrl.set(this, "");
@@ -36,9 +37,21 @@ class Courses {
                 });
             }));
         });
+        this.getCourseById = (id) => __awaiter(this, void 0, void 0, function* () {
+            return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
+                fetch(__classPrivateFieldGet(this, _Courses_backendUrl, "f") + "/" + id)
+                    .then(response => response.json())
+                    .then(response => {
+                    resolve(response); //returns a single Course object
+                })
+                    .catch(error => {
+                    reject(error);
+                });
+            }));
+        });
         _Courses_readJson.set(this, (json) => {
             json.forEach((course) => {
-                this.courses.push(new Course(course.id_course, course.name_image1, course.extra_image2, course.extra_image3, course.extra_image4, course.video_name, course.course_name, course.trainer_name, course.course_description, course.weekdays, course.weekends, course.weekday_duration, course.weekend_duration, course.place, course.available_seats, course.price_month, course.price_year));
+                this.courses.push(new Course(course.id_course, course.name_image1, course.extra_image2, course.extra_image3, course.extra_image4, course.video_name, course.course_name, course.trainer_image_name, course.trainer_name, course.course_description, course.weekdays, course.weekends, course.weekday_duration, course.weekend_duration, course.place, course.available_seats, course.price_month, course.price_year));
             });
         });
         this.courses = [];
