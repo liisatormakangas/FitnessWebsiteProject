@@ -1,7 +1,6 @@
 import express, { Express, Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import jwt from 'jsonwebtoken';
 
 import loginRouter from './controllers/login_controller.js';
 import storyRouter from './controllers/story_controller.js';

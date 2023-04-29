@@ -20,22 +20,12 @@ controller.get('/', (req, res) => {
         });
     });
 });
-//here is old code, for reference in cse mess up
-/* controller.post('/add/:course_id', (req, res) => {
-    cart.addCourse(parseInt(req.params.course_id)).then((data: any) => {
-        res.send(data.rows[0]);
-    }).catch((error: any) => {
-        res.status(500).send({
-            message: 'Some error occurred while adding course to cart.'
-        });
-    });
-}); */
 controller.post('/add-to-cart', (req, res) => {
     //new code, to get user id and course id 4/26 new code
     const userId = req.body.userId;
     const courseId = req.body.courseId;
     //4/26 new code change the order of userId and courseId
-    cart_model_js_1.default.addCourse(courseId, userId).then((data) => {
+    cart_model_js_1.default.addCourse(userId, courseId).then((data) => {
         res.send(data.rows[0]);
     }).catch((error) => {
         res.status(500).send({

@@ -1,55 +1,8 @@
-import { Register } from "./backendCalls/sendRegisterData.js";
 import { Cookies } from "./backendCalls/sendLoginData.js";
 
-const backendUrlRegister = "http://localhost:3001/register";
 
-const register = new Register(backendUrlRegister);
-
-const registerForm = document.getElementById("registerForm") as HTMLFormElement;
-const passwordInput = document.getElementById('passwd') as HTMLInputElement;
-const confirmPasswordInput = document.getElementById('passwd2') as HTMLInputElement;
+// An event listener for frontpage blog article 'read more' links
 const blogLinks: any = document.querySelectorAll(".blog-btn");
-
-registerForm.addEventListener('submit', (event: Event) => {
-	if (!registerForm.checkValidity()) {
-		event.preventDefault();
-		event.stopPropagation();
-	}
-
-	registerForm.classList.add('was-validated');
-});
-
-registerForm.addEventListener('input', (event) => {
-	if (registerForm.checkValidity() && passwordInput.value === confirmPasswordInput.value) {
-		document.querySelector('#submitRegisterData').removeAttribute('disabled');
-		confirmPasswordInput.classList.remove('is-invalid');
-	} else {
-		document.querySelector('#submitRegisterData').setAttribute('disabled', '');
-		confirmPasswordInput.classList.add('is-invalid');
-	}
-});
-
-  confirmPasswordInput.addEventListener('input', (event) => {
-    if (registerForm.checkValidity() && passwordInput.value === confirmPasswordInput.value) {
-      document.querySelector('#submitRegisterData').removeAttribute('disabled');
-    } else {
-      confirmPasswordInput.classList.add('is-invalid');
-      document.querySelector('#submitRegisterData').setAttribute('disabled', '');
-    }
-  });
-
-registerForm.addEventListener("submit", (event: Event) => {
-	event.preventDefault();
-
-	const formData = new FormData(registerForm);
-	const formObject = {};
-	formData.forEach((value, key) => {
-		formObject[key] = value;
-		console.log("formObject[key]");
-	});
-
-	register.addRegisteredUser(formObject);
-});
 
 blogLinks.forEach((blogLink: any) => {
 	blogLink.addEventListener("click", (event: Event) => {
@@ -63,6 +16,59 @@ blogLinks.forEach((blogLink: any) => {
 			alert("You need to be logged in to read the full article");
 		}
 	});
-
-
 });
+
+// An event listener for the Join us now button
+const joinUsButton = document.getElementById("joinUsNow") as HTMLButtonElement;
+
+joinUsButton.addEventListener("click", (event: Event) => {
+	event.preventDefault();
+	const cookie = new Cookies();
+	const isLoggedIn = cookie.isCookieSet("session_token");
+	if (isLoggedIn) {
+		window.location.href = "index.html";
+	} else {
+		const registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
+		registerModal.show();
+	}
+});
+
+// An event listener for the course enroll buttons
+const courseEnrollLinks: any = document.querySelectorAll("#enrollButton");
+
+courseEnrollLinks.forEach((courseEnrollLink: any) => {
+	courseEnrollLink.addEventListener("click", async (event: Event) => {
+		event.preventDefault();
+		const cookie = new Cookies();
+		const isLoggedIn = cookie.isCookieSet("session_token");
+
+		if (isLoggedIn) {
+			const token = cookie.getCookie("session_token");
+			const decodedToken = JSON.parse(atob(token.split('.')[1]));
+			const userId = decodedToken.userid;
+			const courseId = (event.currentTarget as HTMLElement).getAttribute('data-id');
+			try {
+				const response = await fetch(`http://localhost:3001/cart/add-to-cart`, {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({ userId, courseId }),
+				});
+				if (response.ok) {
+					alert("Course added to shopping cart!");
+				} else {
+					alert("There was an error adding the course to the shopping cart");
+				}
+			} catch (error) {
+				console.log(error);
+			}
+		} else {
+			alert("You need to be logged in to enroll in a course");
+		}
+	});
+});
+
+
+
+

@@ -8,11 +8,54 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { Login, Cookies } from './backendCalls/sendLoginData.js';
-// form validation for login
+import { Register } from './backendCalls/sendRegisterData.js';
+const backendUrlRegister = "http://localhost:3001/register";
+const register = new Register(backendUrlRegister);
+const registerForm = document.getElementById("registerForm");
+const passwordInput = document.getElementById('passwd');
+const confirmPasswordInput = document.getElementById('passwd2');
 const loginForm = document.getElementById("loginForm");
 //these variables create the login and register modals
 const registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
 const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+// Form validation for register form
+registerForm.addEventListener('submit', (event) => {
+    if (!registerForm.checkValidity()) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+    registerForm.classList.add('was-validated');
+});
+registerForm.addEventListener('input', (event) => {
+    if (registerForm.checkValidity() && passwordInput.value === confirmPasswordInput.value) {
+        document.querySelector('#submitRegisterData').removeAttribute('disabled');
+        confirmPasswordInput.classList.remove('is-invalid');
+    }
+    else {
+        document.querySelector('#submitRegisterData').setAttribute('disabled', '');
+        confirmPasswordInput.classList.add('is-invalid');
+    }
+});
+confirmPasswordInput.addEventListener('input', (event) => {
+    if (registerForm.checkValidity() && passwordInput.value === confirmPasswordInput.value) {
+        document.querySelector('#submitRegisterData').removeAttribute('disabled');
+    }
+    else {
+        confirmPasswordInput.classList.add('is-invalid');
+        document.querySelector('#submitRegisterData').setAttribute('disabled', '');
+    }
+});
+// sending the register data to the backend
+registerForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const formData = new FormData(registerForm);
+    const formObject = {};
+    formData.forEach((value, key) => {
+        formObject[key] = value;
+    });
+    register.addRegisteredUser(formObject);
+});
+// login functionality
 loginForm.addEventListener('submit', (event) => __awaiter(void 0, void 0, void 0, function* () {
     event.preventDefault();
     event.stopPropagation();
