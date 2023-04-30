@@ -68,10 +68,12 @@ const renderCourses = (course) => {
             if (isLoggedIn) {
                 const token = cookie.getCookie("session_token");
                 const decodedToken = JSON.parse(atob(token.split('.')[1])); //eyJ1c2VybmFtZSI6IlNjYXJsZXQiLCJpYXQiOjE2ODI1ODM5MjMsImV4cCI6MTY4MjU4NTcyM30
-                const userId = decodedToken.userid; // access the userid field from the decoded payload
+                //why some time the token is id_user and some time is useris? 
+                const userId = decodedToken.id_user; // access the userid field from the decoded payload
                 //const userId = decodedToken.id_user; //4 
                 alert(userId); //cant get user id 
                 const courseId = course.id_course;
+                alert(courseId); //cant get user id 
                 /* 		  const userId = decodedToken.user_id;
                           console.log(userId); */
                 try {

@@ -65,6 +65,20 @@ create table cart (
     foreign key (id_course) references courses(id_course)
         on delete restrict on update cascade
 );
+/* according to techer video, create a table for order then can get order and other */
+CREATE table order_roll {
+    id_order serial primary key,
+    order_date timestamp DEFAULT CURRENT_TIMESTAMP,
+    id_cart int NOT Null,
+    id_user int NOT Null,
+    id_course int NOT Null,
+    foreign key (id_cart) references cart(id_cart)
+        on delete restrict on update cascade,
+    foreign key (id_user) references users(id_user)
+        on delete restrict on update cascade,
+    foreign key (id_course) references courses(id_course)
+        on delete restrict on update cascade
+}
 
 
 insert into users (
