@@ -152,15 +152,18 @@ insert into stories (
     image_name
     )
 	values (
-        'A dream come true!',
-        'I did it! I ran my first full marathon and it was an experience of a lifetime. Crossing that finish line after months of training was one of the most fulfilling moments of my life. Now that it is over, I wanted to share my journey with all of you. 
-First of all, I have to admit that I was never an avid runner. In fact, running used to be my least favourite activity. However, a few years ago, I decided to challenge myself and signed up for my first 5k. From there, I began to enjoy the rush of endorphins and the feeling of accomplishment that came with finishing a race. So, I continued to run and set higher goals for myself. 
-When I decided to run a full marathon, I knew it was going to be a massive challenge. I started by researching training programs online and reading books about long-distance running. I also spoke to other runners and got advice from experienced marathoners. Finally, I put together a training plan that worked for me. 
-My training plan consisted of running five days a week, with gradually increasing mileage each week. I also incorporated strength training and cross-training at gym to prevent injuries and build overall fitness. I followed a strict diet plan that consisted of a balance of protein, carbs, and healthy fats to fuel my body for the long runs. 
-During my training, I faced several obstacles, such as injuries, mental burnout, and self-doubt. However, I kept reminding myself of my end goal and pushed through the challenges. I also found that having a running buddy and joining a running group helped me stay motivated and accountable. 
-Finally, race day arrived, and I felt a mix of excitement and nerves. But I also felt I was ready for this and that was just an incredible day! It was not about the marathon, it was about achieving a goal I had set to myself. I can warmly recommend this feeling to all of you!',
-        '2023-04-05',
-        'blog_marathon.jpg'
+        '@Maria',
+        'Importance of Strong Abdominal Muscles',
+        'As a physiotherapist with extensive experience in treating low back problems, I cannot emphasize enough the importance of strong abdominal muscles. Strong abdominal muscles play a crucial role in maintaining a healthy spine and reducing the risk of low back pain. 
+The muscles in your abdomen work together to support your spine and pelvis, providing stability and helping to distribute forces evenly throughout your body. When your abdominal muscles are weak, your spine is more susceptible to injury, which can lead to pain and discomfort. 
+One of the most common causes of low back pain is a weak core. A weak core can cause your back muscles to compensate, leading to tension and strain in the lower back. Over time, this can cause chronic pain and even injury. 
+In addition to reducing the risk of low back pain, strong abdominal muscles can also improve your overall posture and balance. Good posture is essential for maintaining a healthy spine, and a strong core can help you maintain proper alignment and reduce the risk of injury. 
+So, how can you strengthen your abdominal muscles? There are many exercises you can do to strengthen your core, including planks, sit-ups, and crunches. However, it is important to ensure that you are doing these exercises correctly to avoid injury. 
+As a physiotherapist, I recommend working with a professional to develop a safe and effective core-strengthening program. A physiotherapist can help you identify any muscle imbalances or weaknesses and develop an individualized program to target these areas. 
+It is also important to note that core strengthening exercises alone may not be enough to prevent low back pain. Maintaining a healthy lifestyle, including regular exercise, a balanced diet, and good sleep habits, is essential for overall health and well-being. 
+In conclusion, strong abdominal muscles are crucial for maintaining a healthy spine and reducing the risk of low back pain. If you are experiencing low back pain or want to prevent it from occurring, consider working with a physiotherapist to develop a safe and effective core-strengthening program. Remember, a healthy spine is essential for overall health and well-being.',
+        '2022-07-22',
+        'blog_abdominal.jpg'
         );
 
 insert into stories (
@@ -572,4 +575,14 @@ insert into story_reactions (
         'like'
         );
 
-        
+update courses set course_description = 'This body balance yoga course is designed to improve stability and coordination through a series of postures and movements. The classes focus on building strength in the core, legs, and feet, while also incorporating mindfulness techniques to enhance body awareness and control. Students of all levels can benefit from this course.' where id_course = 1;
+
+alter table courses add column trainer_image_name varchar(50);
+UPDATE courses SET trainer_image_name = 'trainer-f1.png' WHERE id_course = 1;
+UPDATE courses SET trainer_image_name = 'trainer-f2.png' WHERE id_course = 2;
+UPDATE courses SET trainer_image_name = 'trainer-f3.png' WHERE id_course = 3;
+UPDATE courses SET trainer_image_name = 'trainer-f4.png' WHERE id_course = 4;
+UPDATE courses SET trainer_image_name = 'trainer-f1.png' WHERE id_course = 5;
+UPDATE courses SET trainer_image_name = 'trainer-f2.png' WHERE id_course = 6;
+UPDATE courses SET trainer_image_name = 'trainer-f3.png' WHERE id_course = 7;
+UPDATE courses SET trainer_image_name = 'trainer-f4.png' WHERE id_course = 8;
