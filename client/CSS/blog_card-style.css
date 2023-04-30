@@ -100,8 +100,10 @@ ul.breadcrumb li a:hover {
     flex-direction: column;
     padding: 10px;
   }
-
-  .card-text {
+}
+@media(max-width: 576px) {
+  .paragraph {
     margin-bottom: 15%;
-  }
+    font-size: 0.9em;
+    }
 }

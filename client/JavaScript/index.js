@@ -1,47 +1,15 @@
-import { Register } from "./backendCalls/sendRegisterData.js";
-import { Cookies } from "./backendCalls/sendLoginData.js";
-const backendUrlRegister = "http://localhost:3001/register";
-const register = new Register(backendUrlRegister);
-const registerForm = document.getElementById("registerForm");
-const passwordInput = document.getElementById('passwd');
-const confirmPasswordInput = document.getElementById('passwd2');
-const blogLinks = document.querySelectorAll(".blog-btn");
-registerForm.addEventListener('submit', (event) => {
-    if (!registerForm.checkValidity()) {
-        event.preventDefault();
-        event.stopPropagation();
-    }
-    registerForm.classList.add('was-validated');
-});
-registerForm.addEventListener('input', (event) => {
-    if (registerForm.checkValidity() && passwordInput.value === confirmPasswordInput.value) {
-        document.querySelector('#submitRegisterData').removeAttribute('disabled');
-        confirmPasswordInput.classList.remove('is-invalid');
-    }
-    else {
-        document.querySelector('#submitRegisterData').setAttribute('disabled', '');
-        confirmPasswordInput.classList.add('is-invalid');
-    }
-});
-confirmPasswordInput.addEventListener('input', (event) => {
-    if (registerForm.checkValidity() && passwordInput.value === confirmPasswordInput.value) {
-        document.querySelector('#submitRegisterData').removeAttribute('disabled');
-    }
-    else {
-        confirmPasswordInput.classList.add('is-invalid');
-        document.querySelector('#submitRegisterData').setAttribute('disabled', '');
-    }
-});
-registerForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const formData = new FormData(registerForm);
-    const formObject = {};
-    formData.forEach((value, key) => {
-        formObject[key] = value;
-        console.log("formObject[key]");
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
-    register.addRegisteredUser(formObject);
-});
+};
+import { Cookies } from "./backendCalls/sendLoginData.js";
+// An event listener for frontpage blog article 'read more' links
+const blogLinks = document.querySelectorAll(".blog-btn");
 blogLinks.forEach((blogLink) => {
     blogLink.addEventListener("click", (event) => {
         event.preventDefault();
@@ -55,4 +23,54 @@ blogLinks.forEach((blogLink) => {
             alert("You need to be logged in to read the full article");
         }
     });
+});
+// An event listener for the Join us now button
+const joinUsButton = document.getElementById("joinUsNow");
+joinUsButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    const cookie = new Cookies();
+    const isLoggedIn = cookie.isCookieSet("session_token");
+    if (isLoggedIn) {
+        window.location.href = "index.html";
+    }
+    else {
+        const registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
+        registerModal.show();
+    }
+});
+// An event listener for the course enroll buttons
+const courseEnrollLinks = document.querySelectorAll("#enrollButton");
+courseEnrollLinks.forEach((courseEnrollLink) => {
+    courseEnrollLink.addEventListener("click", (event) => __awaiter(void 0, void 0, void 0, function* () {
+        event.preventDefault();
+        const cookie = new Cookies();
+        const isLoggedIn = cookie.isCookieSet("session_token");
+        if (isLoggedIn) {
+            const token = cookie.getCookie("session_token");
+            const decodedToken = JSON.parse(atob(token.split('.')[1]));
+            const userId = decodedToken.userid;
+            const courseId = event.currentTarget.getAttribute('data-id');
+            try {
+                const response = yield fetch(`http://localhost:3001/cart/add-to-cart`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ userId, courseId }),
+                });
+                if (response.ok) {
+                    alert("Course added to shopping cart!");
+                }
+                else {
+                    alert("There was an error adding the course to the shopping cart");
+                }
+            }
+            catch (error) {
+                console.log(error);
+            }
+        }
+        else {
+            alert("You need to be logged in to enroll in a course");
+        }
+    }));
 });
