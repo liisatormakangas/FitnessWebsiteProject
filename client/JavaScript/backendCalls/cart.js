@@ -5,4 +5,7 @@ class ShoppingCart {
         this.id_course = id_course;
     }
 }
+const backendUrl = "http://localhost:3001/course";
+const shoppingCartUrl = "http://localhost:3001/cart";
+//old code
 export { ShoppingCart };

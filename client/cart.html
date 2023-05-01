@@ -104,8 +104,9 @@
                 </ul>
             </div>
             <div class="middle-content" >
-                <div class="cart" id="shpping-cart">
-                    <div class="cart-header">
+                <div class="cart" id="cart-content">
+                    <div id="cart-items"></div>
+                    <!-- <div class="cart-header">
                         <h2>Your courses</h2>
                     </div>
                     <div class="cart-container">
@@ -124,7 +125,7 @@
                                 </div>
                                 <div class="cart-item-right">
                                     <div class="cart-item-remove">
-                                        <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                                        <button class="btn btn-danger"  id="removeCourse"><i class="fas fa-trash-alt"></i></button>
                                     </div>
                                     <div class="cart-item-price">
                                         <h3>60 $</h3>
@@ -140,21 +141,22 @@
                                 </div>
                                 <div class="cart-item-right">
                                     <div class="cart-item-remove">
-                                        <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                                        <button class="btn btn-danger removeCourse" id="removeCourse"><i class="fas fa-trash-alt"></i></button>
                                     </div>
                                     <div class="cart-item-price">
                                         <h3>70 $</h3>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="total-price">
-                                <h2>Total 130 $</h2>
-                            </div>
-                            <div class="proceed-pay">
-                                <button class="btn btn-proceed">Proceed to pay</button>
-                            </div>
+                            </div> -->
+
+                       <!--  </div>  -->
+                        <div class="total-price" id="total-pric" >
+                            <!-- <h2>Total 130 $</h2> -->
                         </div>
-                    </div>
+                        <!-- <div class="proceed-pay">
+                            <button class="btn btn-proceed">Proceed to pay</button>
+                        </div> -->
+                    <!-- </div> -->
                 </div>
 
             </div>
@@ -405,6 +407,7 @@
     <!-- Load your custom scripts -->
     <script src="./JavaScript/index.js" type="module"></script>
     <script src="./JavaScript/modals.js" type="module"></script>
+    <script src="./JavaScript/handleShopCart.js" type="module"></script> 
     
 </body>
 

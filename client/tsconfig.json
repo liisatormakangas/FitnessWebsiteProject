@@ -9,6 +9,8 @@
         "server/*.ts"
     ],
     "paths": {
-        "bootstrap": ["node_modules/bootstrap/dist/js/bootstrap.min.js"]
+        "bootstrap": ["node_modules/bootstrap/dist/js/bootstrap.min.js"],
+        //new code 4-30
+        "./backendCalls/*": ["./src/backendCalls/*"]
       },"moduleResolution": "node"
 }

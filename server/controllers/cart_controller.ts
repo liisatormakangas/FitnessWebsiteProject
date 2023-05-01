@@ -34,4 +34,20 @@ controller.post('/add-to-cart', (req, res) => {
   });
 });
 
+//remove course from cart 4/30
+controller.post('/remove-from-cart', async(req, res) => {
+  const userId = req.body.userId;
+  const courseId = req.body.courseId;
+  try{
+    await cart.removeCourse(userId, courseId);
+    res.status(200).send({
+      message: 'Course has been removed from cart!'
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      message: 'Some error occurred while removing course from cart.'    
+  });
+  }
+});
 export default controller;
