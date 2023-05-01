@@ -1,33 +1,30 @@
-/* ALL CLASSES VIEW*/
+body{
+  font-family: 'Montserrat';
+}
 
 /* BREADCRUMB */
 .breadcrumb {
-  padding: 20px 15px;
+  padding: 0px 16px;
 }
 .breadcrumb ul {
-  padding: 0;
+  padding: 10px 16px;;
   margin: 0;
 }
 .breadcrumb ul li {
   list-style: none;
   display: inline;
-  font-size: 1rem;
+  font-size: 18px;
 }
-.breadcrumb ul li::after {
+.breadcrumb ul li+li::before {
   content: "\f105";
   padding: 0 8px;
   color: black;
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
 }
-.breadcrumb ul li:last-child:after {
-  content: "";
-}
 .breadcrumb ul li a {
   color: #FF0266;
   text-decoration: none;
-  -webkit-transition: color 0.7s ease-in;
-  transition: color 0.7s ease-in;
 }
 .breadcrumb ul li a:hover {
   color: #03DAC6;
@@ -255,6 +252,7 @@
   .column h2 {
     font-size: 24px;
     margin-bottom: 10px;
+    font-weight: bold;
   }
   .column p {
     font-size: 16px;
@@ -314,11 +312,11 @@
     margin-bottom: 80px;
   }
   
-  .cart{
+  .cart1{
     min-width: 700px;
   }
   @media screen and (max-width: 700px) {
-    .cart {
+    .cart1 {
       min-width: 100%;
     }
   }
