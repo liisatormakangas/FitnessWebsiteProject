@@ -16,11 +16,12 @@ const express_1 = __importDefault(require("express"));
 const cart_model_js_1 = __importDefault(require("../models/cart_model.js"));
 const controller = express_1.default.Router();
 //old code fot 4/26 before find out couse id and uset id use wrong
-controller.get('/', (req, res) => {
+controller.get('/:id', (req, res) => {
     //to get user id
-    const userId = req.body.id_user;
-    console.log(req.body.id_user);
-    console.log(req.body);
+    // const userId = req.body.id_user;
+    // console.log(req.body.id_user);
+    // console.log(req.body);
+    const userId = parseInt(req.params.id);
     cart_model_js_1.default.getCart(userId).then((data) => {
         res.send(data.rows);
     }).catch((error) => {
@@ -47,7 +48,7 @@ controller.post('/remove-from-cart', (req, res) => __awaiter(void 0, void 0, voi
     const userId = req.body.userId;
     const courseId = req.body.courseId;
     try {
-        yield cart_model_js_1.default.removeCourse(userId, courseId);
+        yield cart_model_js_1.default.removeCourse(courseId, userId);
         res.status(200).send({
             message: 'Course has been removed from cart!'
         });

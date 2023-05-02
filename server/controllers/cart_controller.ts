@@ -5,11 +5,13 @@ const controller = express.Router();
 
 //old code fot 4/26 before find out couse id and uset id use wrong
 
-controller.get('/', (req, res) => {
+controller.get('/:id', (req, res) => {
   //to get user id
-  const userId = req.body.id_user;
-  console.log(req.body.id_user);
-  console.log(req.body);
+  // const userId = req.body.id_user;
+  
+  // console.log(req.body.id_user);
+  // console.log(req.body);
+  const userId = parseInt(req.params.id);
   cart.getCart(userId).then((data: any) => {
     res.send(data.rows);
   }).catch((error: any) => {
@@ -39,7 +41,7 @@ controller.post('/remove-from-cart', async(req, res) => {
   const userId = req.body.userId;
   const courseId = req.body.courseId;
   try{
-    await cart.removeCourse(userId, courseId);
+    await cart.removeCourse( courseId, userId);
     res.status(200).send({
       message: 'Course has been removed from cart!'
     });
