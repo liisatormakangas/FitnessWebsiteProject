@@ -22,8 +22,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <link rel="stylesheet" href="CSS/header.css">
   <link rel="stylesheet" href="CSS/courseDetailsCart.css">
+  <link rel="stylesheet" href="CSS/login_register.css">
   
-  <title>Fit'nHealth . Course</title>
+  <title>Fit'nHealth | Course</title>
   <!-- favicon title -->
   <link rel="icon" type="image/png" href="./images/fitnhealth-low-resolution-color-logo.png">
   <link rel="apple-touch-icon" type="image/png" href="./images/fitnhealth-low-resolution-color-logo.png" />
@@ -71,13 +72,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mx-auto  mt-auto">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+              <a class="nav-link" aria-current="page" href="index.html">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="blogs.html">Blog</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="courses.html">Courses</a>
+              <a class="nav-link active" href="courses.html">Courses</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="about.html">About</a>
@@ -103,7 +104,7 @@
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="courses.html">Courses</a></li>
-          <li id="courseNameNav"></li>
+          <li id="navcourseName"></li>
         </ul>
       </div>
       <div class="name-rating">
@@ -117,8 +118,8 @@
         </div>
       </div>
       <div class="video">
-        <video width="320" height="240" autoplay controls>
-          <source id="courseVideo" src="images/Yoga.mp4" type="video/mp4">
+        <video width="320" height="240" autoplay>
+          <source id="courseVideo"  src="images/Yoga.mp4" type="video/mp4">
         </video>
       </div>
       <div class="trainer-row-container">
@@ -159,41 +160,35 @@
         <div class="column">
           <h2>Description</h2>
           <p id="courseDescription"></p>
+          <!-- <p id="courseDescription"></p> -->
         </div>
         <div class="column">
           <h2>Schedule</h2>
-
-          <h5 id="courseScheduleWeek"></h5>
-          <li id="courseTimeWeek"></li>
-          <h5 id="courseScheduleWeekend"></h5>
-          <li id="courseTimeWeekend"></li>
-
-          <h5>Place:</h5>
-          <p>Studio Fitness Club, Yliopistokatu 9, 90570 Oulu</p>
+          
+            <h5 id="scheduleWeekday"></h5><li id="courseTimeWeek"></li>
+            <h5 id="scheduleWeekend"></h5><li id="courseTimeWeekend"></li>
+          
+          <h5>Place:</h5> <p>Studio Fitness Club, Pentti katu 1, 90570 Oulu</p>
         </div>
         <div class="column">
-          <h2>Place available</h2>
-          <p id="placesAvailable"></p>
+          <h2>Availability</h2>
+          <p id="courseAvailability"></p>
           <h3>Price</h3>
-          <h5>
-            <li id="pricePerMonth"></li>
-          </h5>
-          <h5>
-            <li id="pricePerYear"></li>
-          </h5>
+          <h5><li id="coursePriceMonth"></li></h5>
+          <h5><li>500 $ / Year</li></h5>
         </div>
       </div>
       <!--Additional images-->
       <div class="morePic">More pictures of this class</div>
       <div class="image-container">
         <div class="image">
-          <img id="courseImages2" alt="Image 2">
+          <img src="images/Yoga2.jpg" alt="Image 2">
         </div>
         <div class="image">
-          <img id="courseImages3" alt="Image 3">
+          <img src="images/Yoga3.jpg" alt="Image 3">
         </div>
         <div class="image">
-          <img id="courseImages4" alt="Image 4">
+          <img src="images/Yoga4.jpg" alt="Image 4">
         </div>
       </div>
 

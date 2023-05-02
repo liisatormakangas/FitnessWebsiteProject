@@ -78,7 +78,7 @@ ul.breadcrumb li {
 }
 
 ul.breadcrumb li+li:before {
-  padding: 8px;
+  padding:  8px;
   color: black;
   content: "\f105";
   font-family: "Font Awesome 5 Free";
