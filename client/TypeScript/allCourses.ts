@@ -1,6 +1,7 @@
 import { Course } from './backendCalls/course.js';
 import { Courses } from './backendCalls/handleCourses.js';
 import { Cookies } from './backendCalls/sendLoginData.js';
+import { updateCartIcon } from './modals.js';
 
 const backendUrl = "http://localhost:3001/course";
 const shoppingCartUrl = "http://localhost:3001/cart";
@@ -76,44 +77,54 @@ const renderCourses = (course: Course) => {
 	courseDiv.appendChild(productCard);
 	contentDiv.appendChild(courseDiv);
 
+	//add event listener to the enroll button to add the course to the shopping cart
 	const button = courseDiv.querySelector(".buy-btn");
 
-	if (button) {
-		button.addEventListener("click", async () => {
-			const cookie = new Cookies();
-			const isLoggedIn = cookie.isCookieSet("session_token");
+	button.addEventListener("click", async () => {
+		const cookie = new Cookies();
+		const isLoggedIn = cookie.isCookieSet("session_token");
 
-			if (isLoggedIn) {
-				const token = cookie.getCookie("session_token");
-				const decodedToken = JSON.parse(atob(token.split('.')[1]));
-				const userId = decodedToken.userid;
-				const courseId = course.id_course;
-				console.log(userId);
-				console.log(courseId);
+		if (isLoggedIn) {
+			// update the number of items in the shopping cart icon
+			let itemsInCart: number = parseInt(localStorage.getItem("itemsInCart") || "0");
+			itemsInCart++;
+			localStorage.setItem("itemsInCart", String(itemsInCart));
 
-				try {
-					const response = await fetch(`${shoppingCartUrl}/add-to-cart`, {
-						method: "POST",
-						headers: {
-							"Content-Type": "application/json",
-						},
-						body: JSON.stringify({ userId, courseId }),
-					});
+			updateCartIcon(itemsInCart)
+		
+			// add the course to the shopping cart
+			const token = cookie.getCookie("session_token");
+			const decodedToken = JSON.parse(atob(token.split('.')[1]));
+			const userId = decodedToken.userid;
+			const courseId = course.id_course;
 
-					if (response.ok) {
-						alert("Course added to shopping cart!");
-					} else {
-						alert("There was an error adding the course to the shopping cart");
-					}
-				} catch (error) {
-					console.log(error);
+			try {
+				const response = await fetch(`${shoppingCartUrl}/add-to-cart`, {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({ userId, courseId }),
+				});
+
+				if (response.ok) {
+					alert("Course added to shopping cart!");
+				} else {
+					alert("There was an error adding the course to the shopping cart");
 				}
-			} else {
-				alert("You need to be logged in to add a course to the shopping cart");
+			} catch (error) {
+				console.log(error);
 			}
-		});
-	}
+		} else {
+			alert("You need to be logged in to add a course to the shopping cart");
+		}
+	});
+
+
+
 };
+
+
 
 
 

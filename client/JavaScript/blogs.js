@@ -13,7 +13,7 @@ stories.getStories().then((stories) => {
     alert(error);
 });
 const renderStories = (story) => {
-    const paragraph = story.story.split("\n\n")[0];
+    const paragraph = story.story.split("\n")[0];
     const date = new Date(story.blog_date).toDateString();
     //creating a row element to make the card responsive
     const row = document.createElement("div");
