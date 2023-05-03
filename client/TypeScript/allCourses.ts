@@ -38,7 +38,7 @@ const renderCourses = (course: Course) => {
 	span.id = "priceInSpan";
 	span.className = "ribbon ribbon-top-right";
 	const price = document.createElement("span");
-	price.innerHTML = "$ " + String(course.price_month) + " / month";
+	price.innerHTML = String(course.price_month) + " € / month";
 	span.appendChild(price);
 	productCard.appendChild(span);
 

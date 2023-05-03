@@ -55,6 +55,7 @@
 
 .paragraph {
   margin-bottom: 10%;
+  text-align: justify;
 }
 
 /* add parent card-body to btn */

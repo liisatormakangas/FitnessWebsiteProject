@@ -1,8 +1,11 @@
 /* calculator body */
+.cal-section{
+    background-color: #000000
+}
 .bodycalculator {
     background-color: #ffffff;
-    max-width: 90%;
-    margin-top: 5%
+    max-width: 1560px;
+    margin: auto;
 }
 
 .text-center p {
@@ -15,7 +18,7 @@
 .calculator {
     background-color: #000000;
     color: #ffffff;
-    border-radius: 16px;
+    /* border-radius: 16px; */
     max-width: 900px;
     margin-bottom: 40px;
     border: 3px solid #000000;
@@ -72,7 +75,7 @@
     border-color: #000000;
 }
 .calculator-inputs-content{
-    background-color: #03DAC6;
+    background-color: #ffffff;
     border-radius: 16px;
 }
 .units{
@@ -85,6 +88,7 @@
 .result-value{
     background-color: #03DAC6;
     min-height: 50px;
+    line-height: 50px;
     color: #000000;
 }
 
