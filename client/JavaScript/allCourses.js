@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import { Courses } from './backendCalls/handleCourses.js';
 import { Cookies } from './backendCalls/sendLoginData.js';
+import { updateCartIcon } from './modals.js';
 const backendUrl = "http://localhost:3001/course";
 const shoppingCartUrl = "http://localhost:3001/cart";
 const courses = new Courses(backendUrl);
@@ -68,40 +69,43 @@ const renderCourses = (course) => {
     productCard.appendChild(starContainer);
     courseDiv.appendChild(productCard);
     contentDiv.appendChild(courseDiv);
+    //add event listener to the enroll button to add the course to the shopping cart
     const button = courseDiv.querySelector(".buy-btn");
-    if (button) {
-        button.addEventListener("click", () => __awaiter(void 0, void 0, void 0, function* () {
-            const cookie = new Cookies();
-            const isLoggedIn = cookie.isCookieSet("session_token");
-            if (isLoggedIn) {
-                const token = cookie.getCookie("session_token");
-                const decodedToken = JSON.parse(atob(token.split('.')[1]));
-                const userId = decodedToken.userid;
-                const courseId = course.id_course;
-                console.log(userId);
-                console.log(courseId);
-                try {
-                    const response = yield fetch(`${shoppingCartUrl}/add-to-cart`, {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify({ userId, courseId }),
-                    });
-                    if (response.ok) {
-                        alert("Course added to shopping cart!");
-                    }
-                    else {
-                        alert("There was an error adding the course to the shopping cart");
-                    }
+    button.addEventListener("click", () => __awaiter(void 0, void 0, void 0, function* () {
+        const cookie = new Cookies();
+        const isLoggedIn = cookie.isCookieSet("session_token");
+        if (isLoggedIn) {
+            // update the number of items in the shopping cart icon
+            let itemsInCart = parseInt(localStorage.getItem("itemsInCart") || "0");
+            itemsInCart++;
+            localStorage.setItem("itemsInCart", String(itemsInCart));
+            updateCartIcon(itemsInCart);
+            // add the course to the shopping cart
+            const token = cookie.getCookie("session_token");
+            const decodedToken = JSON.parse(atob(token.split('.')[1]));
+            const userId = decodedToken.userid;
+            const courseId = course.id_course;
+            try {
+                const response = yield fetch(`${shoppingCartUrl}/add-to-cart`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ userId, courseId }),
+                });
+                if (response.ok) {
+                    alert("Course added to shopping cart!");
                 }
-                catch (error) {
-                    console.log(error);
+                else {
+                    alert("There was an error adding the course to the shopping cart");
                 }
             }
-            else {
-                alert("You need to be logged in to add a course to the shopping cart");
+            catch (error) {
+                console.log(error);
             }
-        }));
-    }
+        }
+        else {
+            alert("You need to be logged in to add a course to the shopping cart");
+        }
+    }));
 };

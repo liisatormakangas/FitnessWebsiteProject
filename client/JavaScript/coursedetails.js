@@ -1,4 +1,15 @@
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 import { Courses } from './backendCalls/handleCourses.js';
+import { Cookies } from "./backendCalls/sendLoginData.js";
+import { updateCartIcon } from './modals.js';
 const backendUrl = "http://localhost:3001/course";
 const courses = new Courses(backendUrl);
 const courseName = document.getElementById("navcourseName");
@@ -40,3 +51,46 @@ const renderCourse = (course) => {
     //courseImages4.src = `./images/${course.extra_image4}`;
     //coursePrice.innerText = `$ ${course.price_year}`; 
 };
+const enrollButton = document.getElementById("courseEnrollButton");
+enrollButton.addEventListener("click", (event) => __awaiter(void 0, void 0, void 0, function* () {
+    event.preventDefault();
+    const cookie = new Cookies();
+    const isLoggedIn = cookie.isCookieSet("session_token");
+    if (isLoggedIn) {
+        const token = cookie.getCookie("session_token");
+        const decodedToken = JSON.parse(atob(token.split('.')[1]));
+        const userId = decodedToken.userid;
+        const courseId = id_course;
+        try {
+            const response = yield fetch(`http://localhost:3001/cart/add-to-cart`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ userId, courseId }),
+            });
+            if (response.ok) {
+                alert("Course added to shopping cart!");
+            }
+            else {
+                alert("Something went wrong");
+            }
+        }
+        catch (error) {
+            alert(error);
+        }
+    }
+    else {
+        alert("Please register and log in first!");
+    }
+}));
+let itemsInCart = parseInt(localStorage.getItem("itemsInCart") || "0");
+enrollButton.addEventListener("click", () => {
+    const cookie = new Cookies();
+    const isLoggedIn = cookie.isCookieSet("session_token");
+    if (isLoggedIn) {
+        itemsInCart++;
+        localStorage.setItem("itemsInCart", String(itemsInCart));
+        updateCartIcon(itemsInCart);
+    }
+});

@@ -1,5 +1,7 @@
 import { Course } from './backendCalls/course.js';
 import { Courses } from './backendCalls/handleCourses.js';
+import { Cookies } from "./backendCalls/sendLoginData.js";
+import { updateCartIcon } from './modals.js';
 
 const backendUrl = "http://localhost:3001/course";
 
@@ -26,8 +28,8 @@ const id_course = Number(queryParams.get('id'));
 courses.getCourseById(id_course).then((course: Course) => {
     renderCourse(course);
 })
-.catch((error: any) => {
-    alert(error);
+    .catch((error: any) => {
+        alert(error);
     });
 
 const renderCourse = (course: Course) => {
@@ -42,10 +44,55 @@ const renderCourse = (course: Course) => {
     courseTimeWeek.innerText = course.weekday_duration;
     courseTimeWeekend.innerText = course.weekend_duration;
     courseAvailability.innerText = course.available_seats.toString();
-    coursePriceMonth.innerText = `${course.price_month} $ / Month`; 
+    coursePriceMonth.innerText = `${course.price_month} $ / Month`;
     //courseImages2.src = `./images/${course.extra_image2}`;
     //courseImages3.src = `./images/${course.extra_image3}`;
     //courseImages4.src = `./images/${course.extra_image4}`;
-	//coursePrice.innerText = `$ ${course.price_year}`; 
-    
+    //coursePrice.innerText = `$ ${course.price_year}`; 
+
 }
+const enrollButton = document.getElementById("courseEnrollButton") as HTMLButtonElement;
+
+enrollButton.addEventListener("click", async (event: Event) => {
+    event.preventDefault();
+    const cookie = new Cookies();
+    const isLoggedIn = cookie.isCookieSet("session_token");
+
+    if (isLoggedIn) {
+        const token = cookie.getCookie("session_token");
+        const decodedToken = JSON.parse(atob(token.split('.')[1]));
+        const userId = decodedToken.userid;
+        const courseId = id_course;
+        try {
+            const response = await fetch(`http://localhost:3001/cart/add-to-cart`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ userId, courseId }),
+            });
+            if (response.ok) {
+                alert("Course added to shopping cart!");
+            } else {
+                alert("Something went wrong");
+            }
+        } catch (error) {
+            alert(error);
+        }
+    } else {
+        alert("Please register and log in first!");
+    }
+   
+});
+let itemsInCart: number = parseInt(localStorage.getItem("itemsInCart") || "0");
+enrollButton.addEventListener("click", () => {
+    const cookie = new Cookies();
+    const isLoggedIn = cookie.isCookieSet("session_token");
+    if (isLoggedIn) {
+        itemsInCart++;
+        localStorage.setItem("itemsInCart", String(itemsInCart));
+
+        updateCartIcon(itemsInCart)  
+    }
+    
+});

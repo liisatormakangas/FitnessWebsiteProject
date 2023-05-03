@@ -39,7 +39,6 @@ controller.get('/:id', (req, res) => {
 controller.post('/new', (req, res) => {
     story_model_js_1.default.addNewStory(req.body).then((data) => {
         res.send(data.rows);
-        console.log(data.rows);
     }).catch((error) => {
         res.status(500).send({
             message: 'Some error occurred while posting story.'
@@ -66,7 +65,6 @@ controller.post('/newcomment', (req, res) => {
             row.canDelete = true;
         });
         res.send(data.rows);
-        console.log(data.rows);
     }).catch((error) => {
         res.status(500).send({
             message: 'Some error occurred while posting story comment.'
@@ -87,7 +85,6 @@ controller.post('/newreaction', (req, res) => {
     const username = decoded.username;
     story_model_js_1.default.addStoryReaction(req.body, userId).then((data) => {
         res.send(data.rows);
-        console.log(data.rows);
     }).catch((error) => {
         res.status(500).send({
             message: 'Some error occurred while posting story reaction. ' + error.message

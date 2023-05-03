@@ -302,25 +302,31 @@ body{
 /*Style for the shopping cart*/
   
 .cart-container {
-    background-color: #03DAC6;
     padding: 30px;
     border:black 1px solid;
   }
+  .yourCourses h3 {
+    border-bottom: 1px solid black;
+    padding-bottom: 20px;
+    font-weight: bold;
+    font-size: 20px;
+  }
   .middle-content {
+    margin:auto;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     margin-bottom: 80px;
+    max-width: 70%;
   }
   
   .cart1{
-    min-width: 700px;
+    min-width: 500px;
   }
   @media screen and (max-width: 700px) {
     .cart1 {
       min-width: 100%;
     }
   }
-  
   .cart-header {
     margin-bottom: 20px;
   }
@@ -351,18 +357,26 @@ body{
   }
   
   .cart-item-image {
-    margin-right: 20px;
     width: 100px;
+    height: 100px;
+    padding-top: 20px;
   }
   
   .cart-item-image>img {
     width: 100%;
+    max-height: 66px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  .cart-item-details {
+    display:flex;
+    justify-content: space-around;
   }
   .cart-item-details h3 {
     margin: 0;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
-    min-width: 200px;
+    min-width: 150px;
   }
   
   .cart-item-details p {
@@ -375,14 +389,14 @@ body{
     }
   }
   
-  .cart-item-price {
+  .cart-item-price h3 {
     text-align: right;
+    font-size: 20px;
+    font-weight: bold;
   }
   /* .cart-item-remove {
   } */
-  .fa-trash-alt {
-    margin-right: 5px;
-  }
+
   .total-price {
     border-top: 1px solid black;
     padding-top: 20px;
@@ -406,7 +420,7 @@ body{
     margin-top: 20px;
   }
   .btn-proceed:hover {
-    background-color: #0062cc;
+    background-color: #03DAC6;
     }
   
   /*Style for the Other/extra classes*/
@@ -484,19 +498,19 @@ body{
     top: 30px;
     transform: rotate(45deg);
   }
-  img {
+  .product-card img {
     width: 100%;
     max-height: 200px;
     object-fit: cover;
     border-radius: 10px;
     margin-bottom: 5px;
   }
-  h3 {
+  .product-card h3 {
     font-size: 20px;
     margin-bottom: 10px;
     margin-top: 10px;
   }
-  p {
+  .product-card p {
     font-size: 14px;
     margin-bottom: 10px;
     text-align: justify;
