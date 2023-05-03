@@ -69,6 +69,9 @@ body{
     border: 1px solid #fff;
     background-color: #03DAC6;
 }
+.trainer-description p{
+  text-align: justify;
+}
 .title {
   font-size: 1rem;
   font-weight: bold;
