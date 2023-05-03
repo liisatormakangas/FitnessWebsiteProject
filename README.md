@@ -11,7 +11,7 @@ The web site includes fitness-related blog texts that users can read and comment
 ---
 
 ## How to install and run the application
-Clone the repository to your computer and ... <this is not ready yet>
+Clone the repository to your computer. SQL commands to create database tables and to store blog stories and courses for web shop can be found in db.sql file. In the server folder you need to create a .env file where you can store your database password (DATABASE_PASSWORD='') and your secret key (SECRET_KEY='') for token creation. In your code editor terminal or cmd, cd to /server folder and run **npm install** to install local dependencies for the libraries. You can start the server by running **npm run devStart**. Finally, from the /client folder, open file index.htlm in your browser.
 
 ---
 
@@ -42,9 +42,9 @@ Images used on the web pages have been retrieved from the following free image s
 
 ---
 
-## Blog stories
+## Blog stories and other texts
 
-Blog texts were written by **ChatGTP** based on given framework and some keywords.
+Blog texts, introduction text and happy user testimonials were written by **ChatGTP** based on given framework and some keywords.
 
 ---
 
