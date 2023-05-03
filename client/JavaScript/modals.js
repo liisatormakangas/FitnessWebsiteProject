@@ -9,12 +9,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import { Login, Cookies } from './backendCalls/sendLoginData.js';
 import { Register } from './backendCalls/sendRegisterData.js';
+const backendUrlcart = "http://localhost:3001/cart";
 const backendUrlRegister = "http://localhost:3001/register";
 const register = new Register(backendUrlRegister);
 const registerForm = document.getElementById("registerForm");
 const passwordInput = document.getElementById('passwd');
 const confirmPasswordInput = document.getElementById('passwd2');
 const loginForm = document.getElementById("loginForm");
+// Check if there is 'itemsIncart' in the local storage and if not, set number in cart icon it to 0
+if (localStorage.getItem('itemsInCart') === null) {
+    document.getElementById('total-Items').textContent = '0';
+}
+else {
+    document.getElementById('total-Items').textContent = localStorage.getItem('itemsInCart');
+}
 //these variables create the login and register modals
 const registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
 const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
@@ -108,6 +116,28 @@ const modals = () => {
     });
     const logoutButton = document.getElementById('logoutButton');
     logoutButton.addEventListener('click', () => {
+        const cookie = new Cookies();
+        const token = cookie.getCookie('session_token');
+        const decodedToken = JSON.parse(atob(token.split('.')[1]));
+        const userId = decodedToken.userid;
+        // Empty cart when logging out
+        fetch(`${backendUrlcart}/clear-cart/${userId}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+            //put the response message in alert
+            .then(response => response.json())
+            .then(data => {
+            alert(data.message);
+        })
+            .catch((error) => {
+            console.error('Error:', error);
+        });
+        // Empty local storage
+        localStorage.clear();
+        // Delete session token cookie
         const cookies = new Cookies();
         cookies.setCookie('session_token', '', -1);
         window.location.reload();
@@ -130,3 +160,7 @@ const loginLogout = () => {
 };
 modals();
 loginLogout();
+//this function updates the cart icon with the number of items in the cart
+export const updateCartIcon = (items) => {
+    document.getElementById('total-Items').textContent = String(items);
+};

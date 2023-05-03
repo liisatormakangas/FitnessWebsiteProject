@@ -1,4 +1,5 @@
 import { Cookies } from "./backendCalls/sendLoginData.js";
+import { updateCartIcon } from "./modals.js";
 
 
 // An event listener for frontpage blog article 'read more' links
@@ -43,6 +44,14 @@ courseEnrollLinks.forEach((courseEnrollLink: any) => {
 		const isLoggedIn = cookie.isCookieSet("session_token");
 
 		if (isLoggedIn) {
+			// adds the number of items in the cart to the cart icon
+			let itemsInCart: number = parseInt(localStorage.getItem("itemsInCart") || "0");
+			itemsInCart++;
+			localStorage.setItem("itemsInCart", String(itemsInCart));
+
+			updateCartIcon(itemsInCart)
+
+			// Send post request to add the course in cart
 			const token = cookie.getCookie("session_token");
 			const decodedToken = JSON.parse(atob(token.split('.')[1]));
 			const userId = decodedToken.userid;

@@ -264,6 +264,14 @@ section .main,
 .viewmore a:hover {
   color: #FF0266;
 }
+/* caousel-courses */
+.carousel-inner {
+  width: 100%;
+  height: 400px;
+}
+.carousel-item {
+  width: 33%;
+}
 
 /* for workout and training part */
 .workout .training-class h1 {

@@ -6,8 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link
-        href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Great+Vibes&family=Libre+Baskerville&family=Noto+Sans+JP:wght@300&display=swap"
-        rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
@@ -25,8 +24,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Fit'nHealth | Shopping Cart</title>
     <!-- favicon title -->
-    <link rel = "icon" type = "image/png" href = "./images/fitnhealth-low-resolution-color-logo.png">
-    <link rel = "apple-touch-icon" type = "image/png" href = "./images/fitnhealth-low-resolution-color-logo.png"/>
+    <link rel="icon" type="image/png" href="./images/fitnhealth-low-resolution-color-logo.png">
+    <link rel="apple-touch-icon" type="image/png" href="./images/fitnhealth-low-resolution-color-logo.png" />
 </head>
 
 <body>
@@ -47,14 +46,15 @@
                     <div class="cart mx-3">
                         <a href="cart.html">
                             <i class="fas fa-shopping-cart"></i>
-                            <span id="total-Items">0</span></a>
+                            <span id="total-Items"></span></a>
                     </div>
                 </div>
             </div><!-- login,reg,cart ends here -->
         </div><!-- upper menu ends here -->
         <nav class="navbar navbar-expand-lg bg-black"><!-- bottom menu starts here -->
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="./images/fitnhealth-low-resolution-logo-color-on-transparent-background (1).png"
+                <a class="navbar-brand" href="#"><img
+                        src="./images/fitnhealth-low-resolution-logo-color-on-transparent-background (1).png"
                         alt="logo"></a>
                 <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -63,22 +63,22 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto  mt-auto">
-                        <li class="nav-item">
+                        <li class="nav-item  ms-md-2 ms-lg-5">
                             <a class="nav-link" aria-current="page" href="index.html">Home</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item  ms-md-2 ms-lg-5">
                             <a class="nav-link" href="blogs.html">Blogs</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="courses.html">Courses</a>
+                        <li class="nav-item  ms-md-2 ms-lg-5">
+                            <a class="nav-link active" href="courses.html">Courses</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item  ms-md-2 ms-lg-5">
                             <a class="nav-link" href="about.html">About</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item  ms-md-2 ms-lg-5">
                             <a class="nav-link" href="about.html#contact">Contact</a>
                         </li>
-                        <form class="search-box ms-md-5">
+                        <form class="search-box  ms-md-2 ms-lg-5">
                             <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
                             <input type="text" class="search-input" placeholder="Search..">
                             <button class="search-button">
@@ -89,171 +89,131 @@
                 </div>
             </div>
         </nav><!-- bottom menu ends here -->
-      </div><!-- header ends here -->
-    
-  <div id="container">
-    <div id="content">
-        <div class="breadcrumb">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="courses.html">Courses</a></li>
-                <li><a href="courseDetails.html">Body Balance</a></li>
-                <li>Cart</li>
-            </ul>
-        </div>
-        <div class="middle-content">
-            <div class="cart1">
-                <div class="cart-header">
-                    <h2>Your courses</h2>
+    </div><!-- header ends here -->
+
+    <div id="container">
+        <div id="content">
+            <div class="breadcrumb">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li>Cart</li>
+                </ul>
+            </div>
+
+            <div class="middle-content">
+                <div class="yourCourses">
+                    <h3>Your courses: </h3>
                 </div>
-                <div class="cart-container">
-        
-                    <div class="cart-body">
-                        <div class="name-price">
-                            <h3>Course name</h3>
-                            <h3>Price</h3>
-                        </div>
-                        <div class="cart-item">
-                            <div class="cart-item-image">
-                                <img src="images/Yoga1.jpg" alt="Body Balance">
-                            </div>
-                            <div class="cart-item-details">
-                                <h3>Body Balance</h3>
-                            </div>
-                            <div class="cart-item-right">
-                                <div class="cart-item-remove">
-                                    <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                                </div>
-                                <div class="cart-item-price">
-                                    <h3>60 $</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="cart-item">
-                            <div class="cart-item-image">
-                                <img src="images/Core.jpg" alt="Core">
-                            </div>
-                            <div class="cart-item-details">
-                                <h3>Core</h3>
-                            </div>                                                            
-                            <div class="cart-item-right">
-                                <div class="cart-item-remove">
-                                    <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                                </div>
-                                <div class="cart-item-price">
-                                    <h3>70 $</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="total-price">
-                            <h2>Total 130 $</h2>
-                        </div>
-                        <div class="proceed-pay">
-                            <button class="btn btn-proceed">Proceed to pay</button>
+                <div class="cart1" id="cart-content">
+                    <div id="cart-items"></div>
+                </div>
+                <div class="total-price" id="total-price"></div>
+                <div class="proceed-pay">
+                    <button class="btn btn-proceed">Proceed to pay</button>
+                </div>
+
+
+
+            </div>
+            <!--Other classes-->
+            <div class="others">
+                <div class="others-header">
+                    <h2>Other courses you might be interested in</h2>
+                </div>
+                <div class="others-container">
+                    <div class="product-card">
+                        <div class="ribbon ribbon-top-right"><span>60 € / month</span></div>
+                        <img src="images\Aerobic.jpg" alt="Product image">
+                        <h3>AEROBIC</h3>
+                        <p>Yoga promotes body balance by improving strength, flexibility, and alignment.
+                            Through mindfulness and meditation practices, yoga can help cultivate a greater sense of
+                            physical and mental equilibrium.</p>
+                        <a href="courseDetails.html?id=4" class="view-more">View more</a>
+                        <button data-id="4" class="buy-btn">Enroll now</button>
+                        <div class="star-container">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
                         </div>
                     </div>
-                </div>
-            </div>
-            
-        </div>
-        <!--Other classes-->
-        <div class="others">
-            <div class="others-header">
-                <h2>Other courses you might be interested in</h2>
-            </div>
-            <div class="others-container">
-                <div class="product-card">
-                    <div class="ribbon ribbon-top-right"><span>$ 60 / month</span></div>
-                    <img src="images\Aerobic.jpg" alt="Product image">
-                    <h3>AEROBIC</h3>
-                    <p>Yoga promotes body balance by improving strength, flexibility, and alignment. 
-                    Through mindfulness and meditation practices, yoga can help cultivate a greater sense of physical and mental equilibrium.</p>
-                    <a href="#" class="view-more">View more</a>
-                    <button class="buy-btn">Enroll now</button>
-                    <div class="star-container">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
+                    <div class="product-card">
+                        <div class="ribbon ribbon-top-right"><span>60 € / month</span></div>
+                        <img src="images\Barre.jpg" alt="Product image">
+                        <h3>BARRE</h3>
+                        <p>Yoga promotes body balance by improving strength, flexibility, and alignment.
+                            Through mindfulness and meditation practices, yoga can help cultivate a greater sense of
+                            physical and mental equilibrium.</p>
+                        <a href="courseDetails.html?id=8" class="view-more">View more</a>
+                        <button data-id="8" class="buy-btn">Enroll now</button>
+                        <div class="star-container">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                        </div>
                     </div>
-                </div>
-                <div class="product-card">
-                    <div class="ribbon ribbon-top-right"><span>$ 60 / month</span></div>
-                    <img src="images\Barre.jpg" alt="Product image">
-                    <h3>BARRE</h3>
-                    <p>Yoga promotes body balance by improving strength, flexibility, and alignment. 
-                    Through mindfulness and meditation practices, yoga can help cultivate a greater sense of physical and mental equilibrium.</p>
-                    <a href="#" class="view-more">View more</a>
-                    <button class="buy-btn">Enroll now</button>
-                    <div class="star-container">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                    </div> 
-                </div>
-                <div class="product-card">
-                    <div class="ribbon ribbon-top-right"><span>$ 70 / month</span></div>
-                    <img src="images\Crossfit.jpg" alt="Product image">
-                    <h3>CROSSFIT</h3>
-                    <p>Yoga promotes body balance by improving strength, flexibility, and alignment. 
-                    Through mindfulness and meditation practices, yoga can help cultivate a greater sense of physical and mental equilibrium.</p>
-                    <a href="#" class="view-more">View more</a>
-                    <button class="buy-btn">Enroll now</button>
-                    <div class="star-container">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
+                    <div class="product-card">
+                        <div class="ribbon ribbon-top-right"><span>70 € / month</span></div>
+                        <img src="images\Crossfit.jpg" alt="Product image">
+                        <h3>CROSSFIT</h3>
+                        <p>Yoga promotes body balance by improving strength, flexibility, and alignment.
+                            Through mindfulness and meditation practices, yoga can help cultivate a greater sense of
+                            physical and mental equilibrium.</p>
+                        <a href="courseDetails.html?id=7" class="view-more">View more</a>
+                        <button data-id="7" class="buy-btn">Enroll now</button>
+                        <div class="star-container">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-  </div>
-  <footer class="bg-dark py-4">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="footerlogo">
-            <a href="#">
-                <img src="./images/fitnhealth-low-resolution-logo-color-on-transparent-background (1).png"  alt="logo">
-            </a>
-            
-          </div>
-          <ul class="list-unstyled">
-            <!--<li><a href="#" class="text-decoration-none ">Fitness</a></li>>-->
-            <li><a href="#" class="text-decoration-none">Terms and Conditions</a></li>
-            <p>&copy; 2023 Fitness Web</p>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <h5>CONTACT US</h5>
-          <ul class="list-unstyled contact">
-            <li class="d-flex address"><a href="#" class="text-decoration-none "><i class="bi bi-geo-alt contacticon"></i></a>Pentti katu 1, 90570 Oulu</li>
-            <li class="d-flex address"><a href="#" class="text-decoration-none "><i class="bi bi-telephone contacticon"></i></a>+358 40 12345678</li>
-            <li class="d-flex address"><a href="#" class="text-decoration-none "><i class="bi bi-send contacticon"></i>hello@fitness.com</a></li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <h5>SOCIAL NETWORK</h5>
-          <ul class="list-unstyled d-flex">
-            <li><a href="#"><i class="bi bi-facebook icon-network" style="font-size: 2em;"></i></a></li>
-            <li><a href="#"><i class="bi bi-instagram icon-network" style="font-size: 2em;"></i></a></li>
-            <li><a href="#"><i class="bi bi-youtube icon-network" style="font-size: 2em;"></i></a></li>
-          </ul>
-        </div>
-      </div>
-  <!--         should we put our copy right here or in the first column?
-      <hr class="bg-light">
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <p>&copy; 2023 Fitness Web</p>
-        </div> -->
+    <footer class="bg-dark py-4">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="footerlogo">
+                        <a href="#">
+                            <img src="./images/fitnhealth-low-resolution-logo-color-on-transparent-background (1).png"
+                                alt="logo">
+                        </a>
+
+                    </div>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-decoration-none">Terms and Conditions</a></li>
+                        <p>&copy; 2023 Fitness Web</p>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>CONTACT US</h5>
+                    <ul class="list-unstyled contact">
+                        <li class="d-flex address"><a href="#" class="text-decoration-none "><i
+                                    class="bi bi-geo-alt contacticon"></i></a>Pentti katu 1, 90570 Oulu</li>
+                        <li class="d-flex address"><a href="#" class="text-decoration-none "><i
+                                    class="bi bi-telephone contacticon"></i></a>+358 40 12345678</li>
+                        <li class="d-flex address"><a href="#" class="text-decoration-none "><i
+                                    class="bi bi-send contacticon"></i>hello@fitness.com</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>SOCIAL NETWORK</h5>
+                    <ul class="list-unstyled d-flex">
+                        <li><a href="#"><i class="bi bi-facebook icon-network" style="font-size: 2em;"></i></a></li>
+                        <li><a href="#"><i class="bi bi-instagram icon-network" style="font-size: 2em;"></i></a></li>
+                        <li><a href="#"><i class="bi bi-youtube icon-network" style="font-size: 2em;"></i></a></li>
+                    </ul>
+                </div>
+            </div>
     </footer>
+
     <!-- login modal -->
     <div class="modal" tabindex="-1" id="loginModal">
         <div class="modal-dialog">
@@ -399,6 +359,9 @@
         crossorigin="anonymous"></script>
     <!-- Load your custom scripts -->
     <script src="./JavaScript/modals.js" type="module"></script>
+    <script src="./JavaScript/handleShopCart.js" type="module"></script>
+
+
 </body>
 
 </html>
