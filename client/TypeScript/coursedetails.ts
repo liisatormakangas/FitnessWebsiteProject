@@ -42,7 +42,7 @@ const renderCourse = (course: Course) => {
     courseTimeWeek.innerText = course.weekday_duration;
     courseTimeWeekend.innerText = course.weekend_duration;
     courseAvailability.innerText = course.available_seats.toString();
-    coursePriceMonth.innerText = `${course.price_month} $ / Month`; 
+    coursePriceMonth.innerText = `${course.price_month} € / Month`; 
     //courseImages2.src = `./images/${course.extra_image2}`;
     //courseImages3.src = `./images/${course.extra_image3}`;
     //courseImages4.src = `./images/${course.extra_image4}`;

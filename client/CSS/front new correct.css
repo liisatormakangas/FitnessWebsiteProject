@@ -1,6 +1,9 @@
 *{
   font-family: 'Montserrat';
 }
+body{
+  background-color: #000000 !important;
+}
 .main {
   background: url(../images/coverimg.jpg) no-repeat;
   background-size: cover;
@@ -45,8 +48,6 @@
   height: 100%;
   width: 100%;
   padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
 }
 
 .join-container {
@@ -206,8 +207,8 @@ section .main,
 }
 
 .view-more {
-  bottom: 10px;
-  left: 10px;
+  /* bottom: 10px;
+  left: 10px; */
   color: white;
   border: none;
   font-size: 14px;
@@ -255,10 +256,8 @@ section .main,
   text-align: center;
   color: #03DAC6;
   font-weight: 500;
-  font-size: 1.5em;
+  font-size: 1.5rem;
   display: block;
-  margin-top: 20px;
-  margin-bottom: 40px;
   text-decoration: underline;
 }
 
@@ -291,7 +290,7 @@ section .main,
 
 .workout p {
   color: black;
-  font-size: 2em;
+  font-size: 1.5rem;
   text-align: center;
   padding-top: 10px;
   max-width: 90%;
@@ -368,7 +367,7 @@ section .main,
 }
 
 .img-area img {
-  width: 170px;
+  width: 270px;
   height: auto;
   display: block;
 }
@@ -384,6 +383,13 @@ section .main,
   padding: 10px;
   opacity: 0;
   transition: opacity 0.3s ease;
+}
+.img-text a{
+  color: white;
+  text-decoration: none;
+}
+.img-text a:hover{
+  font-size: 150%;
 }
 
 /*solution for too small background color*/
@@ -452,6 +458,9 @@ section .main,
   font-size: 2.5em;
   text-align: center;
   padding-top: 10px;
+}
+#happy-customer {
+ background-color: #000000;
 }
 
 .testi-container {
@@ -530,7 +539,13 @@ section .main,
 
 /* blog section */
 .blog-section {
-  background-color: white;
+  background-color: #000000;
+}
+.all-blog-container {
+  /* padding: 30px 0; */
+  /* margin-top: -30px; */
+  background: #fff;
+  max-width: 1560px;
 }
 
 .blog-section img {
@@ -616,6 +631,7 @@ section .main,
 #to-top-link a{
   text-decoration: none;
   color: #FF0266;
+  font-size: 2em;
 }
 #to-top-link a:hover{
   color: #03DAC6;
