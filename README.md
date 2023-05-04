@@ -6,7 +6,7 @@ The web site includes fitness-related blog texts that users can read and comment
 
 ## Team members
 
->Shu Sheng, Huyen Nguyen, Shamima Shammi, Shehara Wadu Mesthri and Liisa Törmäkangas
+>Shu Cheng, Huyen Nguyen, Shamima Shammi, Shehara Wadu Mesthri and Liisa Törmäkangas
 
 ---
 
